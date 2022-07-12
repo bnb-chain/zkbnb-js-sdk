@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/bnb-chain/zkbas-js-sdk/issues"
   },
-  "homepage": "https://github.com/bnb-chain/zkbas-js-sdk#readme"
+  "homepage": "https://github.com/bnb-chain/zkbas-js-sdk#readme",
+  "dependencies": {
+    "shelljs": "^0.8.5"
+  },
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "mocha": "^10.0.0"
+  }
 }
