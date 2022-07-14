@@ -1,5 +1,6 @@
 {
   "name": "zkbas-js-sdk",
+  "type": "module",
   "version": "0.0.1",
   "description": "",
   "scripts": {
@@ -17,10 +18,12 @@
   },
   "homepage": "https://github.com/bnb-chain/zkbas-js-sdk#readme",
   "dependencies": {
+    "axios": "^0.27.2",
     "shelljs": "^0.8.5"
   },
   "devDependencies": {
     "chai": "^4.3.6",
-    "mocha": "^10.0.0"
+    "mocha": "^10.0.0",
+    "typescript": "^4.7.4"
   }
 }
