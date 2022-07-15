@@ -44,10 +44,10 @@ declare namespace API {
     CreateCollection: 'POST /api/v1/tx/sendCreateCollectionTx';
   };
 
-  // 'GetTxsByPubKey' | 'GetTxsByAccountName' | ... | 'GetAvailablePairs'
+  // 'GetTxsByPubKey' | 'GetTxsByAccountName' | ... | 'CreateCollection'
   type API_NAME = keyof typeof API_MAP;
 
-  // real url
+  // 'GET /api/v1/tx/getTxsByPubKey' | ... | 'POST /api/v1/tx/sendCreateCollectionTx'
   type URL_INFO = typeof API_MAP[API_NAME];
 
   interface IReqParmsMap {
@@ -72,10 +72,14 @@ declare namespace API {
       withdraw_asset_id: Zk.AssetId;
       withdraw_amount: Zk.Amount;
     };
-    [API_MAP.GetGasFee]: { assetId: Zk.AssetId };
+    [API_MAP.GetGasFee]: { asset_id: Zk.AssetId };
     [API_MAP.GetAssetsList]: {};
     [API_MAP.GetLayer2BasicInfo]: {};
-    [API_MAP.GetBlockByCommitment]: { blockCommitment: string };
+    [API_MAP.GetBlockByCommitment]: { block_commitment: string };
+    [API_MAP.GetBalanceByAssetIdAndAccountName]: {
+      asset_id: Zk.AssetId;
+      account_name: Zk.AccountName;
+    };
     [API_MAP.GetAccountStatusByAccountName]: { account_name: Zk.AccountName };
     [API_MAP.GetAccountInfoByAccountIndex]: { account_index: Zk.AccountIndex };
     [API_MAP.GetAccountInfoByPubKey]: { account_pk: Zk.AccountPk };
@@ -83,7 +87,7 @@ declare namespace API {
     [API_MAP.GetCurrencyPriceBySymbol]: { symbol: string };
     [API_MAP.GetCurrencyPrices]: {};
     [API_MAP.GetSwapAmount]: {
-      pair: number;
+      pair_index: number;
       asset_id: Zk.AssetId;
       asset_amount: Zk.Amount;
       is_from: boolean;
@@ -128,6 +132,7 @@ declare namespace API {
     [API_MAP.GetAssetsList]: { assets: Zk.AssetInfo[] };
     [API_MAP.GetLayer2BasicInfo]: Zk.Layer2BasicInfo;
     [API_MAP.GetBlockByCommitment]: { block: string };
+    [API_MAP.GetBalanceByAssetIdAndAccountName]: { balance_enc: string };
     [API_MAP.GetAccountStatusByAccountName]: {
       account_status: Zk.AccountStatus;
       account_index: Zk.AccountIndex;
