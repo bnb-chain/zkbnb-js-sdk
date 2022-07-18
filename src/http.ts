@@ -5,7 +5,7 @@ export class Http {
 
   constructor(baseUrl: string) {
     this.client = axios.create({
-      url: baseUrl
+      baseURL: baseUrl
     });
   }
 

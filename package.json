@@ -1,7 +1,9 @@
 {
   "name": "zkbas-js-sdk",
-  "type": "module",
   "version": "0.0.1",
+  "types": "./dist/*.d.ts",
+  "main": "./dist/bee.cjs.js",
+  "module": "./dist/bee.es.js",
   "description": "",
   "scripts": {
     "test": "mocha"
