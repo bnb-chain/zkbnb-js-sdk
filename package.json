@@ -20,7 +20,7 @@
     "prebuild": "rm -rf ./dist",
     "build": "npm run build:node & npm run build:web",
     "build:node": "microbundle -o dist -f cjs --target=node --sourcemap false --external all",
-    "build:web": "microbundle -o dist -f umd,esm --target=web --compress=false --name=Zk --sourcemap false --external all",
+    "build:web": "microbundle -o dist -f umd,esm --target=web --name=Zk --sourcemap false --external all",
     "test": "mocha"
   },
   "repository": {
