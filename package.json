@@ -2,18 +2,30 @@
   "name": "@bnb-chain/zkbas-js-sdk",
   "version": "0.0.1",
   "description": "zkbase JavaScript SDK",
-  "type": "commonjs",
-  "types": "./dist/index.d.ts",
+  "type": "module",
+  "types": "./dist/types/index.d.ts",
   "source": "./src/index.ts",
-  "main": "./dist/zkbas-js-sdk.js",
-  "module": "./dist/zkbas-js-sdk.mjs",
-  "umd:main": "./dist/zkbas-js-sdk.umd.js",
+  "main": "./dist/zkbas-js-sdk.cjs",
+  "module": "./dist/zkbas-js-sdk.esm.js",
+  "unpkg": "./dist/zkbas-js-sdk.umd.js",
+  "jsdelivr": "./dist/zkbas-js-sdk.umd.js",
+  "files": [
+    "src",
+    "dist/types/*.d.ts",
+    "dist/*.js",
+    "dist/*.cjs"
+  ],
   "exports": {
     ".": {
-      "import": "./dist/zkbas-js-sdk.mjs",
-      "require": "./dist/zkbas-js-sdk.js",
+      "import": {
+        "node": "./dist/zkbas-js-sdk.cjs",
+        "default": "./dist/zkbas-js-sdk.esm.js"
+      },
+      "require": "./dist/zkbas-js-sdk.cjs",
       "types": "./dist/index.d.ts"
-    }
+    },
+    "./dist/*": "./dist/*",
+    "./types/*": "./types/*"
   },
   "scripts": {
     "dev": "rm -fr ./dist && tsc -p tsconfig.json",

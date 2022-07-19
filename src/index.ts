@@ -1,3 +1,2 @@
-import { Client } from './client';
-
-export { Client };
+export * from './http'
+export * from './client'

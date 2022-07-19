@@ -1,5 +1,6 @@
 import axios, { AxiosInstance } from 'axios';
-import { API } from './api';
+import * as API from './api';
+
 
 export class Http {
   private client: AxiosInstance;

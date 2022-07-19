@@ -10,16 +10,16 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "declaration": true,
+    "declarationDir": "./dist/types",
     "outDir": "./dist",
-    "allowUmdGlobalAccess": false
+    "emitDeclarationOnly": false,
+    "allowUmdGlobalAccess": true
   },
   "include": [
     "./src",
-    "./**/*.d.ts"
+    "./types/*.d.ts"
   ],
   "exclude": [
-    "./test",
-    "./dist",
     "node_modules"
   ]
 }
