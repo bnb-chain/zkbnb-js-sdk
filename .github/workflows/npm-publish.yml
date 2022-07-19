@@ -21,17 +21,14 @@ jobs:
           node-version: 16
           registry-url: https://registry.npmjs.org/
 
-      - name: Get version
-        id: get_version
-        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
-
-      - name: "Automated Version Bump"
-        uses: "phips28/gh-action-bump-version@master"
+      - name: match-tag-to-package-version
+        id: match-tag-to-package-version
+        uses: geritol/match-tag-to-package-version@0.2.0
         with:
-          tag-prefix: 'v'
+          TAG_PREFIX: v
       
-      - name: "cat package.json"
-        run: cat ./package.json
+      - name: "get version"
+        run: echo ${{ steps.match-tag-to-package-version.outputs.PACKAGE_VERSION }}
 
       - run: npm install
       - run: npm run build
