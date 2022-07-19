@@ -4,8 +4,10 @@
 name: Node.js Package
 
 on:
-  release:
-    types: [created]
+  push:
+    branchs: [ master ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
   build:
@@ -16,18 +18,29 @@ jobs:
         with:
           node-version: 16
       - run: npm install
-      - run: npm build
+      - run: npm run build
 
   publish-npm:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - name: Get version
+        id: get_version
+        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+
+      - name: "Automated Version Bump"
+        uses: "phips28/gh-action-bump-version@master"
+        with:
+          tag-prefix: ''
+      
+      - name: "cat package.json"
+        run: cat ./package.json
+
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org/
-      # - run: npm ci
-      - run: npm publish
+      - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
