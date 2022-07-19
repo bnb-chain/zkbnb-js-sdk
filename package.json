@@ -1,11 +1,26 @@
 {
-  "name": "zkbas-js-sdk",
+  "name": "@bnb-chain/zkbas-js-sdk",
   "version": "0.0.1",
-  "types": "./dist/*.d.ts",
-  "main": "./dist/bee.cjs.js",
-  "module": "./dist/bee.es.js",
-  "description": "",
+  "description": "zkbase JavaScript SDK",
+  "type": "commonjs",
+  "types": "./dist/index.d.ts",
+  "source": "./src/index.ts",
+  "main": "./dist/zkbas-js-sdk.js",
+  "module": "./dist/zkbas-js-sdk.mjs",
+  "umd:main": "./dist/zkbas-js-sdk.umd.js",
+  "exports": {
+    ".": {
+      "import": "./dist/zkbas-js-sdk.mjs",
+      "require": "./dist/zkbas-js-sdk.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "scripts": {
+    "dev": "rm -fr ./dist && tsc -p tsconfig.json",
+    "prebuild": "rm -rf ./dist",
+    "build": "npm run build:node & npm run build:web",
+    "build:node": "microbundle -o dist -f cjs --target=node --sourcemap false --external all",
+    "build:web": "microbundle -o dist -f umd,esm --target=web --compress=false --name=Zk --sourcemap false --external all",
     "test": "mocha"
   },
   "repository": {
@@ -24,7 +39,11 @@
     "shelljs": "^0.8.5"
   },
   "devDependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/chai": "^4.3.1",
+    "@types/mocha": "^9.1.1",
     "chai": "^4.3.6",
+    "microbundle": "^0.15.0",
     "mocha": "^10.0.0",
     "typescript": "^4.7.4"
   }

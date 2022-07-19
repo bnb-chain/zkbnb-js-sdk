@@ -1,4 +1,4 @@
-declare namespace Zk {
+export namespace Zk {
   type Hash = string;
 
   type Fee = string;

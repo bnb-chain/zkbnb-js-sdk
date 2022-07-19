@@ -1,15 +1,25 @@
 {
+  "baseUrl": ".",
+  "lib": ["dom", "esnext", "es6"],
+  "types": ["dist/index.d.ts"],
   "compilerOptions": {
-    "target": "ES2015",
-    "module": "NodeNext",
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Node",
     "strict": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "declaration": true,
     "outDir": "./dist",
-    "moduleResolution": "Node"
+    "allowUmdGlobalAccess": false
   },
   "include": [
-    "./src"
+    "./src",
+    "./**/*.d.ts"
+  ],
+  "exclude": [
+    "./test",
+    "./dist",
+    "node_modules"
   ]
 }

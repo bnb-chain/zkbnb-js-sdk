@@ -1,4 +1,6 @@
-declare namespace API {
+import { Zk } from "./zk";
+
+export namespace API {
   interface IReqBaseParam {
     offset: number;
     limit: number;

@@ -164,9 +164,9 @@ export class Client {
     });
   }
 
-  async getAvailablePairs() {
-    return await this.http.req(API.API_MAP.GetAvailablePairs, {});
-  }
+  /* async getAvailablePairs() {
+    return await this.http.req('GET /api/v1/pair/getSwapAmount', {});
+  } */
 
   async getLPValue(params: { pairIndex: number; lpAmount: string }) {
     return await this.http.req('GET /api/v1/pair/getLPValue', {
