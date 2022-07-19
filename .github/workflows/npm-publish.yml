@@ -27,7 +27,6 @@ jobs:
       - name: "cat package.json"
         run: cat ./package.json
 
-      - name: "build publish"
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
