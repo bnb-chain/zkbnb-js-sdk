@@ -6,7 +6,6 @@ name: Node.js Package
 on:
   push:
     branchs: [ package ]
-    tags: ["*.*.*"]
   pull_request:
     branches: [ master ]
 
