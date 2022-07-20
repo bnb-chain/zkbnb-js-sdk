@@ -5,7 +5,7 @@ name: Node.js Package
 
 on:
   push:
-    branches: [ master ]
+    branches: [ package ]
     tags: ["v*.*.*"]
   pull_request:
     branches: [ master ]
@@ -21,19 +21,16 @@ jobs:
           node-version: 16
           registry-url: https://registry.npmjs.org/
 
-      - name: Get version
-        id: get_version
-        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+      - name: "Automated Version Bump"
+        uses: "phips28/gh-action-bump-version@master"
+        with:
+          tag-prefix: 'v'
+      
+      - name: "cat package.json"
+        run: cat ./package.json
 
       - run: npm install
-      - run: git config --global user.name "GitHub CD bot"
-      - run: git config --global user.email "github-cd-bot@github.com"
-      - run: npm version ${{ github.event.release.tag_name }}
       - run: npm run build
       - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-
-      - run: git push
-        env:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
