@@ -5,7 +5,7 @@ name: Node.js Package
 
 on:
   push:
-    branches: [ package ]
+    branches: [ master ]
     tags: ["v*.*.*"]
   pull_request:
     branches: [ master ]
@@ -25,7 +25,7 @@ jobs:
         uses: "phips28/gh-action-bump-version@master"
         with:
           tag-prefix: 'v'
-          skip-tag: true
+          skip-tag: 'true'
       
       - name: "cat package.json"
         run: cat ./package.json
