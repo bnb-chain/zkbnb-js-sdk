@@ -25,6 +25,7 @@ jobs:
         uses: "phips28/gh-action-bump-version@master"
         with:
           tag-prefix: 'v'
+          skip-tag: true
       
       - name: "cat package.json"
         run: cat ./package.json
