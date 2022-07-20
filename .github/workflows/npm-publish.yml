@@ -28,10 +28,16 @@ jobs:
       - name: "Automated Version Bump"
         uses: "phips28/gh-action-bump-version@master"
         with:
+          commit-message: 'CI: bumps version to {{version}} [skip ci]'
+          default: prerelease
+          major-wording: 'MAJOR'
+          minor-wording: 'minor'
+          patch-wording: 'patch'
+          rc-wording: 'RELEASE,alpha,beta'
           tag-prefix: 'v'
-          minor-wording:  'add,Adds,new'
-          major-wording:  'MAJOR,cut-major'
-          rc-wording:     'RELEASE,alpha'
+          target-branch: 'master'
+          preid: 'alpha'
+          skip-tag: 'true'
 
       - run: npm install
       - run: npm run build
