@@ -26,6 +26,7 @@ jobs:
         with:
           tag-prefix: 'v'
           skip-tag: 'true'
+          skip-push: 'true'
       
       - name: "cat package.json"
         run: cat ./package.json
