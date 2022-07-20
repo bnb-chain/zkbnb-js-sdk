@@ -25,21 +25,15 @@ jobs:
         id: get_version
         run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
 
-      - name: "Automated Version Bump"
-        uses: "phips28/gh-action-bump-version@master"
-        with:
-          commit-message: 'CI: bumps version to {{version}} [skip ci]'
-          default: prerelease
-          major-wording: 'MAJOR'
-          minor-wording: 'minor'
-          patch-wording: 'patch'
-          rc-wording: 'RELEASE,alpha,beta'
-          tag-prefix: 'v'
-          skip-commit:  'true'
-          skip-tag: 'true'
-
       - run: npm install
+      - run: git config --global user.name "GitHub CD bot"
+      - run: git config --global user.email "github-cd-bot@github.com"
+      - run: npm version ${{ github.event.release.tag_name }}
       - run: npm run build
       - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+
+      - run: git push
+        env:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
