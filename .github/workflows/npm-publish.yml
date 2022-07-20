@@ -35,8 +35,7 @@ jobs:
           patch-wording: 'patch'
           rc-wording: 'RELEASE,alpha,beta'
           tag-prefix: 'v'
-          target-branch: 'master'
-          preid: 'alpha'
+          skip-commit:  'true'
           skip-tag: 'true'
 
       - run: npm install
