@@ -195,7 +195,7 @@ export interface IResponseMap {
   [API_MAP.GetTxsListByBlockHeight]: Zk.Tx[];
   [API_MAP.GetMaxOfferId]: { offset_id: number };
   [API_MAP.GetBlockByHeight]: { block: Zk.Block };
-  [API_MAP.GetBlocks]: { total: number; block: Zk.Block[] };
+  [API_MAP.GetBlocks]: { total: number; blocks: Zk.Block[] };
   [API_MAP.SendRawTx]: { tx_id: string };
   [API_MAP.SendRawCreateCollectionTx]: { collection_id: number };
   [API_MAP.SendRawMintNftTx]: { nft_index: number };
