@@ -88,3 +88,30 @@ const client = new Client('http://172.22.41.67:8888');
   console.log(res)
 })()
 ```
+
+## Zecrey WASM API
+
+## Usage
+
+Because of [WASM](https://webassembly.org/) different usage scenarios, there are two packages:
+
+### Nodejs WASM
+
+```javascript
+const { ZECREY } = require('@bnb-chain/zkbas-js-sdk/dist/zecrey/cjs/node.index.js');
+
+console.log('cleanPackedAmount:', ZECREY.cleanPackedAmount('12312123123'))
+```
+
+### Browser WASM
+
+```javascript
+import {
+  ZECREY
+} from '@bnb-chain/zkbas-js-sdk/dist/zecrey/cjs/web.index.js';
+
+;(async () => {
+  const Z = await ZECREY();
+  console.log('cleanPackedAmount:', Z.cleanPackedAmount('12312123123'))
+})();
+```
