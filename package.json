@@ -1,6 +1,6 @@
 {
   "name": "@bnb-chain/zkbas-js-sdk",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "zkbas JavaScript SDK",
   "type": "commonjs",
   "types": "./dist/types/index.d.ts",
