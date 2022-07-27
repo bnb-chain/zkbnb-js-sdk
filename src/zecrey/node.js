@@ -1,4 +1,5 @@
-const { exec } = require('shelljs');
+import { resolve } from 'path';
+import { exec } from 'shelljs'
 
 const getResultLine = (str) => {
   return str.replace(/Zecrey-legend Crypto Assembly/gi, '').trim();
@@ -12,13 +13,20 @@ const wasmExec = (func, funcArgs) => {
     })
     .join(' ');
 
+  const wasmExecNodePath = resolve(__dirname, '../../..', './src/zecrey/wasm_exec_node.js')
+  const wasmFilePath = resolve(
+    __dirname,
+    '../../..',
+    './src/zecrey/zecreyLegend.wasm'
+  );
+
   const result = exec(
-    `node ./zecrey/wasm_exec_node.js ./zecrey/zecreyLegend.wasm ${func} ${args}`,
+    `node ${wasmExecNodePath} ${wasmFilePath} ${func} ${args}`,
     {
       silent: true
     }
   );
-
+  
   return getResultLine(result.stdout);
 };
 
@@ -76,7 +84,7 @@ const signTransferNft = (seed, segmentstr) =>
 const signWithdrawNft = (seed, segmentstr) =>
   wasmExec('signWithdrawNft', [seed, segmentstr]);
 
-module.exports = {
+export const ZECREY = {
   cleanPackedAmount,
   cleanPackedFee,
   getAccountNameHash,
