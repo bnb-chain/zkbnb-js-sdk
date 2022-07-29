@@ -7,6 +7,7 @@ import { terser } from 'rollup-plugin-terser';
 import { babel } from '@rollup/plugin-babel';
 import nodePolyfills from 'rollup-plugin-polyfill-node';
 import builtins from 'rollup-plugin-node-builtins';
+import copy from 'rollup-plugin-copy';
 import { wasm } from '@rollup/plugin-wasm';
 
 const buildConfig = ({
@@ -73,7 +74,7 @@ export default async () => {
         }),
         typescript({
           tsconfig: './tsconfig-esm.json',
-          declarationDir: './types/'
+          declarationDir: './dist/web/types/'
         })
       ]
     }),
@@ -102,11 +103,18 @@ export default async () => {
       input: ['./src/zecrey/node.index.js', './src/zecrey/web.index.js'],
       output: [
         { dir: './dist/zecrey/cjs', format: 'cjs', sourcemap: true },
-        { dir: './dist/zecrey/esm', format: 'esm', sourcemap: true },
+        { dir: './dist/zecrey/esm', format: 'esm', sourcemap: true }
       ],
       plugins: [
         wasm({
           targetEnv: 'auto-inline'
+        }),
+        copy({
+          targets: [
+            { src: 'src/zecrey/zecreyLegend.wasm', dest: 'dist/zecrey/cjs' },
+            { src: 'src/zecrey/wasm_exec_node.js', dest: 'dist/zecrey/cjs' },
+            { src: 'src/zecrey/wasm_exec.js', dest: 'dist/zecrey/cjs' }
+          ]
         })
       ]
     }

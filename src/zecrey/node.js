@@ -13,11 +13,10 @@ const wasmExec = (func, funcArgs) => {
     })
     .join(' ');
 
-  const wasmExecNodePath = resolve(__dirname, '../../..', './src/zecrey/wasm_exec_node.js')
+  const wasmExecNodePath = resolve(__dirname, './wasm_exec_node.js')
   const wasmFilePath = resolve(
     __dirname,
-    '../../..',
-    './src/zecrey/zecreyLegend.wasm'
+    './zecreyLegend.wasm'
   );
 
   const result = exec(
@@ -47,7 +46,7 @@ const getEddsaCompressedPublicKey = (seed) =>
 const eddsaSign = (seed, message) => wasmExec('eddsaSign', [seed, message]);
 
 const eddsaVerify = (publicKey, signature, message) =>
-  Boolean(wasmExec('eddsaVerify', [publicKey, signature, message]));
+  wasmExec('eddsaVerify', [publicKey, signature, message]);
 
 const signAddLiquidity = (seed, segmentstr) =>
   wasmExec('signAddLiquidity', [seed, segmentstr]);
