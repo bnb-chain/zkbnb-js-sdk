@@ -98,7 +98,7 @@ Because of [WASM](https://webassembly.org/) different usage scenarios, there are
 ### run WASM on Node.js
 
 ```javascript
-const { ZECREY } = require('@bnb-chain/zkbas-js-sdk/dist/zecrey/cjs/node.index.js');
+const { ZECREY } = require('@bnb-chain/zkbas-js-sdk/zecrey');
 
 console.log('cleanPackedAmount:', ZECREY.cleanPackedAmount('12312123123'))
 ```
@@ -106,12 +106,14 @@ console.log('cleanPackedAmount:', ZECREY.cleanPackedAmount('12312123123'))
 ### run WASM on browser
 
 ```javascript
-import {
-  ZECREY
-} from '@bnb-chain/zkbas-js-sdk/dist/zecrey/cjs/web.index.js';
+import { ZECREY } from '@bnb-chain/zkbas-js-sdk/zecrey/web';
 
 ;(async () => {
   const Z = await ZECREY();
   console.log('cleanPackedAmount:', Z.cleanPackedAmount('12312123123'))
 })();
 ```
+
+<!-- ### Note
+
+> https://github.com/microsoft/TypeScript/issues/33079 -->

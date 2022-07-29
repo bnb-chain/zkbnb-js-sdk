@@ -3,10 +3,10 @@
   "version": "0.3.9",
   "description": "zkbas JavaScript SDK",
   "type": "commonjs",
-  "types": "./dist/web/index.d.ts",
   "main": "./dist/node/index.js",
   "files": [
-    "dist"
+    "dist",
+    "typing"
   ],
   "browser": {
     "./dist/zecrey/cjs/node.index.js": "./dist/zecrey/cjs/web.index.js",
@@ -15,14 +15,28 @@
   "exports": {
     ".": {
       "import": {
-        "node": "./dist/node/index.js",
+        "types": "./dist/web/index.d.ts",
         "default": "./dist/web/zk.js"
       },
-      "require": "./dist/node/index.js"
+      "require": {
+        "types": "./dist/node/types/index.d.ts",
+        "default": "./dist/node/index.js"
+      }
     },
-    "./zecrey": "./dist/zecrey/cjs/node.index.js",
-    "./zecrey/web": "./dist/zecrey/cjs/web.index.js"
+    "./zecrey": {
+      "default": "./dist/zecrey/cjs/node.index.js"
+    },
+    "./zecrey/web": {
+      "default": "./dist/zecrey/cjs/web.index.js"
+    }
   },
+  "typesVersions": {
+    "*": {
+      "zecrey": ["./typing/zecrey.d.ts"],
+      "zecrey/web": ["./typing/zecrey.web.d.ts"]
+    }
+  },
+  "types": "./dist/web/index.d.ts",
   "scripts": {
     "dev": "rm -fr ./dist && tsc -p tsconfig.json",
     "prebuild": "rm -rf ./dist",

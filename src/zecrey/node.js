@@ -46,7 +46,7 @@ const getEddsaCompressedPublicKey = (seed) =>
 const eddsaSign = (seed, message) => wasmExec('eddsaSign', [seed, message]);
 
 const eddsaVerify = (publicKey, signature, message) =>
-  Boolean(wasmExec('eddsaVerify', [publicKey, signature, message]));
+  wasmExec('eddsaVerify', [publicKey, signature, message]);
 
 const signAddLiquidity = (seed, segmentstr) =>
   wasmExec('signAddLiquidity', [seed, segmentstr]);
