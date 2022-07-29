@@ -28,11 +28,10 @@ jobs:
       
       # - name: "cat package.json"
       #   run: cat ./package.json
-      - name: check dist
-        run: ls
 
       - run: npm install
       - run: npm run build
-      - run: npm publish --access public
+      - run: ls
+      # - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
