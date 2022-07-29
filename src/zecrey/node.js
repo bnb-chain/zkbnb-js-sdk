@@ -18,7 +18,7 @@ const wasmExec = (func, funcArgs) => {
     __dirname,
     './zecreyLegend.wasm'
   );
-console.log(`node ${wasmExecNodePath} ${wasmFilePath} ${func} ${args}`);
+
   const result = exec(
     `node ${wasmExecNodePath} ${wasmFilePath} ${func} ${args}`,
     {

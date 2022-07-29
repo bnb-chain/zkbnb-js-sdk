@@ -1,9 +1,9 @@
 {
   "name": "@bnb-chain/zkbas-js-sdk",
-  "version": "0.3.8",
+  "version": "0.3.9",
   "description": "zkbas JavaScript SDK",
   "type": "commonjs",
-  "types": "./dist/web/types/index.d.ts",
+  "types": "./dist/web/index.d.ts",
   "main": "./dist/node/index.js",
   "files": [
     "dist"
@@ -20,8 +20,8 @@
       },
       "require": "./dist/node/index.js"
     },
-    "./dist/*": "./dist/*",
-    "./types/*": "./types/*"
+    "./zecrey": "./dist/zecrey/cjs/node.index.js",
+    "./zecrey/web": "./dist/zecrey/cjs/web.index.js"
   },
   "scripts": {
     "dev": "rm -fr ./dist && tsc -p tsconfig.json",

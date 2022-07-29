@@ -74,7 +74,7 @@ export default async () => {
         }),
         typescript({
           tsconfig: './tsconfig-esm.json',
-          declarationDir: './types/'
+          declarationDir: './dist/web/types/'
         })
       ]
     }),
