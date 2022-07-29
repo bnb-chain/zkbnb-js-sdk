@@ -13,13 +13,12 @@ const wasmExec = (func, funcArgs) => {
     })
     .join(' ');
 
-  const wasmExecNodePath = resolve(__dirname, '../../..', './src/zecrey/wasm_exec_node.js')
+  const wasmExecNodePath = resolve(__dirname, './wasm_exec_node.js')
   const wasmFilePath = resolve(
     __dirname,
-    '../../..',
-    './src/zecrey/zecreyLegend.wasm'
+    './zecreyLegend.wasm'
   );
-
+console.log(`node ${wasmExecNodePath} ${wasmFilePath} ${func} ${args}`);
   const result = exec(
     `node ${wasmExecNodePath} ${wasmFilePath} ${func} ${args}`,
     {

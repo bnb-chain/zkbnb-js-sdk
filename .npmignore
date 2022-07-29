@@ -1,7 +1,0 @@
-.vscode
-node_modules
-config/
-test/
-.gitignore
-tsconfig.*
-.github
