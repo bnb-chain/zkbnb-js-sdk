@@ -25,13 +25,13 @@ Using pnpm:
 Using jsDelivr CDN:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@bnb-chain/zkbas-js-sdk/dist/zkbas-js-sdk.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@bnb-chain/zkbas-js-sdk/dist/web/zk.js"></script>
 ```
 
 Using unpkg CDN:
 
 ```html
-<script src="https://unpkg.com/@bnb-chain/zkbas-js-sdk@0.0.2/dist/zkbas-js-sdk.umd.js"></script>
+<script src="https://unpkg.com/@bnb-chain/zkbas-js-sdk/dist/web/zk.js"></script>
 ```
 
 ## Usage
@@ -44,7 +44,7 @@ Use directly in the browser via script tag:
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script src="https://cdn.jsdelivr.net/npm/@bnb-chain/zkbas-js-sdk/dist/zkbas-js-sdk.umd.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@bnb-chain/zkbas-js-sdk/dist/web/zk.js"></script>
 </head>
 <body>
   <script>
@@ -95,7 +95,7 @@ const client = new Client('http://172.22.41.67:8888');
 
 Because of [WASM](https://webassembly.org/) different usage scenarios, there are two packages:
 
-### Nodejs WASM
+### run WASM on Node.js
 
 ```javascript
 const { ZECREY } = require('@bnb-chain/zkbas-js-sdk/dist/zecrey/cjs/node.index.js');
@@ -103,7 +103,7 @@ const { ZECREY } = require('@bnb-chain/zkbas-js-sdk/dist/zecrey/cjs/node.index.j
 console.log('cleanPackedAmount:', ZECREY.cleanPackedAmount('12312123123'))
 ```
 
-### Browser WASM
+### run WASM on browser
 
 ```javascript
 import {
