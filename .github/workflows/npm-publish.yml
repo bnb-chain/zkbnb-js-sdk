@@ -21,13 +21,15 @@ jobs:
           node-version: 16
           registry-url: https://registry.npmjs.org/
 
-      - name: "Automated Version Bump"
-        uses: "phips28/gh-action-bump-version@master"
-        with:
-          tag-prefix: 'v'
+      # - name: "Automated Version Bump"
+      #   uses: "phips28/gh-action-bump-version@master"
+      #   with:
+      #     tag-prefix: 'v'
       
-      - name: "cat package.json"
-        run: cat ./package.json
+      # - name: "cat package.json"
+      #   run: cat ./package.json
+      - name: check dist
+        run: ls
 
       - run: npm install
       - run: npm run build

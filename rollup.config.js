@@ -57,7 +57,7 @@ export default async () => {
       input: './src/index.ts',
       es5: true,
       output: {
-        file: `dist/web/${outputFileName}.js`,
+        file: `./dist/web/${outputFileName}.js`,
         name,
         format: 'umd'
       },
@@ -73,14 +73,14 @@ export default async () => {
         }),
         typescript({
           tsconfig: './tsconfig-esm.json',
-          declarationDir: './dist/web/types/'
+          declarationDir: './types/'
         })
       ]
     }),
     ...buildConfig({
       input: './src/index.ts',
       output: {
-        dir: 'dist/node',
+        dir: './dist/node',
         format: 'cjs'
       },
       plugins: [
@@ -101,8 +101,8 @@ export default async () => {
     {
       input: ['./src/zecrey/node.index.js', './src/zecrey/web.index.js'],
       output: [
-        { dir: 'dist/zecrey/cjs', format: 'cjs', sourcemap: true },
-        { dir: 'dist/zecrey/esm', format: 'esm', sourcemap: true },
+        { dir: './dist/zecrey/cjs', format: 'cjs', sourcemap: true },
+        { dir: './dist/zecrey/esm', format: 'esm', sourcemap: true },
       ],
       plugins: [
         wasm({

@@ -1,7 +1,6 @@
 {
   "baseUrl": ".",
   "lib": ["dom", "esnext", "es6"],
-  "types": ["dist/index.d.ts"],
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",

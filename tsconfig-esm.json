@@ -4,7 +4,6 @@
     "target": "es2015",
     "module": "es2015",
     "outDir": "./dist/web",
-    "declarationDir": "./dist/web",
     "moduleResolution": "node"
   }
 }

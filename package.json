@@ -3,8 +3,7 @@
   "version": "0.3.2",
   "description": "zkbas JavaScript SDK",
   "type": "commonjs",
-  "types": "./dist/types/index.d.ts",
-  "source": "./src/index.ts",
+  "types": "./dist/web/types/index.d.ts",
   "main": "./dist/node/index.js",
   "files": [
     "src",
