@@ -1,15 +1,20 @@
 {
   "name": "@bnb-chain/zkbas-js-sdk",
-  "version": "0.3.6",
+  "version": "0.3.7",
   "description": "zkbas JavaScript SDK",
   "type": "commonjs",
   "types": "./dist/web/types/index.d.ts",
   "main": "./dist/node/index.js",
   "files": [
     "src",
-    "dist/types/*.d.ts",
-    "dist/*.js",
-    "dist/*.cjs"
+    "dist/node/*.js",
+    "dist/node/types/*.d.ts",
+    "dist/web/*.js",
+    "dist/web/types/*.d.ts",
+    "dist/zecrey/cjs/*.js",
+    "dist/zecrey/cjs/*.js.map",
+    "dist/zecrey/esm/*.js.map",
+    "dist/zecrey/esm/*.js.map"
   ],
   "browser": {
     "./dist/zecrey/cjs/node.index.js": "./dist/zecrey/cjs/web.index.js",
