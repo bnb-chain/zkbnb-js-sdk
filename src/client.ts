@@ -1,4 +1,5 @@
 import { Http } from './http';
+import { TxType } from './zk';
 
 export class Client {
   private http: Http;
@@ -238,6 +239,10 @@ export class Client {
   }
 
   async sendRawTx(txInfo: string, txType: number) {
+    if (txType == TxType.TxTypeCreateCollection || txType == TxType.TxTypeMintNft) {
+      throw new Error('tx type not supported');
+    }
+
     return this.http.req('POST /api/v1/tx/sendTx', {
       tx_info: txInfo,
       tx_type: txType
