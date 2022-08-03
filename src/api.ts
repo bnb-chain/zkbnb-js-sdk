@@ -125,7 +125,7 @@ export interface IResponseMap {
   [API_MAP.Search]: { data_type: string };
   [API_MAP.GetAccounts]: {
     total: number;
-    accounts: Zk.Account & { public_key: Zk.PublicKey }[];
+    accounts: (Zk.Account & { public_key: Zk.PublicKey })[];
   };
   [API_MAP.GetGasFeeAssetList]: {};
   [API_MAP.GetWithdrawGasFee]: { gas_fee: number };
