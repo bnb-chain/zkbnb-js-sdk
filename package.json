@@ -32,14 +32,21 @@
   },
   "typesVersions": {
     "*": {
-      "zecrey": ["./typing/zecrey.d.ts"],
-      "zecrey/web": ["./typing/zecrey.web.d.ts"]
+      "zecrey": [
+        "./typing/zecrey.d.ts"
+      ],
+      "zecrey/web": [
+        "./typing/zecrey.web.d.ts"
+      ]
     }
   },
   "types": "./dist/web/index.d.ts",
   "scripts": {
-    "dev": "rm -fr ./dist && tsc -p tsconfig.json",
-    "prebuild": "rm -rf ./dist",
+    "lint": "eslint .",
+    "format": "prettier --write './**/*.{ts,js}'",
+    "predev": "rimraf ./dist",
+    "dev": "rollup -cw",
+    "prebuild": "rimraf ./dist",
     "build": "rollup -c"
   },
   "repository": {
@@ -68,8 +75,16 @@
     "@types/axios": "^0.14.0",
     "@types/chai": "^4.3.1",
     "@types/mocha": "^9.1.1",
+    "@typescript-eslint/eslint-plugin": "^5.32.0",
+    "@typescript-eslint/parser": "^5.32.0",
     "chai": "^4.3.6",
+    "eslint": "^8.21.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
     "mocha": "^10.0.0",
+    "prettier": "^2.7.1",
+    "rimraf": "^3.0.2",
     "rollup": "^2.77.1",
     "rollup-plugin-auto-external": "^2.0.0",
     "rollup-plugin-copy": "^3.4.0",

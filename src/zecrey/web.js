@@ -41,8 +41,8 @@ export const ZECREY = async () => {
   let Z = {};
 
   methods.map((method) => {
-    Z[method] = window[method]
-  })
+    Z[method] = window[method];
+  });
 
   WebAssembly.instantiate(module, go.importObject);
 

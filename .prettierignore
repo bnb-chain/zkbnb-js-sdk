@@ -1,0 +1,26 @@
+
+
+## OS
+.DS_Store
+.idea
+.editorconfig
+pnpm-lock.yaml
+.npmrc
+
+# Ignored suffix
+*.log
+*.md
+*.svg
+*.png
+*.ico
+*ignore
+
+# $(go env GOROOT)/misc/wasm/
+src/zecrey/wasm_exec.js
+src/zecrey/wasm_exec_node.js
+
+.husky
+
+## Built-files
+.cache
+dist

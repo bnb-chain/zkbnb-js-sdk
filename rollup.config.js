@@ -1,7 +1,7 @@
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import typescript from '@rollup/plugin-typescript';
-import json from '@rollup/plugin-json'
+import json from '@rollup/plugin-json';
 import autoExternal from 'rollup-plugin-auto-external';
 import { terser } from 'rollup-plugin-terser';
 import { babel } from '@rollup/plugin-babel';
@@ -10,18 +10,12 @@ import builtins from 'rollup-plugin-node-builtins';
 import copy from 'rollup-plugin-copy';
 import { wasm } from '@rollup/plugin-wasm';
 
-const buildConfig = ({
-  input = './src/index.ts',
-  es5,
-  browser = true,
-  minifiedVersion = true,
-  ...config
-}) => {
+const buildConfig = ({ input = './src/index.ts', es5, browser = true, minifiedVersion = true, ...config }) => {
   const build = ({ minified }) => ({
     input,
     ...config,
     output: {
-      ...config.output
+      ...config.output,
     },
     plugins: [
       json(),
@@ -32,12 +26,12 @@ const buildConfig = ({
         ? [
             babel({
               babelHelpers: 'bundled',
-              presets: ['@babel/preset-env']
-            })
+              presets: ['@babel/preset-env'],
+            }),
           ]
         : []),
-      ...(config.plugins || [])
-    ]
+      ...(config.plugins || []),
+    ],
   });
 
   const configs = [build({ minified: false })];
@@ -49,8 +43,8 @@ const buildConfig = ({
   return configs;
 };
 
-const name = 'Zk'
-const outputFileName = 'zk'
+const name = 'Zk';
+const outputFileName = 'zk';
 
 export default async () => {
   return [
@@ -60,63 +54,63 @@ export default async () => {
       output: {
         file: `./dist/web/${outputFileName}.js`,
         name,
-        format: 'umd'
+        format: 'umd',
       },
       plugins: [
         builtins(),
         nodePolyfills(),
         resolve({
           preferBuiltins: true,
-          browser: true
+          browser: true,
         }),
         wasm({
-          targetEnv: 'auto-inline'
+          targetEnv: 'auto-inline',
         }),
         typescript({
           tsconfig: './tsconfig-esm.json',
-          declarationDir: './dist/web/types/'
-        })
-      ]
+          declarationDir: './dist/web/types/',
+        }),
+      ],
     }),
     ...buildConfig({
       input: './src/index.ts',
       output: {
         dir: './dist/node',
-        format: 'cjs'
+        format: 'cjs',
       },
       plugins: [
         autoExternal(),
         resolve({
-          browser: false
+          browser: false,
         }),
         commonjs(),
         wasm({
-          targetEnv: 'auto-inline'
+          targetEnv: 'auto-inline',
         }),
         typescript({
           tsconfig: './tsconfig-cjs.json',
-          declarationDir: './dist/node/types/'
-        })
-      ]
+          declarationDir: './dist/node/types/',
+        }),
+      ],
     }),
     {
       input: ['./src/zecrey/node.index.js', './src/zecrey/web.index.js'],
       output: [
         { dir: './dist/zecrey/cjs', format: 'cjs', sourcemap: true },
-        { dir: './dist/zecrey/esm', format: 'esm', sourcemap: true }
+        { dir: './dist/zecrey/esm', format: 'esm', sourcemap: true },
       ],
       plugins: [
         wasm({
-          targetEnv: 'auto-inline'
+          targetEnv: 'auto-inline',
         }),
         copy({
           targets: [
             { src: 'src/zecrey/zecreyLegend.wasm', dest: 'dist/zecrey/cjs' },
             { src: 'src/zecrey/wasm_exec_node.js', dest: 'dist/zecrey/cjs' },
-            { src: 'src/zecrey/wasm_exec.js', dest: 'dist/zecrey/cjs' }
-          ]
-        })
-      ]
-    }
+            { src: 'src/zecrey/wasm_exec.js', dest: 'dist/zecrey/cjs' },
+          ],
+        }),
+      ],
+    },
   ];
-}
+};

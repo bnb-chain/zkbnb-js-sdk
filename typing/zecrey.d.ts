@@ -1,4 +1,4 @@
-declare module "@bnb-chain/zkbas-js-sdk/zecrey" {
+declare module '@bnb-chain/zkbas-js-sdk/zecrey' {
   interface ZECREY_TPYE {
     cleanPackedAmount: (amount: string) => string;
     cleanPackedFee: (amount: string) => string;

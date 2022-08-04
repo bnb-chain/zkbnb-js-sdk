@@ -67,15 +67,15 @@ export interface IReqParmsMap {
   };
   [API_MAP.Search]: { info: string };
   [API_MAP.GetAccounts]: IReqBaseParam;
-  [API_MAP.GetGasFeeAssetList]: {};
+  [API_MAP.GetGasFeeAssetList]: Record<string, never>;
   [API_MAP.GetWithdrawGasFee]: {
     asset_id: Zk.AssetId;
     withdraw_asset_id: Zk.AssetId;
     withdraw_amount: Zk.Amount;
   };
   [API_MAP.GetGasFee]: { asset_id: Zk.AssetId };
-  [API_MAP.GetAssetsList]: {};
-  [API_MAP.GetLayer2BasicInfo]: {};
+  [API_MAP.GetAssetsList]: Record<string, never>;
+  [API_MAP.GetLayer2BasicInfo]: Record<string, never>;
   [API_MAP.GetBlockByCommitment]: { block_commitment: string };
   [API_MAP.GetBalanceByAssetIdAndAccountName]: {
     asset_id: Zk.AssetId;
@@ -86,14 +86,14 @@ export interface IReqParmsMap {
   [API_MAP.GetAccountInfoByPubKey]: { account_pk: Zk.AccountPk };
   [API_MAP.GetAccountStatusByAccountPk]: { account_pk: Zk.AccountPk };
   [API_MAP.GetCurrencyPriceBySymbol]: { symbol: string };
-  [API_MAP.GetCurrencyPrices]: {};
+  [API_MAP.GetCurrencyPrices]: Record<string, never>;
   [API_MAP.GetSwapAmount]: {
     pair_index: number;
     asset_id: Zk.AssetId;
     asset_amount: Zk.Amount;
     is_from: boolean;
   };
-  [API_MAP.GetAvailablePairs]: {};
+  [API_MAP.GetAvailablePairs]: Record<string, never>;
   [API_MAP.GetLPValue]: {
     pair_index: Zk.Pair['pair_index'];
     lp_amount: Zk.Amount;
@@ -127,7 +127,7 @@ export interface IResponseMap {
     total: number;
     accounts: (Zk.Account & { public_key: Zk.PublicKey })[];
   };
-  [API_MAP.GetGasFeeAssetList]: {};
+  [API_MAP.GetGasFeeAssetList]: Record<string, never>;
   [API_MAP.GetWithdrawGasFee]: { gas_fee: number };
   [API_MAP.GetGasFee]: { gas_fee: number };
   [API_MAP.GetAssetsList]: { assets: Zk.AssetInfo[] };
@@ -169,10 +169,9 @@ export interface IResponseMap {
   };
   [API_MAP.GetAvailablePairs]: { result: Zk.Pair };
   [API_MAP.GetLPValue]: Zk.LP;
-  [API_MAP.GetPairInfo]: Pick<
-    Zk.Pair,
-    'asset_a_id' | 'asset_a_amount' | 'asset_b_id' | 'asset_b_amount'
-  > & { total_lp_amount: Zk.Amount };
+  [API_MAP.GetPairInfo]: Pick<Zk.Pair, 'asset_a_id' | 'asset_a_amount' | 'asset_b_id' | 'asset_b_amount'> & {
+    total_lp_amount: Zk.Amount;
+  };
   [API_MAP.GetTxByHash]: {
     result: Zk.Tx;
     committed_at: Zk.TimeStamp;

@@ -1,13 +1,12 @@
 import axios, { AxiosInstance } from 'axios';
 import * as API from './api';
 
-
 export class Http {
   private client: AxiosInstance;
 
   constructor(baseUrl: string) {
     this.client = axios.create({
-      baseURL: baseUrl
+      baseURL: baseUrl,
     });
   }
 
@@ -17,7 +16,7 @@ export class Http {
     const response = await this.client.request({
       url,
       method,
-      params
+      params,
     });
 
     return response.data;
