@@ -1,3 +1,8 @@
+<p align="center">
+  <a href="https://www.npmjs.com/package/@bnb-chain/zkbas-js-sdk"><img src="https://img.shields.io/npm/v/@bnb-chain/zkbas-js-sdk" alt="Version"></a>
+  <a href="https://www.npmjs.com/package/@bnb-chain/zkbas-js-sdk"><img src="https://img.shields.io/npm/l/@bnb-chain/zkbas-js-sdk" alt="License"></a>
+</p>
+
 # ZkBAS JavaScript SDK 
 
 * [Go SDK](https://github.com/bnb-chain/zkbas-go-sdk)
