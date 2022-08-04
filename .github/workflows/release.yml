@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - master
+      - chore/package
 jobs:
   release:
     name: Release
