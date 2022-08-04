@@ -4,6 +4,9 @@
   "description": "zkbas JavaScript SDK",
   "type": "commonjs",
   "main": "./dist/node/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
   "files": [
     "dist",
     "typing"
