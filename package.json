@@ -5,6 +5,7 @@
   "type": "commonjs",
   "main": "./dist/node/index.js",
   "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
     "access": "public"
   },
   "files": [
@@ -89,6 +90,7 @@
     "@typescript-eslint/eslint-plugin": "^5.32.0",
     "@typescript-eslint/parser": "^5.32.0",
     "chai": "^4.3.6",
+    "conventional-changelog-cmyr-config": "^2.0.4",
     "eslint": "^8.21.0",
     "eslint-plugin-prettier": "^4.2.1",
     "husky": "^8.0.1",
