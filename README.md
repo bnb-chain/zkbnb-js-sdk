@@ -1,5 +1,7 @@
 # ZkBAS JavaScript SDK 
 
+* [Go SDK](https://github.com/bnb-chain/zkbas-go-sdk)
+
 The ZkBAS JavaScript SDK provides a thin wrapper around thin all the apis provided by ZkBAS, including a simple key manager for signing txs and sending signed txs to ZkBAS.
 
 ## Install
@@ -91,6 +93,12 @@ const client = new Client('http://172.22.41.67:8888');
 
 ## Zecrey WASM API
 
+The wrapper for [Zecrey WASM](https://github.com/Zecrey-Labs/zecrey-wasm).
+
+## API List
+
+> https://github.com/Zecrey-Labs/zecrey-wasm/tree/main/zecrey-legend
+
 ## Usage
 
 Because of [WASM](https://webassembly.org/) different usage scenarios, there are two packages:
@@ -113,7 +121,3 @@ import { ZECREY } from '@bnb-chain/zkbas-js-sdk/zecrey/web';
   console.log('cleanPackedAmount:', Z.cleanPackedAmount('12312123123'))
 })();
 ```
-
-<!-- ### Note
-
-> https://github.com/microsoft/TypeScript/issues/33079 -->
