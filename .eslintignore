@@ -1,0 +1,8 @@
+node_modules
+dist
+*.md
+**/dist/**
+
+# $(go env GOROOT)/misc/wasm/
+src/zecrey/wasm_exec.js
+src/zecrey/wasm_exec_node.js

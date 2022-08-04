@@ -16,58 +16,45 @@ export class Client {
     return await this.http.req('GET /api/v1/tx/getTxsByPubKey', {
       account_pk: accountPk,
       offset,
-      limit
+      limit,
     });
   }
 
-  async getTxsByAccountName(
-    accountName: string,
-    offset: number,
-    limit: number
-  ) {
+  async getTxsByAccountName(accountName: string, offset: number, limit: number) {
     return await this.http.req('GET /api/v1/tx/getTxsByAccountName', {
       account_name: accountName,
       offset,
-      limit
+      limit,
     });
   }
 
-  async getTxsByAccountIndexAndTxType(
-    accountIndex: number,
-    txType: number,
-    offset: number,
-    limit: number
-  ) {
+  async getTxsByAccountIndexAndTxType(accountIndex: number, txType: number, offset: number, limit: number) {
     return await this.http.req('GET /api/v1/tx/getTxsByAccountIndexAndTxType', {
       account_index: accountIndex,
       tx_type: txType,
       offset,
-      limit
+      limit,
     });
   }
 
-  async getTxsListByAccountIndex(
-    accountIndex: number,
-    offset: number,
-    limit: number
-  ) {
+  async getTxsListByAccountIndex(accountIndex: number, offset: number, limit: number) {
     return await this.http.req('GET /api/v1/tx/getTxsListByAccountIndex', {
       account_index: accountIndex,
       offset,
-      limit
+      limit,
     });
   }
 
   async search(info: string) {
     return await this.http.req('GET /api/v1/info/search', {
-      info
+      info,
     });
   }
 
   async getAccounts(offset: number, limit: number) {
     return await this.http.req('GET /api/v1/info/getAccounts', {
       offset,
-      limit
+      limit,
     });
   }
 
@@ -75,21 +62,17 @@ export class Client {
     return await this.http.req('GET /api/v1/info/getGasFeeAssetList', {});
   }
 
-  async getWithdrawGasFee(
-    assetId: number,
-    withdrawAssetId: number,
-    withdrawAmount: string
-  ) {
+  async getWithdrawGasFee(assetId: number, withdrawAssetId: number, withdrawAmount: string) {
     return await this.http.req('GET /api/v1/info/getWithdrawGasFee', {
       asset_id: assetId,
       withdraw_asset_id: withdrawAssetId,
-      withdraw_amount: withdrawAmount
+      withdraw_amount: withdrawAmount,
     });
   }
 
   async getGetGasFee(assetId: number) {
     return await this.http.req('GET /api/v1/info/getGasFee', {
-      asset_id: assetId
+      asset_id: assetId,
     });
   }
 
@@ -103,47 +86,44 @@ export class Client {
 
   async getBlockByCommitment(blockCommitment: string) {
     return await this.http.req('GET /api/v1/block/getBlockByCommitment', {
-      block_commitment: blockCommitment
+      block_commitment: blockCommitment,
     });
   }
 
-  async getBalanceByAssetIdAndAccountName(
-    accountName: string,
-    assetId: number
-  ) {
+  async getBalanceByAssetIdAndAccountName(accountName: string, assetId: number) {
     return await this.http.req('GET /api/v1/account/getBalanceByAssetIdAndAccountName', {
       account_name: accountName,
-      asset_id: assetId
+      asset_id: assetId,
     });
   }
 
   async getAccountStatusByAccountName(accountName: string) {
     return await this.http.req('GET /api/v1/account/getAccountStatusByAccountName', {
-      account_name: accountName
+      account_name: accountName,
     });
   }
 
   async getAccountInfoByAccountIndex(accountIndex: number) {
     return await this.http.req('GET /api/v1/account/getAccountInfoByAccountIndex', {
-      account_index: accountIndex
+      account_index: accountIndex,
     });
   }
 
   async getAccountInfoByPubKey(pubKey: string) {
     return await this.http.req('GET /api/v1/account/getAccountInfoByPubKey', {
-      account_pk: pubKey
+      account_pk: pubKey,
     });
   }
 
   async getAccountStatusByAccountPk(pubKey: string) {
     return await this.http.req('GET /api/v1/account/getAccountStatusByAccountPk', {
-      account_pk: pubKey
+      account_pk: pubKey,
     });
   }
 
   async getCurrencyPriceBySymbol(symbol: string) {
     return await this.http.req('GET /api/v1/info/getCurrencyPriceBySymbol', {
-      symbol: symbol
+      symbol: symbol,
     });
   }
 
@@ -151,17 +131,12 @@ export class Client {
     return await this.http.req('GET /api/v1/info/getCurrencyPrices', {});
   }
 
-  async getSwapAmount(params: {
-    pairIndex: number;
-    assetId: number;
-    assetAmount: string;
-    isFrom: boolean;
-  }) {
+  async getSwapAmount(params: { pairIndex: number; assetId: number; assetAmount: string; isFrom: boolean }) {
     return await this.http.req('GET /api/v1/pair/getSwapAmount', {
       pair_index: params.pairIndex,
       asset_id: params.assetId,
       asset_amount: params.assetAmount,
-      is_from: params.isFrom
+      is_from: params.isFrom,
     });
   }
 
@@ -172,7 +147,7 @@ export class Client {
   async getLPValue(params: { pairIndex: number; lpAmount: string }) {
     return await this.http.req('GET /api/v1/pair/getLPValue', {
       pair_index: params.pairIndex,
-      lp_amount: params.lpAmount
+      lp_amount: params.lpAmount,
     });
   }
 
@@ -182,32 +157,32 @@ export class Client {
 
   async getTxByHash(txHash: string) {
     return this.http.req('GET /api/v1/tx/getTxByHash', {
-      tx_hash: txHash
+      tx_hash: txHash,
     });
   }
 
   async getMempoolTxs(offset: number, limit: number) {
     return this.http.req('GET /api/v1/tx/getMempoolTxs', {
       offset,
-      limit
+      limit,
     });
   }
 
   async getMempoolTxsByAccountName(accountName: string) {
     return this.http.req('GET /api/v1/tx/getmempoolTxsByAccountName', {
-      account_name: accountName
+      account_name: accountName,
     });
   }
 
   async getAccountInfoByAccountName(accountName: string) {
     return this.http.req('GET /api/v1/account/getAccountInfoByAccountName', {
-      account_name: accountName
+      account_name: accountName,
     });
   }
 
   async getNextNonce(accountIndex: number) {
     return this.http.req('GET /api/v1/tx/getNextNonce', {
-      account_index: accountIndex
+      account_index: accountIndex,
     });
   }
 
@@ -215,26 +190,26 @@ export class Client {
     return this.http.req('GET /api/v1/tx/getTxsListByBlockHeight', {
       block_height: blockHeight,
       offset: 0,
-      limit: 0
+      limit: 0,
     });
   }
 
   async getMaxOfferId(accountIndex: number) {
     return this.http.req('GET /api/v1/nft/getMaxOfferId', {
-      account_index: accountIndex
+      account_index: accountIndex,
     });
   }
 
   async getBlockByHeight(blockHeight: number) {
     return this.http.req('GET /api/v1/block/getBlockByBlockHeight', {
-      block_height: blockHeight
+      block_height: blockHeight,
     });
   }
 
   async getBlocks(offset: number, limit: number) {
     return this.http.req('GET /api/v1/block/getBlocks', {
       limit,
-      offset
+      offset,
     });
   }
 
@@ -245,31 +220,31 @@ export class Client {
 
     return this.http.req('POST /api/v1/tx/sendTx', {
       tx_info: txInfo,
-      tx_type: txType
+      tx_type: txType,
     });
   }
 
   async sendRawCreateCollectionTx(txInfo: string) {
     return this.http.req('POST /api/v1/tx/sendCreateCollectionTx', {
-      tx_info: txInfo
+      tx_info: txInfo,
     });
   }
 
   async sendRawMintNftTx(txInfo: string) {
     return this.http.req('POST /api/v1/tx/sendMintNftTx', {
-      tx_info: txInfo
+      tx_info: txInfo,
     });
   }
 
   async mintNft(txInfo: string) {
     return this.http.req('POST /api/v1/tx/sendMintNftTx', {
-      tx_info: txInfo
+      tx_info: txInfo,
     });
   }
 
   async createCollection(txInfo: string) {
     return this.http.req('POST /api/v1/tx/sendCreateCollectionTx', {
-      tx_info: txInfo
+      tx_info: txInfo,
     });
   }
 }

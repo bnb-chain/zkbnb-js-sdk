@@ -1,5 +1,5 @@
-declare module "@bnb-chain/zkbas-js-sdk/zecrey/web" {
-  export function ZECREY (): Promise<Z>;
+declare module '@bnb-chain/zkbas-js-sdk/zecrey/web' {
+  export function ZECREY(): Promise<Z>;
 
   export interface Z {
     cleanPackedAmount: (amount: string) => string;
