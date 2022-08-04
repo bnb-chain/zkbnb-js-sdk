@@ -42,12 +42,17 @@
   },
   "types": "./dist/web/index.d.ts",
   "scripts": {
-    "lint": "eslint .",
     "format": "prettier --write './**/*.{ts,js}'",
+    "lint": "npm run format && eslint . --ext .js,.ts",
+    "commit": "lint-staged",
+    "prepare": "husky install",
     "predev": "rimraf ./dist",
     "dev": "rollup -cw",
     "prebuild": "rimraf ./dist",
     "build": "rollup -c"
+  },
+  "lint-staged": {
+    "*": "npm run lint"
   },
   "repository": {
     "type": "git",
