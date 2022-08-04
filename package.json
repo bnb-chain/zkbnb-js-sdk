@@ -45,6 +45,7 @@
   },
   "types": "./dist/web/index.d.ts",
   "scripts": {
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
     "format": "prettier --write './**/*.{ts,js}'",
     "lint": "npm run format && eslint . --ext .js,.ts",
     "commit": "lint-staged",
