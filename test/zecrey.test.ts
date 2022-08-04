@@ -1,5 +1,6 @@
 const { assert } = require('chai');
-const { it } = require('mocha');
+
+const { ZECREY } = require('../src/zecrey/node.index');
 
 const {
   generateEddsaKey,
@@ -20,10 +21,11 @@ const {
   signWithdrawNft,
   eddsaSign,
   signTransfer,
-  signOffer
-} = require('../zecrey');
+  signOffer,
+} = ZECREY;
 
 describe('cleanPackedAmount', () => {
+  console.log(ZECREY);
   it('should return the correct amount', () => {
     assert.equal(cleanPackedAmount('10000001111'), '10000001111');
   });
@@ -37,15 +39,12 @@ describe('cleanPackedFee', () => {
 
 describe('getAccountNameHash', () => {
   it('should return the correct hash', () => {
-    assert.equal(
-      getAccountNameHash('sher.legend'),
-      '04b2dd1162802d057ed00dcb516ea627b207970520d1ad583f712cd6e954691f'
-    );
+    assert.equal(getAccountNameHash('sher.legend'), '04b2dd1162802d057ed00dcb516ea627b207970520d1ad583f712cd6e954691f');
   });
 });
 
 describe('getEddsaPublicKey', () => {
-  it('should return the correct public key', () => {    
+  it('should return the correct public key', () => {
     assert.equal(
       getEddsaPublicKey('seed phrase'),
       '22ea61084155b4ee14cfb1f5c066a70e555f07c8d5c492c6ea9e8c1bbef2c70c11c3443469ee512e3aa333aa4cee44182ce1a86cebe85172ce752b5377d69391'
@@ -64,9 +63,7 @@ describe('getEddsaCompressedPublicKey', () => {
 
 describe('generateEddsaKey', () => {
   it('should return a valid private key', () => {
-    const privateKey = generateEddsaKey(
-      '28e1a3762ff9944e9a4ad79477b756ef0aff3d2af76f0f40a0c3ec6ca76cf24b'
-    );
+    const privateKey = generateEddsaKey('28e1a3762ff9944e9a4ad79477b756ef0aff3d2af76f0f40a0c3ec6ca76cf24b');
 
     assert.isString(privateKey);
     assert.lengthOf(privateKey, 192);
@@ -88,12 +85,13 @@ describe('eddsaSign', () => {
 
 describe('eddsaVerify', () => {
   it('should return true', () => {
-    assert.isTrue(
+    assert.equal(
       eddsaVerify(
         '06cdb3200f1e0e7dd7ea789b41d88662a1b4c213075633088773025289bdbd05',
         '88b80d96d3eadb67ad7e8d86b731ce4b1bab5a46bc8c33fbf8b346a658007e90024f87ff59fb24adbd8ae56c6880b24c9937807eda097afcb26f0590e4eca860',
         'hello world'
-      )
+      ),
+      'true'
     );
   });
 });
@@ -191,7 +189,7 @@ describe('signCancelOffer', () => {
       ),
       '{"AccountIndex":0,"OfferId":1,"GasAccountIndex":1,"GasFeeAssetId":3,"GasFeeAssetAmount":3,"ExpiredAt":1654656781000,"Nonce":1,"Sig":"CnxugAhqk/i8sbMRMGtq7vNDKPf+/wSO6u0qzQWXjK0EKXgjVKN8G5MBtNtZB8nRfNw2vrA7DDlV4ib0XEkZXw=="}'
     );
-  })
+  });
 });
 
 describe('signCreateCollection', () => {
@@ -203,7 +201,7 @@ describe('signCreateCollection', () => {
       ),
       '{"AccountIndex":0,"CollectionId":0,"Name":"crypto punk","Introduction":"crypto punk is the king of jpeg nft","GasAccountIndex":1,"GasFeeAssetId":3,"GasFeeAssetAmount":3,"ExpiredAt":1654656781000,"Nonce":1,"Sig":"EEEY8rdWg4OF3fupbgpMt0r+n3wHaYxYMYMsNK1XLyUFmL45iydMks/E1skBbsOhl9Ni8qtuHRM1grbVMi8H8Q=="}'
     );
-  })
+  });
 });
 
 describe('signMintNft', () => {
@@ -239,5 +237,5 @@ describe('signWithdrawNft', () => {
       ),
       '{"AccountIndex":1,"CreatorAccountIndex":0,"CreatorAccountNameHash":null,"CreatorTreasuryRate":0,"NftIndex":15,"NftContentHash":null,"NftL1Address":"","NftL1TokenId":null,"CollectionId":0,"ToAddress":"0x507Bd54B4232561BC0Ca106F7b029d064fD6bE4c","GasAccountIndex":1,"GasFeeAssetId":3,"GasFeeAssetAmount":3,"ExpiredAt":1654656781000,"Nonce":1,"Sig":"NhSBoRCDwc92j7bUFGGKgmKqdoNCmE1KGfepwBVVgSsARJGtsNN6cihHjE/kA3wv4UYps/j/3YMpssXSu+a+xg=="}'
     );
-  })
+  });
 });

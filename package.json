@@ -45,6 +45,7 @@
     "format": "prettier --write './**/*.{ts,js}'",
     "lint": "npm run format && eslint . --ext .js,.ts",
     "commit": "lint-staged",
+    "test": "TS_NODE_PROJECT=./tsconfig-test.json node --es-module-specifier-resolution=node --loader ts-node/esm --nolazy node_modules/mocha/lib/cli/cli.js --timeout 9999999 --color 'test/*.test.ts'",
     "prepare": "husky install",
     "predev": "rimraf ./dist",
     "dev": "rollup -cw",
@@ -96,6 +97,7 @@
     "rollup-plugin-node-builtins": "^2.1.2",
     "rollup-plugin-polyfill-node": "^0.10.2",
     "rollup-plugin-terser": "^7.0.2",
+    "ts-node": "^10.9.1",
     "tslib": "^2.4.0",
     "typescript": "^4.7.4"
   }
