@@ -149,3 +149,14 @@ export type Tx = {
   nonce: Nonce;
   expired_at: TimeStamp;
 };
+
+export type Nft = {
+  nft_index: number;
+  creator_account_index: number;
+  owner_account_index: number;
+  nft_content_hash: Hash;
+  nft_l1_address: string;
+  nft_l1_token_id: string;
+  creator_treasury_rate: number;
+  collection_id: number;
+};

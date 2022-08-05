@@ -16,8 +16,8 @@ pnpm-lock.yaml
 *ignore
 
 # $(go env GOROOT)/misc/wasm/
-src/zecrey/wasm_exec.js
-src/zecrey/wasm_exec_node.js
+src/zkbas-crypto/wasm_exec.js
+src/zkbas-crypto/wasm_exec_node.js
 
 .husky
 

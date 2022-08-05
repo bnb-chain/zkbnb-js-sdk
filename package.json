@@ -1,11 +1,12 @@
 {
   "name": "@bnb-chain/zkbas-js-sdk",
-  "version": "0.5.2",
+  "version": "0.9.0",
   "description": "zkbas JavaScript SDK",
   "type": "commonjs",
   "main": "./dist/node/index.js",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
+    "tag": "latest",
     "access": "public"
   },
   "files": [
@@ -13,8 +14,8 @@
     "typing"
   ],
   "browser": {
-    "./dist/zecrey/cjs/node.index.js": "./dist/zecrey/cjs/web.index.js",
-    "./dist/zecrey/esm/node.index.js": "./dist/zecrey/esm/web.index.js"
+    "./dist/zkbas-crypto/cjs/node.index.js": "./dist/zkbas-crypto/cjs/web.index.js",
+    "./dist/zkbas-crypto/esm/node.index.js": "./dist/zkbas-crypto/esm/web.index.js"
   },
   "exports": {
     ".": {
@@ -27,20 +28,20 @@
         "default": "./dist/node/index.js"
       }
     },
-    "./zecrey": {
-      "default": "./dist/zecrey/cjs/node.index.js"
+    "./zkCrypto": {
+      "default": "./dist/zkbas-crypto/cjs/node.index.js"
     },
-    "./zecrey/web": {
-      "default": "./dist/zecrey/cjs/web.index.js"
+    "./zkCrypto/web": {
+      "default": "./dist/zkbas-crypto/cjs/web.index.js"
     }
   },
   "typesVersions": {
     "*": {
-      "zecrey": [
-        "./typing/zecrey.d.ts"
+      "zkCrypto": [
+        "./typing/zkbasCrypto.d.ts"
       ],
-      "zecrey/web": [
-        "./typing/zecrey.web.d.ts"
+      "zkCrypto/web": [
+        "./typing/zkbasCrypto.web.d.ts"
       ]
     }
   },
@@ -61,7 +62,10 @@
     "type": "git",
     "url": "git+https://github.com/bnb-chain/zkbas-js-sdk.git"
   },
-  "keywords": [],
+  "keywords": [
+    "zkbas",
+    "crypto"
+  ],
   "author": "",
   "license": "MIT",
   "bugs": {
