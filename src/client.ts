@@ -8,10 +8,6 @@ export class Client {
     this.http = new Http(endpoint);
   }
 
-  // setKeyManager(keyManager) {
-  //   this.keyManager = keyManager;
-  // }
-
   async getTxsByPubKey(accountPk: string, offset: number, limit: number) {
     return await this.http.req('GET /api/v1/tx/getTxsByPubKey', {
       account_pk: accountPk,
@@ -245,6 +241,18 @@ export class Client {
   async createCollection(txInfo: string) {
     return this.http.req('POST /api/v1/tx/sendCreateCollectionTx', {
       tx_info: txInfo,
+    });
+  }
+
+  async getGasAccount() {
+    return this.http.req('GET /api/v1/info/getGasAccount', {});
+  }
+
+  async getAccountNftList(accountIndex: number, offset: number, limit: number) {
+    return this.http.req('GET /api/v1/nft/getAccountNftList', {
+      account_index: accountIndex,
+      offset,
+      limit,
     });
   }
 }
