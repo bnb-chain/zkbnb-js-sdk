@@ -43,6 +43,8 @@ export const API_MAP = {
   SendRawMintNftTx: 'POST /api/v1/tx/sendMintNftTx',
   MintNft: 'POST /api/v1/tx/sendMintNftTx',
   CreateCollection: 'POST /api/v1/tx/sendCreateCollectionTx',
+  GetGasAccount: 'GET /api/v1/info/getGasAccount',
+  GetAccountNftList: 'GET /api/v1/nft/getAccountNftList',
 } as const;
 
 // 'GetTxsByPubKey' | 'GetTxsByAccountName' | ... | 'CreateCollection'
@@ -115,6 +117,8 @@ export interface IReqParmsMap {
   [API_MAP.SendRawMintNftTx]: { tx_info: string };
   [API_MAP.MintNft]: { tx_info: string };
   [API_MAP.CreateCollection]: { tx_info: string };
+  [API_MAP.GetGasAccount]: Record<string, never>;
+  [API_MAP.GetAccountNftList]: IReqBaseParam & { account_index: Zk.AccountIndex };
 }
 
 export interface IResponseMap {
@@ -200,4 +204,13 @@ export interface IResponseMap {
   [API_MAP.SendRawMintNftTx]: { nft_index: number };
   [API_MAP.MintNft]: { nft_index: number };
   [API_MAP.CreateCollection]: { collection_id: number };
+  [API_MAP.GetGasAccount]: {
+    account_status: Zk.AccountStatus;
+    account_index: Zk.AccountIndex;
+    account_name: Zk.AccountName;
+  };
+  [API_MAP.GetAccountNftList]: {
+    total: number;
+    nfts: Zk.Nft[];
+  };
 }
