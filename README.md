@@ -96,13 +96,13 @@ const client = new Client('http://172.22.41.67:8888');
 })()
 ```
 
-## Zecrey WASM API
+## Zkbas Crypto API
 
-The wrapper for [Zecrey WASM](https://github.com/Zecrey-Labs/zecrey-wasm).
+The wrapper for [Zkbas Crypto](https://github.com/bnb-chain/zkbas-crypto).
 
 ## API List
 
-> https://github.com/Zecrey-Labs/zecrey-wasm/tree/main/zecrey-legend
+> https://github.com/bnb-chain/zkbas-crypto/blob/master/wasm/legend/main.go#L33-L59
 
 ## Usage
 
