@@ -1,3 +1,10 @@
+# [0.6.0](https://github.com/bnb-chain/zkbas-js-sdk/compare/v0.5.2...v0.6.0) (2022-08-05)
+
+
+### Features
+
+* Add api - GetGasAccount / GetAccountNftList ([972191a](https://github.com/bnb-chain/zkbas-js-sdk/commit/972191a7cbe7cd8307e7e9d83c140704a420cf0a))
+
 ## [0.5.2](https://github.com/bnb-chain/zkbas-js-sdk/compare/v0.5.1...v0.5.2) (2022-08-04)
 
 
