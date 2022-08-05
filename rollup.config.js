@@ -94,10 +94,10 @@ export default async () => {
       ],
     }),
     {
-      input: ['./src/zecrey/node.index.js', './src/zecrey/web.index.js'],
+      input: ['./src/zkbas-crypto/node.index.js', './src/zkbas-crypto/web.index.js'],
       output: [
-        { dir: './dist/zecrey/cjs', format: 'cjs', sourcemap: true },
-        { dir: './dist/zecrey/esm', format: 'esm', sourcemap: true },
+        { dir: './dist/zkbas-crypto/cjs', format: 'cjs', sourcemap: true },
+        { dir: './dist/zkbas-crypto/esm', format: 'esm', sourcemap: true },
       ],
       plugins: [
         wasm({
@@ -105,9 +105,9 @@ export default async () => {
         }),
         copy({
           targets: [
-            { src: 'src/zecrey/zecreyLegend.wasm', dest: 'dist/zecrey/cjs' },
-            { src: 'src/zecrey/wasm_exec_node.js', dest: 'dist/zecrey/cjs' },
-            { src: 'src/zecrey/wasm_exec.js', dest: 'dist/zecrey/cjs' },
+            { src: 'src/zkbas-crypto/main.wasm', dest: 'dist/zkbas-crypto/cjs' },
+            { src: 'src/zkbas-crypto/wasm_exec_node.js', dest: 'dist/zkbas-crypto/cjs' },
+            { src: 'src/zkbas-crypto/wasm_exec.js', dest: 'dist/zkbas-crypto/cjs' },
           ],
         }),
       ],

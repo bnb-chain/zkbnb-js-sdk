@@ -5,7 +5,7 @@
 
 # ZkBAS JavaScript SDK 
 
-* [Go SDK](https://github.com/bnb-chain/zkbas-go-sdk)
+> [Go SDK](https://github.com/bnb-chain/zkbas-go-sdk)
 
 The ZkBAS JavaScript SDK provides a thin wrapper around thin all the apis provided by ZkBAS, including a simple key manager for signing txs and sending signed txs to ZkBAS.
 
@@ -108,21 +108,21 @@ The wrapper for [Zkbas Crypto](https://github.com/bnb-chain/zkbas-crypto).
 
 Because of [WASM](https://webassembly.org/) different usage scenarios, there are two packages:
 
-### run WASM on Node.js
+### run on Node.js
 
 ```javascript
-const { ZECREY } = require('@bnb-chain/zkbas-js-sdk/zecrey');
+const { ZkCrypto } = require('@bnb-chain/zkbas-js-sdk/zkCrypto');
 
-console.log('cleanPackedAmount:', ZECREY.cleanPackedAmount('12312123123'))
+console.log('getEddsaPublicKey:', ZkCrypto.getEddsaPublicKey('12312123123'))
 ```
 
-### run WASM on browser
+### run on browser
 
 ```javascript
-import { ZECREY } from '@bnb-chain/zkbas-js-sdk/zecrey/web';
+import { ZkCrypto } from '@bnb-chain/zkbas-js-sdk/zkCrypto/web';
 
 ;(async () => {
-  const Z = await ZECREY();
-  console.log('cleanPackedAmount:', Z.cleanPackedAmount('12312123123'))
+  const { getEddsaPublicKey } = await ZkCrypto();
+  console.log('getEddsaPublicKey:', getEddsaPublicKey('12312123123'));
 })();
 ```

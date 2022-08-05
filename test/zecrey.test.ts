@@ -1,12 +1,9 @@
-const { assert } = require('chai');
+import { assert } from 'chai';
 
-const { ZECREY } = require('../src/zecrey/node.index');
+import { ZkCrypto } from '../src/zkbas-crypto/node.index';
 
 const {
   generateEddsaKey,
-  cleanPackedAmount,
-  cleanPackedFee,
-  getAccountNameHash,
   getEddsaPublicKey,
   getEddsaCompressedPublicKey,
   eddsaVerify,
@@ -22,26 +19,7 @@ const {
   eddsaSign,
   signTransfer,
   signOffer,
-} = ZECREY;
-
-describe('cleanPackedAmount', () => {
-  console.log(ZECREY);
-  it('should return the correct amount', () => {
-    assert.equal(cleanPackedAmount('10000001111'), '10000001111');
-  });
-});
-
-describe('cleanPackedFee', () => {
-  it('convert fee to valid fee', () => {
-    assert.equal(cleanPackedFee('10000001111'), '10000000000');
-  });
-});
-
-describe('getAccountNameHash', () => {
-  it('should return the correct hash', () => {
-    assert.equal(getAccountNameHash('sher.legend'), '04b2dd1162802d057ed00dcb516ea627b207970520d1ad583f712cd6e954691f');
-  });
-});
+} = ZkCrypto;
 
 describe('getEddsaPublicKey', () => {
   it('should return the correct public key', () => {
