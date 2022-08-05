@@ -6,6 +6,7 @@
   "main": "./dist/node/index.js",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
+    "tag": "latest",
     "access": "public"
   },
   "files": [
