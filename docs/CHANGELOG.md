@@ -1,3 +1,10 @@
+# [0.9.0](https://github.com/bnb-chain/zkbas-js-sdk/compare/v0.8.0...v0.9.0) (2022-08-05)
+
+
+### Features
+
+* Add Zkbas Crypto ([2a0df5e](https://github.com/bnb-chain/zkbas-js-sdk/commit/2a0df5eef338d435e7eccd4e7a565825d6270681))
+
 # [0.8.0](https://github.com/bnb-chain/zkbas-js-sdk/compare/v0.7.0...v0.8.0) (2022-08-05)
 
 
