@@ -1,9 +1,13 @@
 {
   "name": "@bnb-chain/zkbas-js-sdk",
-  "version": "0.3.11",
+  "version": "0.5.2",
   "description": "zkbas JavaScript SDK",
   "type": "commonjs",
   "main": "./dist/node/index.js",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
   "files": [
     "dist",
     "typing"
@@ -42,6 +46,7 @@
   },
   "types": "./dist/web/index.d.ts",
   "scripts": {
+    "semantic-release": "semantic-release",
     "format": "prettier --write './**/*.{ts,js}'",
     "lint": "npm run format && eslint . --ext .js,.ts",
     "commit": "lint-staged",
@@ -85,6 +90,7 @@
     "@typescript-eslint/eslint-plugin": "^5.32.0",
     "@typescript-eslint/parser": "^5.32.0",
     "chai": "^4.3.6",
+    "conventional-changelog-cmyr-config": "^2.0.4",
     "eslint": "^8.21.0",
     "eslint-plugin-prettier": "^4.2.1",
     "husky": "^8.0.1",
