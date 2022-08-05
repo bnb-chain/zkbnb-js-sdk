@@ -1,3 +1,10 @@
+# [0.7.0](https://github.com/bnb-chain/zkbas-js-sdk/compare/v0.6.1...v0.7.0) (2022-08-05)
+
+
+### Features
+
+* Integrate semantic-release with CI ([2aa593a](https://github.com/bnb-chain/zkbas-js-sdk/commit/2aa593abc5beea437dbf61cf0504d5878929f669))
+
 # [0.6.0](https://github.com/bnb-chain/zkbas-js-sdk/compare/v0.5.2...v0.6.0) (2022-08-05)
 
 
