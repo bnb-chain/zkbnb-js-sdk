@@ -255,4 +255,11 @@ export class Client {
       limit,
     });
   }
+
+  async getTxsList(offset: number, limit: number) {
+    return this.http.req('GET /api/v1/tx/getTxsList', {
+      offset,
+      limit,
+    });
+  }
 }

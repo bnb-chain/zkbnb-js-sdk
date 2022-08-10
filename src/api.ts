@@ -45,6 +45,7 @@ export const API_MAP = {
   CreateCollection: 'POST /api/v1/tx/sendCreateCollectionTx',
   GetGasAccount: 'GET /api/v1/info/getGasAccount',
   GetAccountNftList: 'GET /api/v1/nft/getAccountNftList',
+  GetTxsList: 'GET /api/v1/tx/getTxsList',
 } as const;
 
 // 'GetTxsByPubKey' | 'GetTxsByAccountName' | ... | 'CreateCollection'
@@ -119,6 +120,7 @@ export interface IReqParmsMap {
   [API_MAP.CreateCollection]: { tx_info: string };
   [API_MAP.GetGasAccount]: Record<string, never>;
   [API_MAP.GetAccountNftList]: IReqBaseParam & { account_index: Zk.AccountIndex };
+  [API_MAP.GetTxsList]: IReqBaseParam;
 }
 
 export interface IResponseMap {
@@ -212,5 +214,9 @@ export interface IResponseMap {
   [API_MAP.GetAccountNftList]: {
     total: number;
     nfts: Zk.Nft[];
+  };
+  [API_MAP.GetTxsList]: {
+    total: number;
+    txs: Zk.Tx[];
   };
 }
