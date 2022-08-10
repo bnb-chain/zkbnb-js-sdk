@@ -1,3 +1,10 @@
+# [0.10.0](https://github.com/bnb-chain/zkbas-js-sdk/compare/v0.9.0...v0.10.0) (2022-08-10)
+
+
+### Features
+
+* New TX API ([87eda5a](https://github.com/bnb-chain/zkbas-js-sdk/commit/87eda5af89d14e71172db57aac73a06f2b3a1d17))
+
 # [0.9.0](https://github.com/bnb-chain/zkbas-js-sdk/compare/v0.8.0...v0.9.0) (2022-08-05)
 
 
