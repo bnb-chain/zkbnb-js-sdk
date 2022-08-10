@@ -128,26 +128,28 @@ export const TxType = {
 } as const;
 
 export type Tx = {
-  tx_hash: Hash;
-  tx_type: number;
-  gas_fee: Fee;
-  gas_fee_asset_id: AssetId;
-  tx_status: number;
+  account_index: AccountIndex;
+  asset_id: number;
   block_height: number;
   block_id: number;
-  state_root: string;
-  nft_index: number;
-  pair_index: number;
-  asset_id: number;
-  tx_amount: string;
-  native_address: string;
-  tx_info: string;
-  tx_details: TxDetail[];
-  extra_info: string;
-  memo: string;
-  account_index: AccountIndex;
-  nonce: Nonce;
+  create_at: TimeStamp;
   expired_at: TimeStamp;
+  extra_info: string;
+  gas_fee_asset_id: AssetId;
+  gas_fee: Fee;
+  memo: string;
+  native_address: string;
+  nft_index: number;
+  nonce: Nonce;
+  pair_index: number;
+  state_root: string;
+  status: number;
+  tx_amount: string;
+  tx_details: TxDetail[];
+  tx_hash: Hash;
+  tx_info: string;
+  tx_status: number;
+  tx_type: number;
 };
 
 export type Nft = {
