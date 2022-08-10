@@ -49,14 +49,24 @@
   "scripts": {
     "semantic-release": "semantic-release",
     "format": "prettier --write './**/*.{ts,js}'",
-    "lint": "npm run format && eslint . --ext .js,.ts",
-    "commit": "lint-staged",
+    "lint": "npm run format && eslint . --ext .js,.ts --fix",
+    "pre-commit": "npm run lint",
     "test": "TS_NODE_PROJECT=./tsconfig-test.json node --es-module-specifier-resolution=node --loader ts-node/esm --nolazy node_modules/mocha/lib/cli/cli.js --timeout 9999999 --color 'test/*.test.ts'",
     "prepare": "husky install",
     "predev": "rimraf ./dist",
     "dev": "rollup -cw",
     "prebuild": "rimraf ./dist",
     "build": "rollup -c"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx}": [
+      "npm run lint"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "repository": {
     "type": "git",
