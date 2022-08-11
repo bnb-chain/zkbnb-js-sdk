@@ -126,3 +126,8 @@ import { ZkCrypto } from '@bnb-chain/zkbas-js-sdk/zkCrypto/web';
   console.log('getEddsaPublicKey:', getEddsaPublicKey('12312123123'));
 })();
 ```
+
+
+## CHANGELOG
+
+[CHANGELOG](./docs/CHANGELOG.md)
