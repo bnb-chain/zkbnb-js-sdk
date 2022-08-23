@@ -1,3 +1,10 @@
+# [0.11.0](https://github.com/bnb-chain/zkbas-js-sdk/compare/v0.10.1...v0.11.0) (2022-08-23)
+
+
+### Features
+
+* add getAccountNameHash methods ([#14](https://github.com/bnb-chain/zkbas-js-sdk/issues/14)) ([10d33ba](https://github.com/bnb-chain/zkbas-js-sdk/commit/10d33ba0db999528245c19231841141899971254))
+
 ## [0.10.1](https://github.com/bnb-chain/zkbas-js-sdk/compare/v0.10.0...v0.10.1) (2022-08-10)
 
 
