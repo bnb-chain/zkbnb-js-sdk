@@ -3,6 +3,7 @@ import { assert } from 'chai';
 import { ZkCrypto } from '../src/zkbas-crypto/node.index';
 
 const {
+  getAccountNameHash,
   generateEddsaKey,
   getEddsaPublicKey,
   getEddsaCompressedPublicKey,
@@ -20,6 +21,15 @@ const {
   signTransfer,
   signOffer,
 } = ZkCrypto;
+
+describe('getAccountNameHash', () => {
+  it('should return the correct account name hash', () => {
+    assert.equal(
+      getAccountNameHash('example.legend'),
+      '2078f919ddd94d2c724cf996c0aced8a7795d3618b538d9b34481bbe8b861958'
+    );
+  });
+});
 
 describe('getEddsaPublicKey', () => {
   it('should return the correct public key', () => {

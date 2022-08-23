@@ -2,6 +2,7 @@ declare module '@bnb-chain/zkbas-js-sdk/zkCrypto/web' {
   export function ZkCrypto(): Promise<Z>;
 
   export interface Z {
+    getAccountNameHash: (accountName: string) => string;
     getEddsaPublicKey: (seed: string) => string;
     generateEddsaKey: (seed: string) => string;
     getEddsaCompressedPublicKey: (seed: string) => string;
