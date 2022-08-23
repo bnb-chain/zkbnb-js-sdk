@@ -87,6 +87,7 @@
     "shelljs": "^0.8.5"
   },
   "devDependencies": {
+    "@babel/core": "^7.18.13",
     "@babel/preset-env": "^7.18.9",
     "@commitlint/cli": "^17.0.3",
     "@commitlint/config-conventional": "^17.0.3",

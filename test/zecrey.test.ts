@@ -3,6 +3,7 @@ import { assert } from 'chai';
 import { ZkCrypto } from '../src/zkbas-crypto/node.index';
 
 const {
+  getAccountNameHash,
   generateEddsaKey,
   getEddsaPublicKey,
   getEddsaCompressedPublicKey,
@@ -20,6 +21,15 @@ const {
   signTransfer,
   signOffer,
 } = ZkCrypto;
+
+describe('getAccountNameHash', () => {
+  it('should return the correct account name hash', () => {
+    assert.equal(
+      getAccountNameHash('example.legend'),
+      '2078f919ddd94d2c724cf996c0aced8a7795d3618b538d9b34481bbe8b861958'
+    );
+  });
+});
 
 describe('getEddsaPublicKey', () => {
   it('should return the correct public key', () => {
@@ -99,13 +109,13 @@ describe('signRemoveLiquidity', () => {
 });
 
 describe('signSwap', () => {
-  it('should return a valid signature', () => {
+  it('should return a valid swap', () => {
     assert.equal(
       signSwap(
         'seed phrase',
         '{"from_account_index":0,"pair_index":0,"asset_a_id":1,"asset_a_amount":"10000","asset_b_id":2,"asset_b_min_amount":"95","asset_b_amount_delta":"99","gas_account_index":1,"gas_fee_asset_id":3,"gas_fee_asset_amount":"3","expired_at":1654656781000,"nonce":1}'
       ),
-      '{"FromAccountIndex":0,"PairIndex":0,"AssetAId":1,"AssetAAmount":10000,"AssetBId":2,"AssetBMinAmount":95,"AssetBAmountDelta":99,"GasAccountIndex":1,"GasFeeAssetId":3,"GasFeeAssetAmount":3,"ExpiredAt":1654656781000,"Nonce":1,"Sig":"ilrtw7zHEQ69VK/QdFSOfu+0azbvGHsAd2SLzD+NUIMBB0AmmUzePuw5O2O+wnNjyvFWlwIftasu/Ya3go5vmw=="}'
+      '{"FromAccountIndex":0,"PairIndex":0,"AssetAId":1,"AssetAAmount":10000,"AssetBId":2,"AssetBMinAmount":95,"AssetBAmountDelta":99,"GasAccountIndex":1,"GasFeeAssetId":3,"GasFeeAssetAmount":3,"ExpiredAt":1654656781000,"Nonce":1,"Sig":"cf4XbI7zsx+AeRmZLMjH77vG0359ELCppU3/r1azUYgAGg+QGTx7+9lpT/bJr2SA8uKGiOCLsPWDMCVq4t9aXQ=="}'
     );
   });
 });
