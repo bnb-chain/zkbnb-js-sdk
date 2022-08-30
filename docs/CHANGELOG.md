@@ -1,3 +1,13 @@
+# [1.0.0](https://github.com/bnb-chain/zkbas-js-sdk/compare/v0.11.0...v1.0.0) (2022-08-30)
+
+
+* refactor!: New API ([69d76b5](https://github.com/bnb-chain/zkbas-js-sdk/commit/69d76b5ccec4b26e00aea59d5a7bc6dec72bb847))
+
+
+### BREAKING CHANGES
+
+* Modify many API
+
 # [0.11.0](https://github.com/bnb-chain/zkbas-js-sdk/compare/v0.10.1...v0.11.0) (2022-08-23)
 
 
