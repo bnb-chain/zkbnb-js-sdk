@@ -48,29 +48,22 @@ export type API_NAME = keyof typeof API_MAP;
 // 'GET /api/v1/tx/getTxsByPubKey' | ... | 'POST /api/v1/tx/sendCreateCollectionTx'
 export type URL_INFO = typeof API_MAP[API_NAME];
 
-interface AccountPK {
-  value: Zk.PublicKey;
-  by: 'account_pk';
-}
-
-interface AccountName {
-  value: Zk.AccountName;
-  by: 'account_name';
-}
-
-interface AccountIndex {
-  value: Zk.AccountIndex;
-  by: 'account_index';
-}
-
-export type CurrencyPrice = {
-  pair: string;
-  asset_id: Zk.Asset['id'];
-  price: string;
-};
-
 export interface IReqParmsMap {
-  [API_MAP.GetTxsByAccount]: IReqBaseParam & (AccountPK | AccountName | AccountIndex);
+  [API_MAP.GetTxsByAccount]: IReqBaseParam &
+    (
+      | {
+          value: Zk.PublicKey;
+          by: 'account_pk';
+        }
+      | {
+          value: Zk.AccountName;
+          by: 'account_name';
+        }
+      | {
+          value: Zk.AccountIndex;
+          by: 'account_index';
+        }
+    );
   [API_MAP.GetTxs]: IReqBaseParam;
   [API_MAP.Search]: { keyword: string };
   [API_MAP.GetAccounts]: IReqBaseParam;
@@ -140,10 +133,10 @@ export interface IResponseMap {
   [API_MAP.GetBlockByParam]: Zk.Block;
   [API_MAP.GetBlocks]: { total: number; blocks: Zk.Block[] };
   [API_MAP.GetAccountByParam]: Zk.Account;
-  [API_MAP.GetCurrencyPrice]: CurrencyPrice;
+  [API_MAP.GetCurrencyPrice]: Zk.CurrencyPrice;
   [API_MAP.GetCurrencyPrices]: {
     total: number;
-    currency_prices: CurrencyPrice[];
+    currency_prices: Zk.CurrencyPrice[];
   };
   [API_MAP.GetSwapAmount]: {
     asset_id: Zk.Asset['id'];

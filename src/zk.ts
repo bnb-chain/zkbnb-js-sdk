@@ -39,6 +39,12 @@ export type AccountStatus = number;
 export type PublicKey = string;
 export type AccountPk = PublicKey;
 
+export type CurrencyPrice = {
+  pair: string;
+  asset_id: Asset['id'];
+  price: string;
+};
+
 export type AccountAsset = {
   id: number;
   name: string;
@@ -165,7 +171,7 @@ export type Tx = {
   expired_at: TimeStamp;
   block_height: number;
   block_id: number;
-  create_at: TimeStamp;
+  created_at: TimeStamp;
   state_root: string;
 };
 
