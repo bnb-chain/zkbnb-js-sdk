@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/bnb-chain/zkbas-js-sdk/compare/v1.0.0...v1.0.1) (2022-09-05)
+
+
+### Bug Fixes
+
+* Creatred time type ([44feb1f](https://github.com/bnb-chain/zkbas-js-sdk/commit/44feb1f3a825d8fc9075fb55f27b0dac0b62c798))
+
 # [1.0.0](https://github.com/bnb-chain/zkbas-js-sdk/compare/v0.11.0...v1.0.0) (2022-08-30)
 
 
