@@ -3,6 +3,8 @@ import { assert } from 'chai';
 import { ZkCrypto } from '../src/zkbas-crypto/node.index';
 
 const {
+  cleanPackedAmount,
+  cleanPackedFee,
   getAccountNameHash,
   generateEddsaKey,
   getEddsaPublicKey,
@@ -21,6 +23,18 @@ const {
   signTransfer,
   signOffer,
 } = ZkCrypto;
+
+describe('cleanPackedAmount', () => {
+  it('should return the correct amount', () => {
+    assert.equal(cleanPackedAmount('10000001111'), '10000001111');
+  });
+});
+
+describe('cleanPackedFee', () => {
+  it('convert fee to valid fee', () => {
+    assert.equal(cleanPackedFee('10000001111'), '10000000000');
+  });
+});
 
 describe('getAccountNameHash', () => {
   it('should return the correct account name hash', () => {

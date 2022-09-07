@@ -16,6 +16,8 @@ export const ZkCrypto = async () => {
   go.run(instance);
 
   const methods = [
+    'cleanPackedAmount',
+    'cleanPackedFee',
     'getAccountNameHash',
     'getEddsaPublicKey',
     'getEddsaCompressedPublicKey',
