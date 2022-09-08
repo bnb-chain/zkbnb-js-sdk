@@ -186,7 +186,8 @@ export class Client {
    */
   async getCurrencyPriceBySymbol(symbol: string) {
     return await this.http.req(API_MAP.GetCurrencyPrice, {
-      symbol: symbol,
+      by: 'symbol',
+      value: symbol,
     });
   }
 

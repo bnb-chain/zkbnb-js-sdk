@@ -82,7 +82,7 @@ export interface IReqParmsMap {
     | { by: 'pk'; value: Zk.PublicKey }
     | { by: 'name'; value: Zk.AccountName };
 
-  [API_MAP.GetCurrencyPrice]: { symbol: string };
+  [API_MAP.GetCurrencyPrice]: { by: 'symbol'; value: string };
   [API_MAP.GetCurrencyPrices]: IReqBaseParam;
   [API_MAP.GetSwapAmount]: {
     pair_index: number;
