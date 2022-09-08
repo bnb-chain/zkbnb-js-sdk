@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/bnb-chain/zkbas-js-sdk/compare/v1.1.0...v1.1.1) (2022-09-08)
+
+
+### Bug Fixes
+
+* CurrentPrice API request param ([fee006e](https://github.com/bnb-chain/zkbas-js-sdk/commit/fee006ea280603e2747e6d9fb2358eda3c8c67fe))
+
 # [1.1.0](https://github.com/bnb-chain/zkbas-js-sdk/compare/v1.0.1...v1.1.0) (2022-09-08)
 
 
