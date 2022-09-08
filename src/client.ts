@@ -175,6 +175,13 @@ export class Client {
   }
 
   /**
+   * returns current block height
+   */
+  async getCurrentHeight() {
+    return await this.http.req(API_MAP.GetCurrentHeight, {});
+  }
+
+  /**
    * returns currency price by symbol
    */
   async getCurrencyPriceBySymbol(symbol: string) {

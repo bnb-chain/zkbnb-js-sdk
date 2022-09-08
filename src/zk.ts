@@ -178,7 +178,9 @@ export type Tx = {
 export type Nft = {
   index: number;
   creator_account_index: number;
+  creator_account_name: string;
   owner_account_index: number;
+  owner_account_name: string;
   content_hash: Hash;
   l1_address: string;
   l1_token_id: string;

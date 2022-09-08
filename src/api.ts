@@ -16,9 +16,8 @@ export const API_MAP = {
   GetGasFee: 'GET /api/v1/gasFee',
   GetAssets: 'GET /api/v1/assets',
   GetLayer2BasicInfo: 'GET /api/v1/layer2BasicInfo',
-
+  GetCurrentHeight: 'GET /api/v1/currentHeight',
   GetBlockByParam: 'GET /api/v1/block',
-
   GetAccountByParam: 'GET /api/v1/account',
   GetCurrencyPrice: 'GET /api/v1/currencyPrice',
   GetCurrencyPrices: 'GET /api/v1/currencyPrices',
@@ -77,7 +76,7 @@ export interface IReqParmsMap {
   [API_MAP.GetAssets]: IReqBaseParam;
   [API_MAP.GetLayer2BasicInfo]: Record<string, never>;
   [API_MAP.GetBlockByParam]: { by: 'commitment'; value: string } | { by: 'height'; value: number };
-
+  [API_MAP.GetCurrentHeight]: Record<string, never>;
   [API_MAP.GetAccountByParam]:
     | { by: 'index'; value: Zk.AccountIndex }
     | { by: 'pk'; value: Zk.PublicKey }
@@ -132,6 +131,7 @@ export interface IResponseMap {
   [API_MAP.GetLayer2BasicInfo]: Zk.Layer2BasicInfo;
   [API_MAP.GetBlockByParam]: Zk.Block;
   [API_MAP.GetBlocks]: { total: number; blocks: Zk.Block[] };
+  [API_MAP.GetCurrentHeight]: { height: number };
   [API_MAP.GetAccountByParam]: Zk.Account;
   [API_MAP.GetCurrencyPrice]: Zk.CurrencyPrice;
   [API_MAP.GetCurrencyPrices]: {
