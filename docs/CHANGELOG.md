@@ -1,3 +1,11 @@
+# [1.1.0](https://github.com/bnb-chain/zkbas-js-sdk/compare/v1.0.1...v1.1.0) (2022-09-08)
+
+
+### Features
+
+* CurrentHeight API ([d56a08b](https://github.com/bnb-chain/zkbas-js-sdk/commit/d56a08bc534daa528eb16288e3cc3434ca5ee34a))
+* New wasm method ([e200d89](https://github.com/bnb-chain/zkbas-js-sdk/commit/e200d89a12259dac00ee93fa2809f52d29f21235))
+
 ## [1.0.1](https://github.com/bnb-chain/zkbas-js-sdk/compare/v1.0.0...v1.0.1) (2022-09-05)
 
 
