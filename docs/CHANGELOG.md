@@ -1,3 +1,10 @@
+## [1.1.4](https://github.com/bnb-chain/zkbas-js-sdk/compare/v1.1.3...v1.1.4) (2022-09-09)
+
+
+### Bug Fixes
+
+* Post and Get params type ([54537b9](https://github.com/bnb-chain/zkbas-js-sdk/commit/54537b9b86452a7eda65bfb7e393d86e5cafeca3))
+
 ## [1.1.3](https://github.com/bnb-chain/zkbas-js-sdk/compare/v1.1.2...v1.1.3) (2022-09-09)
 
 
