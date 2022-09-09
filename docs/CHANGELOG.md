@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/bnb-chain/zkbas-js-sdk/compare/v1.1.2...v1.1.3) (2022-09-09)
+
+
+### Bug Fixes
+
+* Export constants ([dbae7e0](https://github.com/bnb-chain/zkbas-js-sdk/commit/dbae7e0e105e12eb6c7255386fe41770dbd60888))
+
 ## [1.1.2](https://github.com/bnb-chain/zkbas-js-sdk/compare/v1.1.1...v1.1.2) (2022-09-09)
 
 
