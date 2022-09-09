@@ -11,14 +11,42 @@ export class Http {
   }
 
   async req<T extends API.URL_INFO>(api: T, params: API.IReqParmsMap[T]): Promise<API.IResponseMap[T]> {
-    const [method, url] = api.split(' ');
+    const [method, url] = api.split(' ') as ['GET' | 'POST', string];
 
-    const response = await this.client.request({
+    const config: Config = {
       url,
       method,
-      params,
-    });
+    };
 
+    if (isGetConfig<API.IReqParmsMap[T]>(config)) {
+      config.params = params;
+    } else if (isPostConfig<API.IReqParmsMap[T]>(config)) {
+      config.data = params;
+    }
+
+    const response = await this.client.request(config);
+    console.log('method', method, config);
     return response.data;
   }
+}
+
+interface GetConfig<T> extends Config {
+  params: T;
+}
+
+interface PostConfig<T> extends Config {
+  data: T;
+}
+
+type Config = {
+  url: string;
+  method: 'POST' | 'GET';
+};
+
+function isGetConfig<T>(config: Config): config is GetConfig<T> {
+  return config.method === 'GET';
+}
+
+function isPostConfig<T>(config: Config): config is PostConfig<T> {
+  return config.method === 'POST';
 }
