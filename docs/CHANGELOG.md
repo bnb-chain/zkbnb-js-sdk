@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/bnb-chain/zkbas-js-sdk/compare/v1.1.6...v1.2.0) (2022-09-13)
+
+
+### Features
+
+* Axios response type ([26961f8](https://github.com/bnb-chain/zkbas-js-sdk/commit/26961f80a72f4f2041608517a7d1b3c7f8dcd549))
+
 ## [1.1.6](https://github.com/bnb-chain/zkbas-js-sdk/compare/v1.1.5...v1.1.6) (2022-09-13)
 
 
