@@ -1,3 +1,10 @@
+## [1.1.6](https://github.com/bnb-chain/zkbas-js-sdk/compare/v1.1.5...v1.1.6) (2022-09-13)
+
+
+### Bug Fixes
+
+* TxType export ([75bb0a4](https://github.com/bnb-chain/zkbas-js-sdk/commit/75bb0a41bc5faac3d7e812c2e1d2e62e993f25ff))
+
 ## [1.1.5](https://github.com/bnb-chain/zkbas-js-sdk/compare/v1.1.4...v1.1.5) (2022-09-13)
 
 
