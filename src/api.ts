@@ -5,41 +5,38 @@ export interface IReqBaseParam {
   limit: number;
 }
 
-export const API_MAP = {
-  GetTx: 'GET /api/v1/tx',
-  GetTxs: 'GET /api/v1/txs',
-  GetTxsByAccount: 'GET /api/v1/accountTxs',
-  Search: 'GET /api/v1/search',
-  GetAccounts: 'GET /api/v1/accounts',
-  GetGasFeeAssets: 'GET /api/v1/gasFeeAssets',
-  GetWithdrawGasFee: 'GET /api/v1/withdrawGasFee',
-  GetGasFee: 'GET /api/v1/gasFee',
-  GetAssets: 'GET /api/v1/assets',
-  GetLayer2BasicInfo: 'GET /api/v1/layer2BasicInfo',
-  GetCurrentHeight: 'GET /api/v1/currentHeight',
-  GetBlockByParam: 'GET /api/v1/block',
-  GetAccountByParam: 'GET /api/v1/account',
-  GetCurrencyPrice: 'GET /api/v1/currencyPrice',
-  GetCurrencyPrices: 'GET /api/v1/currencyPrices',
-  GetSwapAmount: 'GET /api/v1/swapAmount',
-  GetPair: 'GET /api/v1/pair',
-  GetPairs: 'GET /api/v1/pairs',
-  GetLPValue: 'GET /api/v1/lpValue',
-  GetMempoolTxs: 'GET /api/v1/mempoolTxs',
-  GetMempoolTxsByAccountName: 'GET /api/v1/accountMempoolTxs',
-  GetNextNonce: 'GET /api/v1/nextNonce',
-  GetTxsByBlockHeight: 'GET /api/v1/blockTxs',
-  GetMaxOfferId: 'GET /api/v1/maxOfferId',
-  GetBlocks: 'GET /api/v1/blocks',
-  SendRawTx: 'POST /api/v1/sendTx',
-  SendRawCreateCollectionTx: 'POST /api/v1/tx/sendCreateCollectionTx',
-  SendRawMintNftTx: 'POST /api/v1/tx/sendMintNftTx',
-
-  MintNft: 'POST /api/v1/tx/sendMintNftTx',
-  CreateCollection: 'POST /api/v1/tx/sendCreateCollectionTx',
-  GetGasAccount: 'GET /api/v1/gasAccount',
-  GetNftsByAccountIndex: 'GET /api/v1/accountNfts',
-} as const;
+export enum API_MAP {
+  GetTx = 'GET /api/v1/tx',
+  GetTxs = 'GET /api/v1/txs',
+  GetTxsByAccount = 'GET /api/v1/accountTxs',
+  Search = 'GET /api/v1/search',
+  GetAccounts = 'GET /api/v1/accounts',
+  GetGasFeeAssets = 'GET /api/v1/gasFeeAssets',
+  GetWithdrawGasFee = 'GET /api/v1/withdrawGasFee',
+  GetGasFee = 'GET /api/v1/gasFee',
+  GetAssets = 'GET /api/v1/assets',
+  GetLayer2BasicInfo = 'GET /api/v1/layer2BasicInfo',
+  GetCurrentHeight = 'GET /api/v1/currentHeight',
+  GetBlockByParam = 'GET /api/v1/block',
+  GetAccountByParam = 'GET /api/v1/account',
+  GetCurrencyPrice = 'GET /api/v1/currencyPrice',
+  GetCurrencyPrices = 'GET /api/v1/currencyPrices',
+  GetSwapAmount = 'GET /api/v1/swapAmount',
+  GetPair = 'GET /api/v1/pair',
+  GetPairs = 'GET /api/v1/pairs',
+  GetLPValue = 'GET /api/v1/lpValue',
+  GetMempoolTxs = 'GET /api/v1/mempoolTxs',
+  GetMempoolTxsByAccountName = 'GET /api/v1/accountMempoolTxs',
+  GetNextNonce = 'GET /api/v1/nextNonce',
+  GetTxsByBlockHeight = 'GET /api/v1/blockTxs',
+  GetMaxOfferId = 'GET /api/v1/maxOfferId',
+  GetBlocks = 'GET /api/v1/blocks',
+  SendRawTx = 'POST /api/v1/sendTx',
+  SendRawCreateCollectionTx = 'POST /api/v1/tx/sendCreateCollectionTx',
+  SendRawMintNftTx = 'POST /api/v1/tx/sendMintNftTx',
+  GetGasAccount = 'GET /api/v1/gasAccount',
+  GetNftsByAccountIndex = 'GET /api/v1/accountNfts',
+}
 
 // 'GetTxsByPubKey' | 'GetTxsByAccountName' | ... | 'CreateCollection'
 export type API_NAME = keyof typeof API_MAP;
@@ -110,8 +107,6 @@ export interface IReqParmsMap {
   [API_MAP.SendRawTx]: { tx_type: string; tx_info: string };
   [API_MAP.SendRawCreateCollectionTx]: { tx_info: string };
   [API_MAP.SendRawMintNftTx]: { tx_info: string };
-  [API_MAP.MintNft]: { tx_info: string };
-  [API_MAP.CreateCollection]: { tx_info: string };
   [API_MAP.GetGasAccount]: Record<string, never>;
   [API_MAP.GetNftsByAccountIndex]: IReqBaseParam & { by: 'account_index'; value: Zk.AccountIndex };
 }
@@ -165,8 +160,6 @@ export interface IResponseMap {
   [API_MAP.SendRawTx]: { tx_id: string };
   [API_MAP.SendRawCreateCollectionTx]: { collection_id: number };
   [API_MAP.SendRawMintNftTx]: { nft_index: number };
-  [API_MAP.MintNft]: { nft_index: number };
-  [API_MAP.CreateCollection]: { collection_id: number };
   [API_MAP.GetGasAccount]: Zk.GasAccount;
   [API_MAP.GetNftsByAccountIndex]: {
     total: number;

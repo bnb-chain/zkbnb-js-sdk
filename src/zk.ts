@@ -1,7 +1,5 @@
 export type Hash = string;
-
 export type Fee = string;
-
 export type Nonce = number;
 
 export type TimeStamp = number;
@@ -73,7 +71,7 @@ export type SimpleAccount = {
   pk: AccountPk;
 };
 
-type ContractAddress = {
+export type ContractAddress = {
   name: string;
   address: string;
 };
@@ -164,3 +162,28 @@ export type Nft = {
   creator_treasury_rate: number;
   collection_id: number;
 };
+
+export enum TxType {
+  TxTypeEmpty = 0,
+  TxTypeRegisterZns,
+  TxTypeCreatePair,
+  TxTypeUpdatePairRate,
+  TxTypeDeposit,
+  TxTypeDepositNft,
+  TxTypeTransfer,
+  TxTypeSwap,
+  TxTypeAddLiquidity,
+  TxTypeRemoveLiquidity,
+  TxTypeWithdraw,
+  TxTypeCreateCollection,
+  TxTypeMintNft,
+  TxTypeTransferNft,
+  TxTypeAtomicMatch,
+  TxTypeCancelOffer,
+  TxTypeWithdrawNft,
+  TxTypeFullExit,
+  TxTypeFullExitNft,
+  TxTypeOffer,
+}
+
+export {};
