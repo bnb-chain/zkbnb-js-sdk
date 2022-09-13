@@ -1,3 +1,10 @@
+## [1.1.5](https://github.com/bnb-chain/zkbas-js-sdk/compare/v1.1.4...v1.1.5) (2022-09-13)
+
+
+### Bug Fixes
+
+* Remove Comment ([e3f335c](https://github.com/bnb-chain/zkbas-js-sdk/commit/e3f335c018a458d8a16b4996e2418c61f4a81318))
+
 ## [1.1.4](https://github.com/bnb-chain/zkbas-js-sdk/compare/v1.1.3...v1.1.4) (2022-09-09)
 
 
