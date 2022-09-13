@@ -25,7 +25,7 @@ export class Http {
     }
 
     const response = await this.client.request(config);
-    console.log('method', method, config);
+
     return response.data;
   }
 }
