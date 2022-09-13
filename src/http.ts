@@ -1,4 +1,4 @@
-import axios, { AxiosInstance } from 'axios';
+import axios, { AxiosInstance, AxiosResponse } from 'axios';
 import * as API from './api';
 
 export class Http {
@@ -10,7 +10,7 @@ export class Http {
     });
   }
 
-  async req<T extends API.URL_INFO>(api: T, params: API.IReqParmsMap[T]): Promise<API.IResponseMap[T] | null> {
+  async req<T extends API.URL_INFO>(api: T, params: API.IReqParmsMap[T]): Promise<API.IResponseMap[T]> {
     const [method, url] = api.split(' ') as ['GET' | 'POST', string];
 
     let response = { data: null };
@@ -27,6 +27,6 @@ export class Http {
       });
     }
 
-    return response.data;
+    return (response as AxiosResponse).data;
   }
 }
