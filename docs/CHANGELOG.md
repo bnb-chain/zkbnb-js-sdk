@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/bnb-chain/zkbas-js-sdk/compare/v1.2.0...v1.2.1) (2022-09-15)
+
+
+### Bug Fixes
+
+* SendRawTx return type ([1f06016](https://github.com/bnb-chain/zkbas-js-sdk/commit/1f06016fbdf7518715f03ea49ab447ab567d0aef))
+
 # [1.2.0](https://github.com/bnb-chain/zkbas-js-sdk/compare/v1.1.6...v1.2.0) (2022-09-13)
 
 
