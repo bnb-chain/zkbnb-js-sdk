@@ -157,7 +157,7 @@ export interface IResponseMap {
   [API_MAP.GetNextNonce]: { nonce: Zk.Nonce };
   [API_MAP.GetTxsByBlockHeight]: { txs: Zk.Tx[]; total: number };
   [API_MAP.GetMaxOfferId]: { offer_id: number };
-  [API_MAP.SendRawTx]: { tx_id: string };
+  [API_MAP.SendRawTx]: { tx_hash: string };
   [API_MAP.SendRawCreateCollectionTx]: { collection_id: number };
   [API_MAP.SendRawMintNftTx]: { nft_index: number };
   [API_MAP.GetGasAccount]: Zk.GasAccount;
