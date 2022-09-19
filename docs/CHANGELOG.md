@@ -1,3 +1,18 @@
+# [2.0.0](https://github.com/bnb-chain/zkbas-js-sdk/compare/v1.3.0...v2.0.0) (2022-09-19)
+
+
+* refactor!: New API ([fa2076c](https://github.com/bnb-chain/zkbas-js-sdk/commit/fa2076cf72201ffb4dee51fd5b9d31dec9f169a4))
+
+
+### Features
+
+* add getAccountNameHash methods ([#14](https://github.com/bnb-chain/zkbas-js-sdk/issues/14)) ([1db8eef](https://github.com/bnb-chain/zkbas-js-sdk/commit/1db8eefbb4a7f021be93d05d75109eae4caab287))
+
+
+### BREAKING CHANGES
+
+* Modify many API
+
 # [1.3.0](https://github.com/bnb-chain/zkbas-js-sdk/compare/v1.2.1...v1.3.0) (2022-09-19)
 
 
