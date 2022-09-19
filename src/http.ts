@@ -1,4 +1,4 @@
-import axios, { AxiosInstance } from 'axios';
+import axios, { AxiosInstance, AxiosResponse } from 'axios';
 import * as API from './api';
 
 export class Http {
@@ -11,14 +11,22 @@ export class Http {
   }
 
   async req<T extends API.URL_INFO>(api: T, params: API.IReqParmsMap[T]): Promise<API.IResponseMap[T]> {
-    const [method, url] = api.split(' ');
+    const [method, url] = api.split(' ') as ['GET' | 'POST', string];
 
-    const response = await this.client.request({
-      url,
-      method,
-      params,
-    });
+    let response = { data: null };
 
-    return response.data;
+    if (method === 'GET') {
+      response = await this.client.get(url, {
+        params,
+      });
+    }
+
+    if (method === 'POST') {
+      response = await this.client.post(url, null, {
+        params,
+      });
+    }
+
+    return (response as AxiosResponse).data;
   }
 }

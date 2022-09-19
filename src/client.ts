@@ -1,6 +1,7 @@
-import { API_MAP } from './api';
+import * as Zk from './zk';
+import * as API from './api';
+
 import { Http } from './http';
-import { AccountIndex, AccountPk, Hash } from './zk';
 
 export class Client {
   private http: Http;
@@ -9,8 +10,8 @@ export class Client {
     this.http = new Http(endpoint);
   }
 
-  async getTx(hash: Hash) {
-    return await this.http.req(API_MAP.GetTx, {
+  async getTx(hash: Zk.Hash) {
+    return await this.http.req(API.API_MAP.GetTx, {
       hash,
     });
   }
@@ -18,8 +19,8 @@ export class Client {
   /**
    * returns txs by account public key
    */
-  async getTxsByAccountPk(accountPk: AccountPk, offset: number, limit: number) {
-    return await this.http.req(API_MAP.GetTxsByAccount, {
+  async getTxsByAccountPk(accountPk: Zk.AccountPk, offset: number, limit: number) {
+    return await this.http.req(API.API_MAP.GetTxsByAccount, {
       value: accountPk,
       by: 'account_pk',
       offset,
@@ -31,7 +32,7 @@ export class Client {
    * returns txs by account account name
    */
   async getTxsByAccountName(accountName: string, offset: number, limit: number) {
-    return await this.http.req(API_MAP.GetTxsByAccount, {
+    return await this.http.req(API.API_MAP.GetTxsByAccount, {
       value: accountName,
       by: 'account_name',
       offset,
@@ -42,8 +43,8 @@ export class Client {
   /**
    * returns txs by account account index
    */
-  async getTxsByAccountIndex(accountIndex: AccountIndex, offset: number, limit: number) {
-    return this.http.req(API_MAP.GetTxsByAccount, {
+  async getTxsByAccountIndex(accountIndex: Zk.AccountIndex, offset: number, limit: number) {
+    return this.http.req(API.API_MAP.GetTxsByAccount, {
       by: 'account_index',
       value: accountIndex,
       offset,
@@ -55,7 +56,7 @@ export class Client {
    * returns tx by tx hash
    */
   async getTxs(offset: number, limit: number) {
-    return await this.http.req(API_MAP.GetTxs, {
+    return await this.http.req(API.API_MAP.GetTxs, {
       offset,
       limit,
     });
@@ -65,7 +66,7 @@ export class Client {
    * returns data type by queried info
    */
   async search(info: string) {
-    return await this.http.req(API_MAP.Search, {
+    return await this.http.req(API.API_MAP.Search, {
       keyword: info,
     });
   }
@@ -73,8 +74,11 @@ export class Client {
   /**
    * returns accounts by query conditions
    */
+  /**
+   * returns accounts by query conditions
+   */
   async getAccounts(offset: number, limit: number) {
-    return await this.http.req(API_MAP.GetAccounts, {
+    return await this.http.req(API.API_MAP.GetAccounts, {
       offset,
       limit,
     });
@@ -84,14 +88,14 @@ export class Client {
    * returns gas fee asset list
    */
   async getGasFeeAssets() {
-    return await this.http.req(API_MAP.GetGasFeeAssets, {});
+    return await this.http.req(API.API_MAP.GetGasFeeAssets, {});
   }
 
   /**
    * returns withdraw gas fee
    */
   async getWithdrawGasFee(assetId: number, withdrawAssetId: number, withdrawAmount: string) {
-    return await this.http.req(API_MAP.GetWithdrawGasFee, {
+    return await this.http.req(API.API_MAP.GetWithdrawGasFee, {
       asset_id: assetId,
       withdraw_asset_id: withdrawAssetId,
       withdraw_amount: withdrawAmount,
@@ -102,8 +106,25 @@ export class Client {
    * returns gas fee for asset
    */
   async getGasFee(assetId: number) {
-    return await this.http.req(API_MAP.GetGasFee, {
+    return await this.http.req(API.API_MAP.GetGasFee, {
       asset_id: assetId,
+    });
+  }
+
+  /**
+   * returns asset by asset id
+   */
+  async getAssetById(assetId: number) {
+    return await this.http.req(API.API_MAP.GetAsset, {
+      by: 'id',
+      value: assetId,
+    });
+  }
+
+  async getAssetBySymbol(symbol: string) {
+    return await this.http.req(API.API_MAP.GetAsset, {
+      by: 'symbol',
+      value: symbol,
     });
   }
 
@@ -111,7 +132,7 @@ export class Client {
    * returns asset list
    */
   async getAssets(offset: number, limit: number) {
-    return await this.http.req(API_MAP.GetAssets, {
+    return await this.http.req(API.API_MAP.GetAssets, {
       offset,
       limit,
     });
@@ -121,14 +142,14 @@ export class Client {
    * returns layer 2 basic info
    */
   async getLayer2BasicInfo() {
-    return await this.http.req(API_MAP.GetLayer2BasicInfo, {});
+    return await this.http.req(API.API_MAP.GetLayer2BasicInfo, {});
   }
 
   /**
    * returns block by commitment
    */
   async getBlockByCommitment(blockCommitment: string) {
-    return await this.http.req(API_MAP.GetBlockByParam, {
+    return await this.http.req(API.API_MAP.GetBlockByParam, {
       by: 'commitment',
       value: blockCommitment,
     });
@@ -138,7 +159,7 @@ export class Client {
    * returns block by height
    */
   async getBlockByHeight(blockHeight: number) {
-    return await this.http.req(API_MAP.GetBlockByParam, {
+    return await this.http.req(API.API_MAP.GetBlockByParam, {
       by: 'height',
       value: blockHeight,
     });
@@ -148,7 +169,7 @@ export class Client {
    * returns account info by account index
    */
   async getAccountByIndex(accountIndex: number) {
-    return await this.http.req(API_MAP.GetAccountByParam, {
+    return await this.http.req(API.API_MAP.GetAccountByParam, {
       by: 'index',
       value: accountIndex,
     });
@@ -158,7 +179,7 @@ export class Client {
    * returns account info by public key
    */
   async getAccountByPubKey(pubKey: string) {
-    return await this.http.req(API_MAP.GetAccountByParam, {
+    return await this.http.req(API.API_MAP.GetAccountByParam, {
       by: 'pk',
       value: pubKey,
     });
@@ -168,36 +189,24 @@ export class Client {
    * returns account (mainly pubkey) by using account_name
    */
   async getAccountByName(accountName: string) {
-    return await this.http.req(API_MAP.GetAccountByParam, {
+    return await this.http.req(API.API_MAP.GetAccountByParam, {
       by: 'name',
       value: accountName,
     });
   }
 
   /**
-   * returns currency price by symbol
+   * returns current block height
    */
-  async getCurrencyPriceBySymbol(symbol: string) {
-    return await this.http.req(API_MAP.GetCurrencyPrice, {
-      symbol: symbol,
-    });
-  }
-
-  /**
-   * returns all currency prices
-   */
-  async getCurrencyPrices(offset: number, limit: number) {
-    return await this.http.req(API_MAP.GetCurrencyPrices, {
-      offset,
-      limit,
-    });
+  async getCurrentHeight() {
+    return await this.http.req(API.API_MAP.GetCurrentHeight, {});
   }
 
   /**
    * returns available pairs
    */
   async getPairs(offset: number, limit: number) {
-    return await this.http.req(API_MAP.GetPairs, {
+    return await this.http.req(API.API_MAP.GetPairs, {
       offset,
       limit,
     });
@@ -207,7 +216,7 @@ export class Client {
    * returns swap amount by request
    */
   async getSwapAmount(params: { pairIndex: number; assetId: number; assetAmount: string; isFrom: boolean }) {
-    return await this.http.req(API_MAP.GetSwapAmount, {
+    return await this.http.req(API.API_MAP.GetSwapAmount, {
       pair_index: params.pairIndex,
       asset_id: params.assetId,
       asset_amount: params.assetAmount,
@@ -219,7 +228,7 @@ export class Client {
    * returns lp value
    */
   async getLPValue(params: { pairIndex: number; lpAmount: string }) {
-    return await this.http.req(API_MAP.GetLPValue, {
+    return await this.http.req(API.API_MAP.GetLPValue, {
       pair_index: params.pairIndex,
       lp_amount: params.lpAmount,
     });
@@ -229,14 +238,17 @@ export class Client {
    * returns pair by pair index
    */
   async getPair(index: number) {
-    return this.http.req(API_MAP.GetPair, { index });
+    return this.http.req(API.API_MAP.GetPair, { index });
   }
 
   /**
    * returns tx by tx hash
    */
+  /**
+   * returns tx by tx hash
+   */
   async getTxByHash(txHash: string) {
-    return this.http.req(API_MAP.GetTx, {
+    return this.http.req(API.API_MAP.GetTx, {
       hash: txHash,
     });
   }
@@ -244,8 +256,11 @@ export class Client {
   /**
    * returns the mempool txs
    */
+  /**
+   * returns the mempool txs
+   */
   async getMempoolTxs(offset: number, limit: number) {
-    return this.http.req(API_MAP.GetMempoolTxs, {
+    return this.http.req(API.API_MAP.GetMempoolTxs, {
       offset,
       limit,
     });
@@ -255,7 +270,7 @@ export class Client {
    * returns the mempool txs by account name
    */
   async getMempoolTxsByAccountName(accountName: string) {
-    return this.http.req(API_MAP.GetMempoolTxsByAccountName, {
+    return this.http.req(API.API_MAP.GetMempoolTxsByAccountName, {
       by: 'account_name',
       value: accountName,
     });
@@ -265,7 +280,7 @@ export class Client {
    * returns nonce of account
    */
   async getNextNonce(accountIndex: number) {
-    return this.http.req(API_MAP.GetNextNonce, {
+    return this.http.req(API.API_MAP.GetNextNonce, {
       account_index: accountIndex,
     });
   }
@@ -274,7 +289,7 @@ export class Client {
    * return txs in block
    */
   async getTxsByBlockHeight(blockHeight: number) {
-    return this.http.req(API_MAP.GetTxsByBlockHeight, {
+    return this.http.req(API.API_MAP.GetTxsByBlockHeight, {
       by: 'block_height',
       value: blockHeight,
     });
@@ -284,7 +299,7 @@ export class Client {
    * returns max offer id for an account
    */
   async getMaxOfferId(accountIndex: number) {
-    return this.http.req(API_MAP.GetMaxOfferId, {
+    return this.http.req(API.API_MAP.GetMaxOfferId, {
       account_index: accountIndex,
     });
   }
@@ -293,7 +308,7 @@ export class Client {
    * returns total blocks num and block list
    */
   async getBlocks(offset: number, limit: number) {
-    return this.http.req(API_MAP.GetBlocks, {
+    return this.http.req(API.API_MAP.GetBlocks, {
       limit,
       offset,
     });
@@ -303,7 +318,7 @@ export class Client {
    * sends signed raw transaction and returns tx id
    */
   async sendRawTx(txType: string, txInfo: string) {
-    return this.http.req(API_MAP.SendRawTx, {
+    return this.http.req(API.API_MAP.SendRawTx, {
       tx_info: txInfo,
       tx_type: txType,
     });
@@ -313,14 +328,14 @@ export class Client {
    * returns gas account of layer 2
    */
   async getGasAccount() {
-    return this.http.req(API_MAP.GetGasAccount, {});
+    return this.http.req(API.API_MAP.GetGasAccount, {});
   }
 
   /**
    * returns nfts by account index
    */
   async getNftsByAccountIndex(accountIndex: number, offset: number, limit: number) {
-    return this.http.req(API_MAP.GetNftsByAccountIndex, {
+    return this.http.req(API.API_MAP.GetNftsByAccountIndex, {
       by: 'account_index',
       value: accountIndex,
       offset,
@@ -329,25 +344,13 @@ export class Client {
   }
 
   async sendRawCreateCollectionTx(txInfo: string) {
-    return this.http.req('POST /api/v1/tx/sendCreateCollectionTx', {
+    return this.http.req(API.API_MAP.SendRawCreateCollectionTx, {
       tx_info: txInfo,
     });
   }
 
   async sendRawMintNftTx(txInfo: string) {
-    return this.http.req('POST /api/v1/tx/sendMintNftTx', {
-      tx_info: txInfo,
-    });
-  }
-
-  async mintNft(txInfo: string) {
-    return this.http.req('POST /api/v1/tx/sendMintNftTx', {
-      tx_info: txInfo,
-    });
-  }
-
-  async createCollection(txInfo: string) {
-    return this.http.req('POST /api/v1/tx/sendCreateCollectionTx', {
+    return this.http.req(API.API_MAP.SendRawMintNftTx, {
       tx_info: txInfo,
     });
   }

@@ -1,6 +1,6 @@
 {
   "name": "@bnb-chain/zkbas-js-sdk",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "zkbas JavaScript SDK",
   "type": "commonjs",
   "main": "./dist/node/index.js",
@@ -20,11 +20,11 @@
   "exports": {
     ".": {
       "import": {
-        "types": "./dist/web/index.d.ts",
+        "types": "./dist/web/**.d.ts",
         "default": "./dist/web/zk.js"
       },
       "require": {
-        "types": "./dist/node/types/index.d.ts",
+        "types": "./dist/node/types/**.d.ts",
         "default": "./dist/node/index.js"
       }
     },

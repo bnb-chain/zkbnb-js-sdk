@@ -1,7 +1,5 @@
 export type Hash = string;
-
 export type Fee = string;
-
 export type Nonce = number;
 
 export type TimeStamp = number;
@@ -27,10 +25,11 @@ export type Asset = {
   decimals: number;
   symbol: string;
   address: string;
+  price: Price;
   is_gas_asset: number;
 };
 
-export type Price = number;
+export type Price = string;
 export type Amount = string;
 
 export type AccountIndex = number;
@@ -43,7 +42,7 @@ export type AccountAsset = {
   id: number;
   name: string;
   balance: string;
-  lp_amount: string;
+  price: Price;
 };
 
 export type GasAccount = {
@@ -59,6 +58,12 @@ export type Account = {
   pk: string;
   nonce: number;
   assets: AccountAsset[];
+  lps: AccountLp[];
+};
+
+export type AccountLp = {
+  index: number;
+  amount: string;
 };
 
 export type SimpleAccount = {
@@ -67,7 +72,7 @@ export type SimpleAccount = {
   pk: AccountPk;
 };
 
-type ContractAddress = {
+export type ContractAddress = {
   name: string;
   address: string;
 };
@@ -88,20 +93,24 @@ export type Pair = {
   asset_a_id: Asset['id'];
   asset_a_name: string;
   asset_a_amount: Amount;
+  asset_a_price: Price;
   asset_b_id: Asset['id'];
   asset_b_name: string;
+  asset_b_price: Price;
   asset_b_amount: Amount;
   fee_rate: number;
   treasury_rate: number;
   total_lp_amount: string;
 };
 
-export type LP = {
+export type LpValue = {
   asset_a_id: Asset['id'];
   asset_a_name: string;
+  asset_a_price: Price;
   asset_a_amount: Amount;
   asset_b_id: Asset['id'];
   asset_b_name: string;
+  asset_b_price: Price;
   asset_b_amount: Amount;
 };
 
@@ -118,29 +127,6 @@ export type TxDetail = {
   nonce: Nonce;
   collection_nonce: Nonce;
 };
-
-export const TxType = {
-  TxTypeEmpty: 0,
-  TxTypeRegisterZns: 1,
-  TxTypeCreatePair: 2,
-  TxTypeUpdatePairRate: 3,
-  TxTypeDeposit: 4,
-  TxTypeDepositNft: 5,
-  TxTypeTransfer: 6,
-  TxTypeSwap: 7,
-  TxTypeAddLiquidity: 8,
-  TxTypeRemoveLiquidity: 9,
-  TxTypeWithdraw: 10,
-  TxTypeCreateCollection: 11,
-  TxTypeMintNft: 12,
-  TxTypeTransferNft: 13,
-  TxTypeAtomicMatch: 14,
-  TxTypeCancelOffer: 15,
-  TxTypeWithdrawNft: 16,
-  TxTypeFullExit: 17,
-  TxTypeFullExitNft: 18,
-  TxTypeOffer: 19,
-} as const;
 
 export type Tx = {
   hash: Hash;
@@ -165,17 +151,44 @@ export type Tx = {
   expired_at: TimeStamp;
   block_height: number;
   block_id: number;
-  create_at: TimeStamp;
+  created_at: TimeStamp;
   state_root: string;
 };
 
 export type Nft = {
   index: number;
   creator_account_index: number;
+  creator_account_name: string;
   owner_account_index: number;
+  owner_account_name: string;
   content_hash: Hash;
   l1_address: string;
   l1_token_id: string;
   creator_treasury_rate: number;
   collection_id: number;
 };
+
+export enum TxType {
+  TxTypeEmpty = 0,
+  TxTypeRegisterZns,
+  TxTypeCreatePair,
+  TxTypeUpdatePairRate,
+  TxTypeDeposit,
+  TxTypeDepositNft,
+  TxTypeTransfer,
+  TxTypeSwap,
+  TxTypeAddLiquidity,
+  TxTypeRemoveLiquidity,
+  TxTypeWithdraw,
+  TxTypeCreateCollection,
+  TxTypeMintNft,
+  TxTypeTransferNft,
+  TxTypeAtomicMatch,
+  TxTypeCancelOffer,
+  TxTypeWithdrawNft,
+  TxTypeFullExit,
+  TxTypeFullExitNft,
+  TxTypeOffer,
+}
+
+export {};
