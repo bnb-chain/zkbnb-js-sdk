@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/bnb-chain/zkbas-js-sdk/compare/v1.2.1...v1.3.0) (2022-09-19)
+
+
+### Features
+
+* Remove Price API And add assets API ([76d18f3](https://github.com/bnb-chain/zkbas-js-sdk/commit/76d18f302c3b1eb75a2743e0fa6f782b251472fd))
+
 ## [1.2.1](https://github.com/bnb-chain/zkbas-js-sdk/compare/v1.2.0...v1.2.1) (2022-09-15)
 
 
