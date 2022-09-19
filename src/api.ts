@@ -6,36 +6,35 @@ export interface IReqBaseParam {
 }
 
 export enum API_MAP {
-  GetTx = 'GET /api/v1/tx',
-  GetTxs = 'GET /api/v1/txs',
-  GetTxsByAccount = 'GET /api/v1/accountTxs',
-  Search = 'GET /api/v1/search',
-  GetAccounts = 'GET /api/v1/accounts',
-  GetGasFeeAssets = 'GET /api/v1/gasFeeAssets',
-  GetWithdrawGasFee = 'GET /api/v1/withdrawGasFee',
-  GetGasFee = 'GET /api/v1/gasFee',
-  GetAssets = 'GET /api/v1/assets',
-  GetLayer2BasicInfo = 'GET /api/v1/layer2BasicInfo',
-  GetCurrentHeight = 'GET /api/v1/currentHeight',
-  GetBlockByParam = 'GET /api/v1/block',
   GetAccountByParam = 'GET /api/v1/account',
-  GetCurrencyPrice = 'GET /api/v1/currencyPrice',
-  GetCurrencyPrices = 'GET /api/v1/currencyPrices',
-  GetSwapAmount = 'GET /api/v1/swapAmount',
-  GetPair = 'GET /api/v1/pair',
-  GetPairs = 'GET /api/v1/pairs',
+  GetAccounts = 'GET /api/v1/accounts',
+  GetAsset = 'GET /api/v1/asset',
+  GetAssets = 'GET /api/v1/assets',
+  GetBlockByParam = 'GET /api/v1/block',
+  GetBlocks = 'GET /api/v1/blocks',
+  GetCurrentHeight = 'GET /api/v1/currentHeight',
+  GetGasAccount = 'GET /api/v1/gasAccount',
+  GetGasFee = 'GET /api/v1/gasFee',
+  GetGasFeeAssets = 'GET /api/v1/gasFeeAssets',
+  GetLayer2BasicInfo = 'GET /api/v1/layer2BasicInfo',
   GetLPValue = 'GET /api/v1/lpValue',
+  GetMaxOfferId = 'GET /api/v1/maxOfferId',
   GetMempoolTxs = 'GET /api/v1/mempoolTxs',
   GetMempoolTxsByAccountName = 'GET /api/v1/accountMempoolTxs',
   GetNextNonce = 'GET /api/v1/nextNonce',
+  GetNftsByAccountIndex = 'GET /api/v1/accountNfts',
+  GetPair = 'GET /api/v1/pair',
+  GetPairs = 'GET /api/v1/pairs',
+  GetSwapAmount = 'GET /api/v1/swapAmount',
+  GetTx = 'GET /api/v1/tx',
+  GetTxs = 'GET /api/v1/txs',
+  GetTxsByAccount = 'GET /api/v1/accountTxs',
   GetTxsByBlockHeight = 'GET /api/v1/blockTxs',
-  GetMaxOfferId = 'GET /api/v1/maxOfferId',
-  GetBlocks = 'GET /api/v1/blocks',
-  SendRawTx = 'POST /api/v1/sendTx',
+  GetWithdrawGasFee = 'GET /api/v1/withdrawGasFee',
+  Search = 'GET /api/v1/search',
   SendRawCreateCollectionTx = 'POST /api/v1/tx/sendCreateCollectionTx',
   SendRawMintNftTx = 'POST /api/v1/tx/sendMintNftTx',
-  GetGasAccount = 'GET /api/v1/gasAccount',
-  GetNftsByAccountIndex = 'GET /api/v1/accountNfts',
+  SendRawTx = 'POST /api/v1/sendTx',
 }
 
 // 'GetTxsByPubKey' | 'GetTxsByAccountName' | ... | 'CreateCollection'
@@ -62,6 +61,15 @@ export interface IReqParmsMap {
     );
   [API_MAP.GetTxs]: IReqBaseParam;
   [API_MAP.Search]: { keyword: string };
+  [API_MAP.GetAsset]:
+    | {
+        value: number;
+        by: 'id';
+      }
+    | {
+        value: string;
+        by: 'symbol';
+      };
   [API_MAP.GetAccounts]: IReqBaseParam;
   [API_MAP.GetGasFeeAssets]: Record<string, never>;
   [API_MAP.GetWithdrawGasFee]: {
@@ -78,9 +86,6 @@ export interface IReqParmsMap {
     | { by: 'index'; value: Zk.AccountIndex }
     | { by: 'pk'; value: Zk.PublicKey }
     | { by: 'name'; value: Zk.AccountName };
-
-  [API_MAP.GetCurrencyPrice]: { by: 'symbol'; value: string };
-  [API_MAP.GetCurrencyPrices]: IReqBaseParam;
   [API_MAP.GetSwapAmount]: {
     pair_index: number;
     asset_id: Zk.Asset['id'];
@@ -122,24 +127,20 @@ export interface IResponseMap {
   [API_MAP.GetGasFeeAssets]: { assets: Zk.Asset[] };
   [API_MAP.GetWithdrawGasFee]: { gas_fee: string };
   [API_MAP.GetGasFee]: { gas_fee: string };
+  [API_MAP.GetAsset]: Zk.Asset;
   [API_MAP.GetAssets]: { total: number; assets: Zk.Asset[] };
   [API_MAP.GetLayer2BasicInfo]: Zk.Layer2BasicInfo;
   [API_MAP.GetBlockByParam]: Zk.Block;
   [API_MAP.GetBlocks]: { total: number; blocks: Zk.Block[] };
   [API_MAP.GetCurrentHeight]: { height: number };
   [API_MAP.GetAccountByParam]: Zk.Account;
-  [API_MAP.GetCurrencyPrice]: Zk.CurrencyPrice;
-  [API_MAP.GetCurrencyPrices]: {
-    total: number;
-    currency_prices: Zk.CurrencyPrice[];
-  };
   [API_MAP.GetSwapAmount]: {
     asset_id: Zk.Asset['id'];
     asset_name: Zk.Asset['name'];
     asset_amount: string;
   };
   [API_MAP.GetPairs]: { pairs: Zk.Pair[] };
-  [API_MAP.GetLPValue]: Zk.LP;
+  [API_MAP.GetLPValue]: Zk.LpValue;
   [API_MAP.GetPair]: Zk.Pair;
   [API_MAP.GetTx]: Zk.Tx & {
     committed_at: Zk.TimeStamp;

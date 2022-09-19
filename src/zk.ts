@@ -25,10 +25,11 @@ export type Asset = {
   decimals: number;
   symbol: string;
   address: string;
+  price: Price;
   is_gas_asset: number;
 };
 
-export type Price = number;
+export type Price = string;
 export type Amount = string;
 
 export type AccountIndex = number;
@@ -37,17 +38,11 @@ export type AccountStatus = number;
 export type PublicKey = string;
 export type AccountPk = PublicKey;
 
-export type CurrencyPrice = {
-  pair: string;
-  asset_id: Asset['id'];
-  price: string;
-};
-
 export type AccountAsset = {
   id: number;
   name: string;
   balance: string;
-  lp_amount: string;
+  price: Price;
 };
 
 export type GasAccount = {
@@ -63,6 +58,12 @@ export type Account = {
   pk: string;
   nonce: number;
   assets: AccountAsset[];
+  lps: AccountLp[];
+};
+
+export type AccountLp = {
+  index: number;
+  amount: string;
 };
 
 export type SimpleAccount = {
@@ -92,20 +93,24 @@ export type Pair = {
   asset_a_id: Asset['id'];
   asset_a_name: string;
   asset_a_amount: Amount;
+  asset_a_price: Price;
   asset_b_id: Asset['id'];
   asset_b_name: string;
+  asset_b_price: Price;
   asset_b_amount: Amount;
   fee_rate: number;
   treasury_rate: number;
   total_lp_amount: string;
 };
 
-export type LP = {
+export type LpValue = {
   asset_a_id: Asset['id'];
   asset_a_name: string;
+  asset_a_price: Price;
   asset_a_amount: Amount;
   asset_b_id: Asset['id'];
   asset_b_name: string;
+  asset_b_price: Price;
   asset_b_amount: Amount;
 };
 

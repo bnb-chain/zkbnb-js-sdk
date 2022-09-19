@@ -109,6 +109,23 @@ export class Client {
   }
 
   /**
+   * returns asset by asset id
+   */
+  async getAssetById(assetId: number) {
+    return await this.http.req(API.API_MAP.GetAsset, {
+      by: 'id',
+      value: assetId,
+    });
+  }
+
+  async getAssetBySymbol(symbol: string) {
+    return await this.http.req(API.API_MAP.GetAsset, {
+      by: 'symbol',
+      value: symbol,
+    });
+  }
+
+  /**
    * returns asset list
    */
   async getAssets(offset: number, limit: number) {
@@ -180,26 +197,6 @@ export class Client {
    */
   async getCurrentHeight() {
     return await this.http.req(API.API_MAP.GetCurrentHeight, {});
-  }
-
-  /**
-   * returns currency price by symbol
-   */
-  async getCurrencyPriceBySymbol(symbol: string) {
-    return await this.http.req(API.API_MAP.GetCurrencyPrice, {
-      by: 'symbol',
-      value: symbol,
-    });
-  }
-
-  /**
-   * returns all currency prices
-   */
-  async getCurrencyPrices(offset: number, limit: number) {
-    return await this.http.req(API.API_MAP.GetCurrencyPrices, {
-      offset,
-      limit,
-    });
   }
 
   /**
