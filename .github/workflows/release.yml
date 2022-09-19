@@ -4,7 +4,6 @@ on:
     types: [ semantic-release ]
   push:
     branches:
-      - master
       - release
 
 jobs:
