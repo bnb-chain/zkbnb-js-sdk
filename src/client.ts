@@ -105,9 +105,10 @@ export class Client {
   /**
    * returns gas fee for asset
    */
-  async getGasFee(assetId: number) {
+  async getGasFee(assetId: number, txType: string) {
     return await this.http.req(API.API_MAP.GetGasFee, {
       asset_id: assetId,
+      tx_type: txType,
     });
   }
 
