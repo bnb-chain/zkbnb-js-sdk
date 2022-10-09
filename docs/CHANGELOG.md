@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/bnb-chain/zkbas-js-sdk/compare/v2.1.0...v2.1.1) (2022-10-09)
+
+
+### Bug Fixes
+
+* Get GasFee need txType ([fb07045](https://github.com/bnb-chain/zkbas-js-sdk/commit/fb07045ca896fa2690de9d9d23519581981f3a7a))
+
 # [2.1.0](https://github.com/bnb-chain/zkbas-js-sdk/compare/v2.0.0...v2.1.0) (2022-10-09)
 
 
