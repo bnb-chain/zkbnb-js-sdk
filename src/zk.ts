@@ -171,14 +171,9 @@ export type Nft = {
 export enum TxType {
   TxTypeEmpty = 0,
   TxTypeRegisterZns,
-  TxTypeCreatePair,
-  TxTypeUpdatePairRate,
   TxTypeDeposit,
   TxTypeDepositNft,
   TxTypeTransfer,
-  TxTypeSwap,
-  TxTypeAddLiquidity,
-  TxTypeRemoveLiquidity,
   TxTypeWithdraw,
   TxTypeCreateCollection,
   TxTypeMintNft,
@@ -188,7 +183,6 @@ export enum TxType {
   TxTypeWithdrawNft,
   TxTypeFullExit,
   TxTypeFullExitNft,
-  TxTypeOffer,
 }
 
 export {};
