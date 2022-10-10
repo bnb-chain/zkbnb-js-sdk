@@ -1,3 +1,10 @@
+## [2.1.3](https://github.com/bnb-chain/zkbas-js-sdk/compare/v2.1.2...v2.1.3) (2022-10-10)
+
+
+### Bug Fixes
+
+* Update WASM and remove swap function ([d5de2cf](https://github.com/bnb-chain/zkbas-js-sdk/commit/d5de2cfe13fffeeef1753a9a29978373c0e04084))
+
 ## [2.1.2](https://github.com/bnb-chain/zkbas-js-sdk/compare/v2.1.1...v2.1.2) (2022-10-10)
 
 
