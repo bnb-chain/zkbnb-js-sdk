@@ -27,6 +27,7 @@ export type Asset = {
   address: string;
   price: Price;
   is_gas_asset: number;
+  icon: string;
 };
 
 export type Price = string;
