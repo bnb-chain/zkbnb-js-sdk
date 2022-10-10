@@ -77,7 +77,7 @@ export interface IReqParmsMap {
     withdraw_asset_id: Zk.Asset['id'];
     withdraw_amount: Zk.Amount;
   };
-  [API_MAP.GetGasFee]: { asset_id: Zk.Asset['id']; tx_type: string };
+  [API_MAP.GetGasFee]: { asset_id: Zk.Asset['id']; tx_type: number };
   [API_MAP.GetAssets]: IReqBaseParam;
   [API_MAP.GetLayer2BasicInfo]: Record<string, never>;
   [API_MAP.GetBlockByParam]: { by: 'commitment'; value: string } | { by: 'height'; value: number };

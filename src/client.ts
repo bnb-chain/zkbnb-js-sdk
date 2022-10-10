@@ -74,9 +74,6 @@ export class Client {
   /**
    * returns accounts by query conditions
    */
-  /**
-   * returns accounts by query conditions
-   */
   async getAccounts(offset: number, limit: number) {
     return await this.http.req(API.API_MAP.GetAccounts, {
       offset,
@@ -105,7 +102,7 @@ export class Client {
   /**
    * returns gas fee for asset
    */
-  async getGasFee(assetId: number, txType: string) {
+  async getGasFee(assetId: number, txType: number) {
     return await this.http.req(API.API_MAP.GetGasFee, {
       asset_id: assetId,
       tx_type: txType,
@@ -245,18 +242,12 @@ export class Client {
   /**
    * returns tx by tx hash
    */
-  /**
-   * returns tx by tx hash
-   */
   async getTxByHash(txHash: string) {
     return this.http.req(API.API_MAP.GetTx, {
       hash: txHash,
     });
   }
 
-  /**
-   * returns the mempool txs
-   */
   /**
    * returns the mempool txs
    */
