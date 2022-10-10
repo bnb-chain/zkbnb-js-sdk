@@ -1,3 +1,10 @@
+## [2.1.4](https://github.com/bnb-chain/zkbas-js-sdk/compare/v2.1.3...v2.1.4) (2022-10-10)
+
+
+### Bug Fixes
+
+* Asset add icon field ([3fd0194](https://github.com/bnb-chain/zkbas-js-sdk/commit/3fd01945f39f2094f4222fa43ba080729cad890c))
+
 ## [2.1.3](https://github.com/bnb-chain/zkbas-js-sdk/compare/v2.1.2...v2.1.3) (2022-10-10)
 
 
