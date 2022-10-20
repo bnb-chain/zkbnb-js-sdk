@@ -19,10 +19,21 @@ export class Client {
   /**
    * returns txs by account public key
    */
-  async getTxsByAccountPk(accountPk: Zk.AccountPk, offset: number, limit: number) {
+  async getTxsByAccountPk({
+    accountPk,
+    type,
+    offset,
+    limit,
+  }: {
+    accountPk: Zk.AccountPk;
+    type: Zk.TxType;
+    offset: number;
+    limit: number;
+  }) {
     return await this.http.req(API.API_MAP.GetTxsByAccount, {
       value: accountPk,
       by: 'account_pk',
+      type,
       offset,
       limit,
     });
@@ -31,10 +42,21 @@ export class Client {
   /**
    * returns txs by account account name
    */
-  async getTxsByAccountName(accountName: string, offset: number, limit: number) {
+  async getTxsByAccountName({
+    accountName,
+    type,
+    offset,
+    limit,
+  }: {
+    accountName: string;
+    type: Zk.TxType;
+    offset: number;
+    limit: number;
+  }) {
     return await this.http.req(API.API_MAP.GetTxsByAccount, {
       value: accountName,
       by: 'account_name',
+      type,
       offset,
       limit,
     });
@@ -43,10 +65,21 @@ export class Client {
   /**
    * returns txs by account account index
    */
-  async getTxsByAccountIndex(accountIndex: Zk.AccountIndex, offset: number, limit: number) {
+  async getTxsByAccountIndex({
+    accountIndex,
+    type,
+    offset,
+    limit,
+  }: {
+    accountIndex: Zk.AccountIndex;
+    type: Zk.TxType;
+    offset: number;
+    limit: number;
+  }) {
     return this.http.req(API.API_MAP.GetTxsByAccount, {
       by: 'account_index',
       value: accountIndex,
+      type,
       offset,
       limit,
     });
