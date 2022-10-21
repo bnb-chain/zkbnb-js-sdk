@@ -154,6 +154,8 @@ export type Tx = {
   block_id: number;
   created_at: TimeStamp;
   state_root: string;
+  to_account_name: string;
+  to_account_index: string;
 };
 
 export type Nft = {
