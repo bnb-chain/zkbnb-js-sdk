@@ -1,3 +1,11 @@
+# [2.2.0](https://github.com/bnb-chain/zkbas-js-sdk/compare/v2.1.4...v2.2.0) (2022-10-21)
+
+
+### Features
+
+* Get tx filter type ([b1a013b](https://github.com/bnb-chain/zkbas-js-sdk/commit/b1a013bb12cb62800f626a4bdbebc48d1b5735b6))
+* Type stringify ([30f8d70](https://github.com/bnb-chain/zkbas-js-sdk/commit/30f8d7087a088d48983438403ea47452985fcce1))
+
 ## [2.1.4](https://github.com/bnb-chain/zkbas-js-sdk/compare/v2.1.3...v2.1.4) (2022-10-10)
 
 
