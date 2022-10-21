@@ -45,7 +45,7 @@ export type URL_INFO = typeof API_MAP[API_NAME];
 
 export interface IReqParmsMap {
   [API_MAP.GetTxsByAccount]: IReqBaseParam & {
-    type: Zk.TxType;
+    types: string;
   } & (
       | {
           value: Zk.PublicKey;
