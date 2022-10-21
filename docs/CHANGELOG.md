@@ -1,3 +1,10 @@
+# [2.3.0](https://github.com/bnb-chain/zkbas-js-sdk/compare/v2.2.0...v2.3.0) (2022-10-21)
+
+
+### Features
+
+* Add Tx Type ([7775623](https://github.com/bnb-chain/zkbas-js-sdk/commit/7775623d3305869a5805979c67cb078e97025e46))
+
 # [2.2.0](https://github.com/bnb-chain/zkbas-js-sdk/compare/v2.1.4...v2.2.0) (2022-10-21)
 
 
