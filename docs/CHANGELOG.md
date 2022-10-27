@@ -1,3 +1,10 @@
+## [2.3.1](https://github.com/bnb-chain/zkbas-js-sdk/compare/v2.3.0...v2.3.1) (2022-10-27)
+
+
+### Bug Fixes
+
+* Account Type Update ([0794db0](https://github.com/bnb-chain/zkbas-js-sdk/commit/0794db065cd691ef409a32b7f022a41c46256ff6))
+
 # [2.3.0](https://github.com/bnb-chain/zkbas-js-sdk/compare/v2.2.0...v2.3.0) (2022-10-21)
 
 
