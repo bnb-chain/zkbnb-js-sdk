@@ -60,6 +60,7 @@ export type Account = {
   nonce: number;
   assets: AccountAsset[];
   lps: AccountLp[];
+  total_asset_value: string;
 };
 
 export type AccountLp = {
