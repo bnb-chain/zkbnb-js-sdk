@@ -5,7 +5,7 @@ export interface IReqBaseParam {
   limit: number;
 }
 
-export enum API_MAP {
+export const enum API_MAP {
   GetAccountByParam = 'GET /api/v1/account',
   GetAccounts = 'GET /api/v1/accounts',
   GetAsset = 'GET /api/v1/asset',
@@ -44,8 +44,9 @@ export type API_NAME = keyof typeof API_MAP;
 export type URL_INFO = typeof API_MAP[API_NAME];
 
 export interface IReqParmsMap {
-  [API_MAP.GetTxsByAccount]: IReqBaseParam &
-    (
+  [API_MAP.GetTxsByAccount]: IReqBaseParam & {
+    types: string;
+  } & (
       | {
           value: Zk.PublicKey;
           by: 'account_pk';
@@ -77,7 +78,7 @@ export interface IReqParmsMap {
     withdraw_asset_id: Zk.Asset['id'];
     withdraw_amount: Zk.Amount;
   };
-  [API_MAP.GetGasFee]: { asset_id: Zk.Asset['id'] };
+  [API_MAP.GetGasFee]: { asset_id: Zk.Asset['id']; tx_type: number };
   [API_MAP.GetAssets]: IReqBaseParam;
   [API_MAP.GetLayer2BasicInfo]: Record<string, never>;
   [API_MAP.GetBlockByParam]: { by: 'commitment'; value: string } | { by: 'height'; value: number };

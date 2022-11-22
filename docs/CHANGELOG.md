@@ -1,3 +1,125 @@
+# [3.0.0](https://github.com/bnb-chain/zkbas-js-sdk/compare/v2.3.1...v3.0.0) (2022-11-22)
+
+
+* Release 2.0.0 (#18) ([5bb15f2](https://github.com/bnb-chain/zkbas-js-sdk/commit/5bb15f22bfb34c0fd0f290162afc0b2a8ed62203)), closes [#18](https://github.com/bnb-chain/zkbas-js-sdk/issues/18) [#14](https://github.com/bnb-chain/zkbas-js-sdk/issues/14)
+
+
+### BREAKING CHANGES
+
+* Modify many API
+
+* chore(release): 1.0.0 [skip ci]
+
+* fix: Creatred time type
+
+* chore(release): 1.0.1 [skip ci]
+
+* feat: New wasm method
+
+* feat: CurrentHeight API
+
+* chore(release): 1.1.0 [skip ci]
+
+* docs: Update PR tempalte
+
+* fix: CurrentPrice API request param
+
+* chore(release): 1.1.1 [skip ci]
+
+* fix: Export d.ts
+
+* chore(release): 1.1.2 [skip ci]
+
+* fix: Export constants
+
+* chore(release): 1.1.3 [skip ci]
+
+* fix: Post and Get params type
+
+* chore(release): 1.1.4 [skip ci]
+
+* fix: Remove Comment
+
+* chore(release): 1.1.5 [skip ci]
+
+* fix: TxType export
+
+* chore(release): 1.1.6 [skip ci]
+
+* feat: Axios response type
+
+* chore(release): 1.2.0 [skip ci]
+
+* fix: SendRawTx return type
+
+* chore(release): 1.2.1 [skip ci]
+
+* feat: Remove Price API And add assets API
+
+* chore(release): 1.3.0 [skip ci]
+
+* chore(release): 2.0.0 [skip ci]
+
+Co-authored-by: rickieNodereal <106944501+rickieNodereal@users.noreply.github.com>
+Co-authored-by: semantic-release-bot <semantic-release-bot@martynus.net>
+
+## [2.3.1](https://github.com/bnb-chain/zkbas-js-sdk/compare/v2.3.0...v2.3.1) (2022-10-27)
+
+
+### Bug Fixes
+
+* Account Type Update ([0794db0](https://github.com/bnb-chain/zkbas-js-sdk/commit/0794db065cd691ef409a32b7f022a41c46256ff6))
+
+# [2.3.0](https://github.com/bnb-chain/zkbas-js-sdk/compare/v2.2.0...v2.3.0) (2022-10-21)
+
+
+### Features
+
+* Add Tx Type ([7775623](https://github.com/bnb-chain/zkbas-js-sdk/commit/7775623d3305869a5805979c67cb078e97025e46))
+
+# [2.2.0](https://github.com/bnb-chain/zkbas-js-sdk/compare/v2.1.4...v2.2.0) (2022-10-21)
+
+
+### Features
+
+* Get tx filter type ([b1a013b](https://github.com/bnb-chain/zkbas-js-sdk/commit/b1a013bb12cb62800f626a4bdbebc48d1b5735b6))
+* Type stringify ([30f8d70](https://github.com/bnb-chain/zkbas-js-sdk/commit/30f8d7087a088d48983438403ea47452985fcce1))
+
+## [2.1.4](https://github.com/bnb-chain/zkbas-js-sdk/compare/v2.1.3...v2.1.4) (2022-10-10)
+
+
+### Bug Fixes
+
+* Asset add icon field ([3fd0194](https://github.com/bnb-chain/zkbas-js-sdk/commit/3fd01945f39f2094f4222fa43ba080729cad890c))
+
+## [2.1.3](https://github.com/bnb-chain/zkbas-js-sdk/compare/v2.1.2...v2.1.3) (2022-10-10)
+
+
+### Bug Fixes
+
+* Update WASM and remove swap function ([d5de2cf](https://github.com/bnb-chain/zkbas-js-sdk/commit/d5de2cfe13fffeeef1753a9a29978373c0e04084))
+
+## [2.1.2](https://github.com/bnb-chain/zkbas-js-sdk/compare/v2.1.1...v2.1.2) (2022-10-10)
+
+
+### Bug Fixes
+
+* GetGasFee tx Type ([5da6645](https://github.com/bnb-chain/zkbas-js-sdk/commit/5da664530d82c7385379b20d8269446089441475))
+
+## [2.1.1](https://github.com/bnb-chain/zkbas-js-sdk/compare/v2.1.0...v2.1.1) (2022-10-09)
+
+
+### Bug Fixes
+
+* Get GasFee need txType ([fb07045](https://github.com/bnb-chain/zkbas-js-sdk/commit/fb07045ca896fa2690de9d9d23519581981f3a7a))
+
+# [2.1.0](https://github.com/bnb-chain/zkbas-js-sdk/compare/v2.0.0...v2.1.0) (2022-10-09)
+
+
+### Features
+
+* Get GasFee need txType ([ec98fe2](https://github.com/bnb-chain/zkbas-js-sdk/commit/ec98fe23d256296228888e0961d6042b8bc1384d))
+
 # [2.0.0](https://github.com/bnb-chain/zkbas-js-sdk/compare/v1.3.0...v2.0.0) (2022-09-19)
 
 

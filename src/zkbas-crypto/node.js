@@ -2,7 +2,7 @@ import { resolve } from 'path';
 import { exec } from 'shelljs';
 
 const getResultLine = (str) => {
-  return str.replace(/Zkbas Crypto Assembly/gi, '').trim();
+  return str.replace(/ZkBNB Crypto Assembly\n/gi, '').trim();
 };
 
 const wasmExec = (func, funcArgs) => {
@@ -39,12 +39,6 @@ const eddsaSign = (seed, message) => wasmExec('eddsaSign', [seed, message]);
 
 const eddsaVerify = (publicKey, signature, message) => wasmExec('eddsaVerify', [publicKey, signature, message]);
 
-const signAddLiquidity = (seed, segmentstr) => wasmExec('signAddLiquidity', [seed, segmentstr]);
-
-const signRemoveLiquidity = (seed, segmentstr) => wasmExec('signRemoveLiquidity', [seed, segmentstr]);
-
-const signSwap = (seed, segmentstr) => wasmExec('signSwap', [seed, segmentstr]);
-
 const signTransfer = (seed, segmentstr) => wasmExec('signTransfer', [seed, segmentstr]);
 
 const signWithdraw = (seed, segmentstr) => wasmExec('signWithdraw', [seed, segmentstr]);
@@ -72,9 +66,6 @@ export const ZkCrypto = {
   generateEddsaKey,
   eddsaSign,
   eddsaVerify,
-  signAddLiquidity,
-  signRemoveLiquidity,
-  signSwap,
   signTransfer,
   signWithdraw,
   signOffer,

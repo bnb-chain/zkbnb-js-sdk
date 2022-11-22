@@ -27,6 +27,7 @@ export type Asset = {
   address: string;
   price: Price;
   is_gas_asset: number;
+  icon: string;
 };
 
 export type Price = string;
@@ -59,6 +60,7 @@ export type Account = {
   nonce: number;
   assets: AccountAsset[];
   lps: AccountLp[];
+  total_asset_value: string;
 };
 
 export type AccountLp = {
@@ -153,6 +155,8 @@ export type Tx = {
   block_id: number;
   created_at: TimeStamp;
   state_root: string;
+  to_account_name: string;
+  to_account_index: string;
 };
 
 export type Nft = {
@@ -171,14 +175,9 @@ export type Nft = {
 export enum TxType {
   TxTypeEmpty = 0,
   TxTypeRegisterZns,
-  TxTypeCreatePair,
-  TxTypeUpdatePairRate,
   TxTypeDeposit,
   TxTypeDepositNft,
   TxTypeTransfer,
-  TxTypeSwap,
-  TxTypeAddLiquidity,
-  TxTypeRemoveLiquidity,
   TxTypeWithdraw,
   TxTypeCreateCollection,
   TxTypeMintNft,
@@ -188,7 +187,6 @@ export enum TxType {
   TxTypeWithdrawNft,
   TxTypeFullExit,
   TxTypeFullExitNft,
-  TxTypeOffer,
 }
 
 export {};

@@ -19,10 +19,21 @@ export class Client {
   /**
    * returns txs by account public key
    */
-  async getTxsByAccountPk(accountPk: Zk.AccountPk, offset: number, limit: number) {
+  async getTxsByAccountPk({
+    accountPk,
+    types,
+    offset,
+    limit,
+  }: {
+    accountPk: Zk.AccountPk;
+    types: Zk.TxType[];
+    offset: number;
+    limit: number;
+  }) {
     return await this.http.req(API.API_MAP.GetTxsByAccount, {
       value: accountPk,
       by: 'account_pk',
+      types: JSON.stringify(types),
       offset,
       limit,
     });
@@ -31,10 +42,21 @@ export class Client {
   /**
    * returns txs by account account name
    */
-  async getTxsByAccountName(accountName: string, offset: number, limit: number) {
+  async getTxsByAccountName({
+    accountName,
+    types,
+    offset,
+    limit,
+  }: {
+    accountName: string;
+    types: Zk.TxType[];
+    offset: number;
+    limit: number;
+  }) {
     return await this.http.req(API.API_MAP.GetTxsByAccount, {
       value: accountName,
       by: 'account_name',
+      types: JSON.stringify(types),
       offset,
       limit,
     });
@@ -43,10 +65,21 @@ export class Client {
   /**
    * returns txs by account account index
    */
-  async getTxsByAccountIndex(accountIndex: Zk.AccountIndex, offset: number, limit: number) {
+  async getTxsByAccountIndex({
+    accountIndex,
+    types,
+    offset,
+    limit,
+  }: {
+    accountIndex: Zk.AccountIndex;
+    types: Zk.TxType[];
+    offset: number;
+    limit: number;
+  }) {
     return this.http.req(API.API_MAP.GetTxsByAccount, {
       by: 'account_index',
       value: accountIndex,
+      types: JSON.stringify(types),
       offset,
       limit,
     });
@@ -71,9 +104,6 @@ export class Client {
     });
   }
 
-  /**
-   * returns accounts by query conditions
-   */
   /**
    * returns accounts by query conditions
    */
@@ -105,9 +135,10 @@ export class Client {
   /**
    * returns gas fee for asset
    */
-  async getGasFee(assetId: number) {
+  async getGasFee(assetId: number, txType: number) {
     return await this.http.req(API.API_MAP.GetGasFee, {
       asset_id: assetId,
+      tx_type: txType,
     });
   }
 
@@ -244,18 +275,12 @@ export class Client {
   /**
    * returns tx by tx hash
    */
-  /**
-   * returns tx by tx hash
-   */
   async getTxByHash(txHash: string) {
     return this.http.req(API.API_MAP.GetTx, {
       hash: txHash,
     });
   }
 
-  /**
-   * returns the mempool txs
-   */
   /**
    * returns the mempool txs
    */
