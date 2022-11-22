@@ -1,3 +1,68 @@
+# [3.0.0](https://github.com/bnb-chain/zkbas-js-sdk/compare/v2.3.1...v3.0.0) (2022-11-22)
+
+
+* Release 2.0.0 (#18) ([5bb15f2](https://github.com/bnb-chain/zkbas-js-sdk/commit/5bb15f22bfb34c0fd0f290162afc0b2a8ed62203)), closes [#18](https://github.com/bnb-chain/zkbas-js-sdk/issues/18) [#14](https://github.com/bnb-chain/zkbas-js-sdk/issues/14)
+
+
+### BREAKING CHANGES
+
+* Modify many API
+
+* chore(release): 1.0.0 [skip ci]
+
+* fix: Creatred time type
+
+* chore(release): 1.0.1 [skip ci]
+
+* feat: New wasm method
+
+* feat: CurrentHeight API
+
+* chore(release): 1.1.0 [skip ci]
+
+* docs: Update PR tempalte
+
+* fix: CurrentPrice API request param
+
+* chore(release): 1.1.1 [skip ci]
+
+* fix: Export d.ts
+
+* chore(release): 1.1.2 [skip ci]
+
+* fix: Export constants
+
+* chore(release): 1.1.3 [skip ci]
+
+* fix: Post and Get params type
+
+* chore(release): 1.1.4 [skip ci]
+
+* fix: Remove Comment
+
+* chore(release): 1.1.5 [skip ci]
+
+* fix: TxType export
+
+* chore(release): 1.1.6 [skip ci]
+
+* feat: Axios response type
+
+* chore(release): 1.2.0 [skip ci]
+
+* fix: SendRawTx return type
+
+* chore(release): 1.2.1 [skip ci]
+
+* feat: Remove Price API And add assets API
+
+* chore(release): 1.3.0 [skip ci]
+
+* chore(release): 2.0.0 [skip ci]
+
+Co-authored-by: rickieNodereal <106944501+rickieNodereal@users.noreply.github.com>
+Co-authored-by: semantic-release-bot <semantic-release-bot@martynus.net>
+
 ## [2.3.1](https://github.com/bnb-chain/zkbas-js-sdk/compare/v2.3.0...v2.3.1) (2022-10-27)
 
 
