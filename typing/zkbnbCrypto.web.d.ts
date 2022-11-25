@@ -1,4 +1,4 @@
-declare module '@bnb-chain/zkbas-js-sdk/zkCrypto/web' {
+declare module '@bnb-chain/zkbnb-js-sdk/zkCrypto/web' {
   export function ZkCrypto(): Promise<Z>;
 
   export interface Z {

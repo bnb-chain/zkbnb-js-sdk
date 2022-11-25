@@ -4,5 +4,5 @@ dist
 **/dist/**
 
 # $(go env GOROOT)/misc/wasm/
-src/zkbas-crypto/wasm_exec.js
-src/zkbas-crypto/wasm_exec_node.js
+src/zkbnb-crypto/wasm_exec.js
+src/zkbnb-crypto/wasm_exec_node.js
