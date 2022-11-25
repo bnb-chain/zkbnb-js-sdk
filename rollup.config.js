@@ -94,10 +94,10 @@ export default async () => {
       ],
     }),
     {
-      input: ['./src/zkbas-crypto/node.index.js', './src/zkbas-crypto/web.index.js'],
+      input: ['./src/zkbnb-crypto/node.index.js', './src/zkbnb-crypto/web.index.js'],
       output: [
-        { dir: './dist/zkbas-crypto/cjs', format: 'cjs', sourcemap: true },
-        { dir: './dist/zkbas-crypto/esm', format: 'esm', sourcemap: true },
+        { dir: './dist/zkbnb-crypto/cjs', format: 'cjs', sourcemap: true },
+        { dir: './dist/zkbnb-crypto/esm', format: 'esm', sourcemap: true },
       ],
       plugins: [
         wasm({
@@ -105,9 +105,9 @@ export default async () => {
         }),
         copy({
           targets: [
-            { src: 'src/zkbas-crypto/main.wasm', dest: 'dist/zkbas-crypto/cjs' },
-            { src: 'src/zkbas-crypto/wasm_exec_node.js', dest: 'dist/zkbas-crypto/cjs' },
-            { src: 'src/zkbas-crypto/wasm_exec.js', dest: 'dist/zkbas-crypto/cjs' },
+            { src: 'src/zkbnb-crypto/main.wasm', dest: 'dist/zkbnb-crypto/cjs' },
+            { src: 'src/zkbnb-crypto/wasm_exec_node.js', dest: 'dist/zkbnb-crypto/cjs' },
+            { src: 'src/zkbnb-crypto/wasm_exec.js', dest: 'dist/zkbnb-crypto/cjs' },
           ],
         }),
       ],

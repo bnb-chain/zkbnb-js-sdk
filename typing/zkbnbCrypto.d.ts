@@ -1,4 +1,4 @@
-declare module '@bnb-chain/zkbas-js-sdk/zkCrypto' {
+declare module '@bnb-chain/zkbnb-js-sdk/zkCrypto' {
   interface ZK_CRYPTO_TPYE {
     cleanPackedAmount: (amount: string) => string;
     cleanPackedFee: (amount: string) => string;

@@ -1,7 +1,7 @@
-# [3.0.0](https://github.com/bnb-chain/zkbas-js-sdk/compare/v2.3.1...v3.0.0) (2022-11-22)
+# [3.0.0](https://github.com/bnb-chain/zkbnb-crypto/compare/v2.3.1...v3.0.0) (2022-11-22)
 
 
-* Release 2.0.0 (#18) ([5bb15f2](https://github.com/bnb-chain/zkbas-js-sdk/commit/5bb15f22bfb34c0fd0f290162afc0b2a8ed62203)), closes [#18](https://github.com/bnb-chain/zkbas-js-sdk/issues/18) [#14](https://github.com/bnb-chain/zkbas-js-sdk/issues/14)
+* Release 2.0.0 (#18) ([5bb15f2](https://github.com/bnb-chain/zkbnb-crypto/commit/5bb15f22bfb34c0fd0f290162afc0b2a8ed62203)), closes [#18](https://github.com/bnb-chain/zkbnb-crypto/issues/18) [#14](https://github.com/bnb-chain/zkbnb-crypto/issues/14)
 
 
 ### BREAKING CHANGES
@@ -63,231 +63,231 @@
 Co-authored-by: rickieNodereal <106944501+rickieNodereal@users.noreply.github.com>
 Co-authored-by: semantic-release-bot <semantic-release-bot@martynus.net>
 
-## [2.3.1](https://github.com/bnb-chain/zkbas-js-sdk/compare/v2.3.0...v2.3.1) (2022-10-27)
+## [2.3.1](https://github.com/bnb-chain/zkbnb-crypto/compare/v2.3.0...v2.3.1) (2022-10-27)
 
 
 ### Bug Fixes
 
-* Account Type Update ([0794db0](https://github.com/bnb-chain/zkbas-js-sdk/commit/0794db065cd691ef409a32b7f022a41c46256ff6))
+* Account Type Update ([0794db0](https://github.com/bnb-chain/zkbnb-crypto/commit/0794db065cd691ef409a32b7f022a41c46256ff6))
 
-# [2.3.0](https://github.com/bnb-chain/zkbas-js-sdk/compare/v2.2.0...v2.3.0) (2022-10-21)
+# [2.3.0](https://github.com/bnb-chain/zkbnb-crypto/compare/v2.2.0...v2.3.0) (2022-10-21)
 
 
 ### Features
 
-* Add Tx Type ([7775623](https://github.com/bnb-chain/zkbas-js-sdk/commit/7775623d3305869a5805979c67cb078e97025e46))
+* Add Tx Type ([7775623](https://github.com/bnb-chain/zkbnb-crypto/commit/7775623d3305869a5805979c67cb078e97025e46))
 
-# [2.2.0](https://github.com/bnb-chain/zkbas-js-sdk/compare/v2.1.4...v2.2.0) (2022-10-21)
-
-
-### Features
-
-* Get tx filter type ([b1a013b](https://github.com/bnb-chain/zkbas-js-sdk/commit/b1a013bb12cb62800f626a4bdbebc48d1b5735b6))
-* Type stringify ([30f8d70](https://github.com/bnb-chain/zkbas-js-sdk/commit/30f8d7087a088d48983438403ea47452985fcce1))
-
-## [2.1.4](https://github.com/bnb-chain/zkbas-js-sdk/compare/v2.1.3...v2.1.4) (2022-10-10)
-
-
-### Bug Fixes
-
-* Asset add icon field ([3fd0194](https://github.com/bnb-chain/zkbas-js-sdk/commit/3fd01945f39f2094f4222fa43ba080729cad890c))
-
-## [2.1.3](https://github.com/bnb-chain/zkbas-js-sdk/compare/v2.1.2...v2.1.3) (2022-10-10)
-
-
-### Bug Fixes
-
-* Update WASM and remove swap function ([d5de2cf](https://github.com/bnb-chain/zkbas-js-sdk/commit/d5de2cfe13fffeeef1753a9a29978373c0e04084))
-
-## [2.1.2](https://github.com/bnb-chain/zkbas-js-sdk/compare/v2.1.1...v2.1.2) (2022-10-10)
-
-
-### Bug Fixes
-
-* GetGasFee tx Type ([5da6645](https://github.com/bnb-chain/zkbas-js-sdk/commit/5da664530d82c7385379b20d8269446089441475))
-
-## [2.1.1](https://github.com/bnb-chain/zkbas-js-sdk/compare/v2.1.0...v2.1.1) (2022-10-09)
-
-
-### Bug Fixes
-
-* Get GasFee need txType ([fb07045](https://github.com/bnb-chain/zkbas-js-sdk/commit/fb07045ca896fa2690de9d9d23519581981f3a7a))
-
-# [2.1.0](https://github.com/bnb-chain/zkbas-js-sdk/compare/v2.0.0...v2.1.0) (2022-10-09)
+# [2.2.0](https://github.com/bnb-chain/zkbnb-crypto/compare/v2.1.4...v2.2.0) (2022-10-21)
 
 
 ### Features
 
-* Get GasFee need txType ([ec98fe2](https://github.com/bnb-chain/zkbas-js-sdk/commit/ec98fe23d256296228888e0961d6042b8bc1384d))
+* Get tx filter type ([b1a013b](https://github.com/bnb-chain/zkbnb-crypto/commit/b1a013bb12cb62800f626a4bdbebc48d1b5735b6))
+* Type stringify ([30f8d70](https://github.com/bnb-chain/zkbnb-crypto/commit/30f8d7087a088d48983438403ea47452985fcce1))
 
-# [2.0.0](https://github.com/bnb-chain/zkbas-js-sdk/compare/v1.3.0...v2.0.0) (2022-09-19)
+## [2.1.4](https://github.com/bnb-chain/zkbnb-crypto/compare/v2.1.3...v2.1.4) (2022-10-10)
 
 
-* refactor!: New API ([fa2076c](https://github.com/bnb-chain/zkbas-js-sdk/commit/fa2076cf72201ffb4dee51fd5b9d31dec9f169a4))
+### Bug Fixes
+
+* Asset add icon field ([3fd0194](https://github.com/bnb-chain/zkbnb-crypto/commit/3fd01945f39f2094f4222fa43ba080729cad890c))
+
+## [2.1.3](https://github.com/bnb-chain/zkbnb-crypto/compare/v2.1.2...v2.1.3) (2022-10-10)
+
+
+### Bug Fixes
+
+* Update WASM and remove swap function ([d5de2cf](https://github.com/bnb-chain/zkbnb-crypto/commit/d5de2cfe13fffeeef1753a9a29978373c0e04084))
+
+## [2.1.2](https://github.com/bnb-chain/zkbnb-crypto/compare/v2.1.1...v2.1.2) (2022-10-10)
+
+
+### Bug Fixes
+
+* GetGasFee tx Type ([5da6645](https://github.com/bnb-chain/zkbnb-crypto/commit/5da664530d82c7385379b20d8269446089441475))
+
+## [2.1.1](https://github.com/bnb-chain/zkbnb-crypto/compare/v2.1.0...v2.1.1) (2022-10-09)
+
+
+### Bug Fixes
+
+* Get GasFee need txType ([fb07045](https://github.com/bnb-chain/zkbnb-crypto/commit/fb07045ca896fa2690de9d9d23519581981f3a7a))
+
+# [2.1.0](https://github.com/bnb-chain/zkbnb-crypto/compare/v2.0.0...v2.1.0) (2022-10-09)
 
 
 ### Features
 
-* add getAccountNameHash methods ([#14](https://github.com/bnb-chain/zkbas-js-sdk/issues/14)) ([1db8eef](https://github.com/bnb-chain/zkbas-js-sdk/commit/1db8eefbb4a7f021be93d05d75109eae4caab287))
+* Get GasFee need txType ([ec98fe2](https://github.com/bnb-chain/zkbnb-crypto/commit/ec98fe23d256296228888e0961d6042b8bc1384d))
+
+# [2.0.0](https://github.com/bnb-chain/zkbnb-crypto/compare/v1.3.0...v2.0.0) (2022-09-19)
+
+
+* refactor!: New API ([fa2076c](https://github.com/bnb-chain/zkbnb-crypto/commit/fa2076cf72201ffb4dee51fd5b9d31dec9f169a4))
+
+
+### Features
+
+* add getAccountNameHash methods ([#14](https://github.com/bnb-chain/zkbnb-crypto/issues/14)) ([1db8eef](https://github.com/bnb-chain/zkbnb-crypto/commit/1db8eefbb4a7f021be93d05d75109eae4caab287))
 
 
 ### BREAKING CHANGES
 
 * Modify many API
 
-# [1.3.0](https://github.com/bnb-chain/zkbas-js-sdk/compare/v1.2.1...v1.3.0) (2022-09-19)
+# [1.3.0](https://github.com/bnb-chain/zkbnb-crypto/compare/v1.2.1...v1.3.0) (2022-09-19)
 
 
 ### Features
 
-* Remove Price API And add assets API ([76d18f3](https://github.com/bnb-chain/zkbas-js-sdk/commit/76d18f302c3b1eb75a2743e0fa6f782b251472fd))
+* Remove Price API And add assets API ([76d18f3](https://github.com/bnb-chain/zkbnb-crypto/commit/76d18f302c3b1eb75a2743e0fa6f782b251472fd))
 
-## [1.2.1](https://github.com/bnb-chain/zkbas-js-sdk/compare/v1.2.0...v1.2.1) (2022-09-15)
+## [1.2.1](https://github.com/bnb-chain/zkbnb-crypto/compare/v1.2.0...v1.2.1) (2022-09-15)
 
 
 ### Bug Fixes
 
-* SendRawTx return type ([1f06016](https://github.com/bnb-chain/zkbas-js-sdk/commit/1f06016fbdf7518715f03ea49ab447ab567d0aef))
+* SendRawTx return type ([1f06016](https://github.com/bnb-chain/zkbnb-crypto/commit/1f06016fbdf7518715f03ea49ab447ab567d0aef))
 
-# [1.2.0](https://github.com/bnb-chain/zkbas-js-sdk/compare/v1.1.6...v1.2.0) (2022-09-13)
+# [1.2.0](https://github.com/bnb-chain/zkbnb-crypto/compare/v1.1.6...v1.2.0) (2022-09-13)
 
 
 ### Features
 
-* Axios response type ([26961f8](https://github.com/bnb-chain/zkbas-js-sdk/commit/26961f80a72f4f2041608517a7d1b3c7f8dcd549))
+* Axios response type ([26961f8](https://github.com/bnb-chain/zkbnb-crypto/commit/26961f80a72f4f2041608517a7d1b3c7f8dcd549))
 
-## [1.1.6](https://github.com/bnb-chain/zkbas-js-sdk/compare/v1.1.5...v1.1.6) (2022-09-13)
-
-
-### Bug Fixes
-
-* TxType export ([75bb0a4](https://github.com/bnb-chain/zkbas-js-sdk/commit/75bb0a41bc5faac3d7e812c2e1d2e62e993f25ff))
-
-## [1.1.5](https://github.com/bnb-chain/zkbas-js-sdk/compare/v1.1.4...v1.1.5) (2022-09-13)
+## [1.1.6](https://github.com/bnb-chain/zkbnb-crypto/compare/v1.1.5...v1.1.6) (2022-09-13)
 
 
 ### Bug Fixes
 
-* Remove Comment ([e3f335c](https://github.com/bnb-chain/zkbas-js-sdk/commit/e3f335c018a458d8a16b4996e2418c61f4a81318))
+* TxType export ([75bb0a4](https://github.com/bnb-chain/zkbnb-crypto/commit/75bb0a41bc5faac3d7e812c2e1d2e62e993f25ff))
 
-## [1.1.4](https://github.com/bnb-chain/zkbas-js-sdk/compare/v1.1.3...v1.1.4) (2022-09-09)
-
-
-### Bug Fixes
-
-* Post and Get params type ([54537b9](https://github.com/bnb-chain/zkbas-js-sdk/commit/54537b9b86452a7eda65bfb7e393d86e5cafeca3))
-
-## [1.1.3](https://github.com/bnb-chain/zkbas-js-sdk/compare/v1.1.2...v1.1.3) (2022-09-09)
+## [1.1.5](https://github.com/bnb-chain/zkbnb-crypto/compare/v1.1.4...v1.1.5) (2022-09-13)
 
 
 ### Bug Fixes
 
-* Export constants ([dbae7e0](https://github.com/bnb-chain/zkbas-js-sdk/commit/dbae7e0e105e12eb6c7255386fe41770dbd60888))
+* Remove Comment ([e3f335c](https://github.com/bnb-chain/zkbnb-crypto/commit/e3f335c018a458d8a16b4996e2418c61f4a81318))
 
-## [1.1.2](https://github.com/bnb-chain/zkbas-js-sdk/compare/v1.1.1...v1.1.2) (2022-09-09)
-
-
-### Bug Fixes
-
-* Export d.ts ([547a2ef](https://github.com/bnb-chain/zkbas-js-sdk/commit/547a2efd6e8b83a872949996624571431c361f3f))
-
-## [1.1.1](https://github.com/bnb-chain/zkbas-js-sdk/compare/v1.1.0...v1.1.1) (2022-09-08)
+## [1.1.4](https://github.com/bnb-chain/zkbnb-crypto/compare/v1.1.3...v1.1.4) (2022-09-09)
 
 
 ### Bug Fixes
 
-* CurrentPrice API request param ([fee006e](https://github.com/bnb-chain/zkbas-js-sdk/commit/fee006ea280603e2747e6d9fb2358eda3c8c67fe))
+* Post and Get params type ([54537b9](https://github.com/bnb-chain/zkbnb-crypto/commit/54537b9b86452a7eda65bfb7e393d86e5cafeca3))
 
-# [1.1.0](https://github.com/bnb-chain/zkbas-js-sdk/compare/v1.0.1...v1.1.0) (2022-09-08)
+## [1.1.3](https://github.com/bnb-chain/zkbnb-crypto/compare/v1.1.2...v1.1.3) (2022-09-09)
+
+
+### Bug Fixes
+
+* Export constants ([dbae7e0](https://github.com/bnb-chain/zkbnb-crypto/commit/dbae7e0e105e12eb6c7255386fe41770dbd60888))
+
+## [1.1.2](https://github.com/bnb-chain/zkbnb-crypto/compare/v1.1.1...v1.1.2) (2022-09-09)
+
+
+### Bug Fixes
+
+* Export d.ts ([547a2ef](https://github.com/bnb-chain/zkbnb-crypto/commit/547a2efd6e8b83a872949996624571431c361f3f))
+
+## [1.1.1](https://github.com/bnb-chain/zkbnb-crypto/compare/v1.1.0...v1.1.1) (2022-09-08)
+
+
+### Bug Fixes
+
+* CurrentPrice API request param ([fee006e](https://github.com/bnb-chain/zkbnb-crypto/commit/fee006ea280603e2747e6d9fb2358eda3c8c67fe))
+
+# [1.1.0](https://github.com/bnb-chain/zkbnb-crypto/compare/v1.0.1...v1.1.0) (2022-09-08)
 
 
 ### Features
 
-* CurrentHeight API ([d56a08b](https://github.com/bnb-chain/zkbas-js-sdk/commit/d56a08bc534daa528eb16288e3cc3434ca5ee34a))
-* New wasm method ([e200d89](https://github.com/bnb-chain/zkbas-js-sdk/commit/e200d89a12259dac00ee93fa2809f52d29f21235))
+* CurrentHeight API ([d56a08b](https://github.com/bnb-chain/zkbnb-crypto/commit/d56a08bc534daa528eb16288e3cc3434ca5ee34a))
+* New wasm method ([e200d89](https://github.com/bnb-chain/zkbnb-crypto/commit/e200d89a12259dac00ee93fa2809f52d29f21235))
 
-## [1.0.1](https://github.com/bnb-chain/zkbas-js-sdk/compare/v1.0.0...v1.0.1) (2022-09-05)
+## [1.0.1](https://github.com/bnb-chain/zkbnb-crypto/compare/v1.0.0...v1.0.1) (2022-09-05)
 
 
 ### Bug Fixes
 
-* Creatred time type ([44feb1f](https://github.com/bnb-chain/zkbas-js-sdk/commit/44feb1f3a825d8fc9075fb55f27b0dac0b62c798))
+* Creatred time type ([44feb1f](https://github.com/bnb-chain/zkbnb-crypto/commit/44feb1f3a825d8fc9075fb55f27b0dac0b62c798))
 
-# [1.0.0](https://github.com/bnb-chain/zkbas-js-sdk/compare/v0.11.0...v1.0.0) (2022-08-30)
+# [1.0.0](https://github.com/bnb-chain/zkbnb-crypto/compare/v0.11.0...v1.0.0) (2022-08-30)
 
 
-* refactor!: New API ([69d76b5](https://github.com/bnb-chain/zkbas-js-sdk/commit/69d76b5ccec4b26e00aea59d5a7bc6dec72bb847))
+* refactor!: New API ([69d76b5](https://github.com/bnb-chain/zkbnb-crypto/commit/69d76b5ccec4b26e00aea59d5a7bc6dec72bb847))
 
 
 ### BREAKING CHANGES
 
 * Modify many API
 
-# [0.11.0](https://github.com/bnb-chain/zkbas-js-sdk/compare/v0.10.1...v0.11.0) (2022-08-23)
+# [0.11.0](https://github.com/bnb-chain/zkbnb-crypto/compare/v0.10.1...v0.11.0) (2022-08-23)
 
 
 ### Features
 
-* add getAccountNameHash methods ([#14](https://github.com/bnb-chain/zkbas-js-sdk/issues/14)) ([10d33ba](https://github.com/bnb-chain/zkbas-js-sdk/commit/10d33ba0db999528245c19231841141899971254))
+* add getAccountNameHash methods ([#14](https://github.com/bnb-chain/zkbnb-crypto/issues/14)) ([10d33ba](https://github.com/bnb-chain/zkbnb-crypto/commit/10d33ba0db999528245c19231841141899971254))
 
-## [0.10.1](https://github.com/bnb-chain/zkbas-js-sdk/compare/v0.10.0...v0.10.1) (2022-08-10)
+## [0.10.1](https://github.com/bnb-chain/zkbnb-crypto/compare/v0.10.0...v0.10.1) (2022-08-10)
 
 
 ### Bug Fixes
 
-* Tx API create_at type ([4f241bd](https://github.com/bnb-chain/zkbas-js-sdk/commit/4f241bd59619c7b3d6a0eead736d0bea020aa1df))
+* Tx API create_at type ([4f241bd](https://github.com/bnb-chain/zkbnb-crypto/commit/4f241bd59619c7b3d6a0eead736d0bea020aa1df))
 
-# [0.10.0](https://github.com/bnb-chain/zkbas-js-sdk/compare/v0.9.0...v0.10.0) (2022-08-10)
-
-
-### Features
-
-* New TX API ([87eda5a](https://github.com/bnb-chain/zkbas-js-sdk/commit/87eda5af89d14e71172db57aac73a06f2b3a1d17))
-
-# [0.9.0](https://github.com/bnb-chain/zkbas-js-sdk/compare/v0.8.0...v0.9.0) (2022-08-05)
+# [0.10.0](https://github.com/bnb-chain/zkbnb-crypto/compare/v0.9.0...v0.10.0) (2022-08-10)
 
 
 ### Features
 
-* Add Zkbas Crypto ([2a0df5e](https://github.com/bnb-chain/zkbas-js-sdk/commit/2a0df5eef338d435e7eccd4e7a565825d6270681))
+* New TX API ([87eda5a](https://github.com/bnb-chain/zkbnb-crypto/commit/87eda5af89d14e71172db57aac73a06f2b3a1d17))
 
-# [0.8.0](https://github.com/bnb-chain/zkbas-js-sdk/compare/v0.7.0...v0.8.0) (2022-08-05)
+# [0.9.0](https://github.com/bnb-chain/zkbnb-crypto/compare/v0.8.0...v0.9.0) (2022-08-05)
+
+
+### Features
+
+* Add ZkBNB Crypto ([2a0df5e](https://github.com/bnb-chain/zkbnb-crypto/commit/2a0df5eef338d435e7eccd4e7a565825d6270681))
+
+# [0.8.0](https://github.com/bnb-chain/zkbnb-crypto/compare/v0.7.0...v0.8.0) (2022-08-05)
 
 
 ### Bug Fixes
 
-* New api client param ([2a226af](https://github.com/bnb-chain/zkbas-js-sdk/commit/2a226af66ac1e1efb0c9639acf598e8be8d63d4c))
+* New api client param ([2a226af](https://github.com/bnb-chain/zkbnb-crypto/commit/2a226af66ac1e1efb0c9639acf598e8be8d63d4c))
 
 
 ### Features
 
-* Add api - GetGasAccount / GetAccountNftList ([fa4018d](https://github.com/bnb-chain/zkbas-js-sdk/commit/fa4018d87db3043f733bc489b15971b090891a94))
+* Add api - GetGasAccount / GetAccountNftList ([fa4018d](https://github.com/bnb-chain/zkbnb-crypto/commit/fa4018d87db3043f733bc489b15971b090891a94))
 
-# [0.7.0](https://github.com/bnb-chain/zkbas-js-sdk/compare/v0.6.1...v0.7.0) (2022-08-05)
-
-
-### Features
-
-* Integrate semantic-release with CI ([2aa593a](https://github.com/bnb-chain/zkbas-js-sdk/commit/2aa593abc5beea437dbf61cf0504d5878929f669))
-
-# [0.6.0](https://github.com/bnb-chain/zkbas-js-sdk/compare/v0.5.2...v0.6.0) (2022-08-05)
+# [0.7.0](https://github.com/bnb-chain/zkbnb-crypto/compare/v0.6.1...v0.7.0) (2022-08-05)
 
 
 ### Features
 
-* Add api - GetGasAccount / GetAccountNftList ([972191a](https://github.com/bnb-chain/zkbas-js-sdk/commit/972191a7cbe7cd8307e7e9d83c140704a420cf0a))
+* Integrate semantic-release with CI ([2aa593a](https://github.com/bnb-chain/zkbnb-crypto/commit/2aa593abc5beea437dbf61cf0504d5878929f669))
 
-## [0.5.2](https://github.com/bnb-chain/zkbas-js-sdk/compare/v0.5.1...v0.5.2) (2022-08-04)
+# [0.6.0](https://github.com/bnb-chain/zkbnb-crypto/compare/v0.5.2...v0.6.0) (2022-08-05)
+
+
+### Features
+
+* Add api - GetGasAccount / GetAccountNftList ([972191a](https://github.com/bnb-chain/zkbnb-crypto/commit/972191a7cbe7cd8307e7e9d83c140704a420cf0a))
+
+## [0.5.2](https://github.com/bnb-chain/zkbnb-crypto/compare/v0.5.1...v0.5.2) (2022-08-04)
 
 
 ### Bug Fixes
 
-* New Relase Workflow ([2c41cc6](https://github.com/bnb-chain/zkbas-js-sdk/commit/2c41cc69acece584156277d5416a7173f2d474dc))
+* New Relase Workflow ([2c41cc6](https://github.com/bnb-chain/zkbnb-crypto/commit/2c41cc69acece584156277d5416a7173f2d474dc))
 
-## [0.5.1](https://github.com/bnb-chain/zkbas-js-sdk/compare/v0.5.0...v0.5.1) (2022-08-04)
+## [0.5.1](https://github.com/bnb-chain/zkbnb-crypto/compare/v0.5.0...v0.5.1) (2022-08-04)
 
 
 ### Bug Fixes
 
-* New Relase Workflow ([cc19509](https://github.com/bnb-chain/zkbas-js-sdk/commit/cc195090837af9b3285fde0cba0a78ae7f1f4e89))
-* New Relase Workflow ([c9b9ccf](https://github.com/bnb-chain/zkbas-js-sdk/commit/c9b9ccf78963cc6906c5d35235f4412fa82875fe))
+* New Relase Workflow ([cc19509](https://github.com/bnb-chain/zkbnb-crypto/commit/cc195090837af9b3285fde0cba0a78ae7f1f4e89))
+* New Relase Workflow ([c9b9ccf](https://github.com/bnb-chain/zkbnb-crypto/commit/c9b9ccf78963cc6906c5d35235f4412fa82875fe))

@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 
-import { ZkCrypto } from '../src/zkbas-crypto/node.index';
+import { ZkCrypto } from '../src/zkbnb-crypto/node.index';
 
 const {
   cleanPackedAmount,
