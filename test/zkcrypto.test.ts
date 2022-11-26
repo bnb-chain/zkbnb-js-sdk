@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 
-import { ZkCrypto } from '../src/zkbas-crypto/node.index';
+import { ZkCrypto } from '../src/zkbnb-crypto/node.index';
 
 const {
   cleanPackedAmount,
@@ -102,7 +102,7 @@ describe('signTransfer', () => {
         'seed phrase',
         '{"from_account_index":0,"to_account_index":1,"to_account_name":"ddc6171f9fe33153d95c8394c9135c277eb645401b85eb499393a2aefe6422a6","asset_id":0,"asset_amount":"100","gas_account_index":1,"gas_fee_asset_id":3,"gas_fee_asset_amount":"3","memo":"transfer memo","call_data":"","expired_at":1654656781000,"nonce":1}'
       ),
-      '{"FromAccountIndex":0,"ToAccountIndex":1,"ToAccountNameHash":"ddc6171f9fe33153d95c8394c9135c277eb645401b85eb499393a2aefe6422a6","AssetId":0,"AssetAmount":100,"GasAccountIndex":1,"GasFeeAssetId":3,"GasFeeAssetAmount":3,"Memo":"transfer memo","CallData":"","CallDataHash":"Dd56AihX/sG4/6dmSpN6JQ065o81YGF1TTUx4mdBA9g=","ExpiredAt":1654656781000,"Nonce":1,"Sig":"r9s63bvi5B5a3Q34h6QJ1DZRsYsM3FRvOOlkpwc4RYQBJVYoD+BaOXQMTq75dK6WshFNggqABIH1Jr3fmSqhdw=="}'
+      '{"FromAccountIndex":0,"ToAccountIndex":1,"ToAccountNameHash":"ddc6171f9fe33153d95c8394c9135c277eb645401b85eb499393a2aefe6422a6","AssetId":0,"AssetAmount":100,"GasAccountIndex":1,"GasFeeAssetId":3,"GasFeeAssetAmount":3,"Memo":"transfer memo","CallData":"","CallDataHash":"Dd56AihX/sG4/6dmSpN6JQ065o81YGF1TTUx4mdBA9g=","ExpiredAt":1654656781000,"Nonce":1,"Sig":"//VFahLT3PwSG6CjjB0rXZwG90VvPTHPVYx5PVag3h0ETQEiEjnQ1KS8b7itQk5iWVUWT4pgMOMqC5IuSmWyTQ=="}'
     );
   });
 });
@@ -114,7 +114,7 @@ describe('signWithdraw', () => {
         'seed phrase',
         '{"from_account_index":0,"asset_id":0,"asset_amount":"100","gas_account_index":1,"gas_fee_asset_id":3,"gas_fee_asset_amount":"3","to_address":"0x507Bd54B4232561BC0Ca106F7b029d064fD6bE4c","expired_at":1654656781000,"nonce":1}'
       ),
-      '{"FromAccountIndex":0,"AssetId":0,"AssetAmount":100,"GasAccountIndex":1,"GasFeeAssetId":3,"GasFeeAssetAmount":3,"ToAddress":"0x507Bd54B4232561BC0Ca106F7b029d064fD6bE4c","ExpiredAt":1654656781000,"Nonce":1,"Sig":"dmyxw9HWjeiepG4holzgy0zxuVDRkTCAdhWQ6chyhpICqQBKBMifMapf5QfgFrrnxeRkVj6BPbfJb0tO/2aEzg=="}'
+      '{"FromAccountIndex":0,"AssetId":0,"AssetAmount":100,"GasAccountIndex":1,"GasFeeAssetId":3,"GasFeeAssetAmount":3,"ToAddress":"0x507Bd54B4232561BC0Ca106F7b029d064fD6bE4c","ExpiredAt":1654656781000,"Nonce":1,"Sig":"JdC+CbEeGKYXP0DYwixICZzRmcUdAF6okYCN8ksdCwMDOwMHldH8i/HQSmGNGz07IBstvfTAqIUkoN44dT5R0Q=="}'
     );
   });
 });
@@ -126,7 +126,7 @@ describe('signOffer', () => {
         'seed phrase',
         '{"type":0,"offer_id":1,"account_index":1,"nft_index":1500,"asset_id":1,"asset_amount":"10000","listed_at":1654656761000,"expired_at":1654656781000,"treasury_rate":200}'
       ),
-      '{"Type":0,"OfferId":1,"AccountIndex":1,"NftIndex":1500,"AssetId":1,"AssetAmount":10000,"ListedAt":1654656761000,"ExpiredAt":1654656781000,"TreasuryRate":200,"Sig":"vid9clqOCdIq62xKSQoJkypeiQrlF02mUEHcTXsqgAwBc3X9/tqwHU2cRQIFX0eIa42ew19+LEiYXKg32GFvtw=="}'
+      '{"Type":0,"OfferId":1,"AccountIndex":1,"NftIndex":1500,"AssetId":1,"AssetAmount":10000,"ListedAt":1654656761000,"ExpiredAt":1654656781000,"TreasuryRate":200,"Sig":"Mf2vl2eYGTvGatQ5GOs/pa8X4bCvYv+RAIR+d5AgwQcD5kAuNXeF+3YfYH2czOfnXJny1iXCZRdZPdUFfP64PA=="}'
     );
   });
 });
@@ -138,7 +138,7 @@ describe('signAtomicMatch', () => {
         'seed phrase',
         '{"account_index":0,"buy_offer":"{\\"Type\\":0,\\"OfferId\\":1,\\"AccountIndex\\":1,\\"NftIndex\\":1500,\\"AssetId\\":1,\\"AssetAmount\\":10000,\\"ListedAt\\":1654656761000,\\"ExpiredAt\\":1654656781000,\\"TreasuryRate\\":200,\\"Sig\\":\\"f7EryTm0P7xCgDYsyB+R+Of3ZHHyVa4uEI721shjoQgFdYuoMst49X0NFf9MraQevweNVH+728FHh0c1hEz20A==\\"}","sell_offer":"{\\"Type\\":1,\\"OfferId\\":1,\\"AccountIndex\\":2,\\"NftIndex\\":1500,\\"AssetId\\":1,\\"AssetAmount\\":10000,\\"ListedAt\\":1654656751000,\\"ExpiredAt\\":1654656791000,\\"TreasuryRate\\":200,\\"Sig\\":\\"cCh08P8RloU+uNZESVVbl5mqOFiiXR2JRJaAnmqxz6gCBXny2J9OUh5X7tRHaEBxDRRXQ1mQGMVMoe1/ncw3sQ==\\"}","gas_account_index":1,"gas_fee_asset_id":3,"gas_fee_asset_amount":"3","nonce":1,"expired_at":1654656781000}'
       ),
-      '{"AccountIndex":0,"BuyOffer":{"Type":0,"OfferId":1,"AccountIndex":1,"NftIndex":1500,"AssetId":1,"AssetAmount":10000,"ListedAt":1654656761000,"ExpiredAt":1654656781000,"TreasuryRate":200,"Sig":"f7EryTm0P7xCgDYsyB+R+Of3ZHHyVa4uEI721shjoQgFdYuoMst49X0NFf9MraQevweNVH+728FHh0c1hEz20A=="},"SellOffer":{"Type":1,"OfferId":1,"AccountIndex":2,"NftIndex":1500,"AssetId":1,"AssetAmount":10000,"ListedAt":1654656751000,"ExpiredAt":1654656791000,"TreasuryRate":200,"Sig":"cCh08P8RloU+uNZESVVbl5mqOFiiXR2JRJaAnmqxz6gCBXny2J9OUh5X7tRHaEBxDRRXQ1mQGMVMoe1/ncw3sQ=="},"GasAccountIndex":1,"GasFeeAssetId":3,"GasFeeAssetAmount":3,"CreatorAmount":null,"TreasuryAmount":null,"Nonce":1,"ExpiredAt":1654656781000,"Sig":"Dt+88wbApjRTSxKxeo/YDNfUxFzr+Jwfl0qxLHj2FJICTX0z5EHJhF6izW9Jg8fRO+lyID56GMjmxq78g8mVdQ=="}'
+      '{"AccountIndex":0,"BuyOffer":{"Type":0,"OfferId":1,"AccountIndex":1,"NftIndex":1500,"AssetId":1,"AssetAmount":10000,"ListedAt":1654656761000,"ExpiredAt":1654656781000,"TreasuryRate":200,"Sig":"f7EryTm0P7xCgDYsyB+R+Of3ZHHyVa4uEI721shjoQgFdYuoMst49X0NFf9MraQevweNVH+728FHh0c1hEz20A=="},"SellOffer":{"Type":1,"OfferId":1,"AccountIndex":2,"NftIndex":1500,"AssetId":1,"AssetAmount":10000,"ListedAt":1654656751000,"ExpiredAt":1654656791000,"TreasuryRate":200,"Sig":"cCh08P8RloU+uNZESVVbl5mqOFiiXR2JRJaAnmqxz6gCBXny2J9OUh5X7tRHaEBxDRRXQ1mQGMVMoe1/ncw3sQ=="},"GasAccountIndex":1,"GasFeeAssetId":3,"GasFeeAssetAmount":3,"CreatorAmount":null,"TreasuryAmount":null,"Nonce":1,"ExpiredAt":1654656781000,"Sig":"1Bgn8oqu11ghpS3+SYtyrZXiM4jNwn2oVK7JMbbdbJcF83YQV1hg52iPoQAGXtyDoV/V5Q9wWBkOhhAqNjR2oQ=="}'
     );
   });
 });
@@ -150,7 +150,7 @@ describe('signCancelOffer', () => {
         'seed phrase',
         '{"account_index":0,"offer_id":1,"gas_account_index":1,"gas_fee_asset_id":3,"gas_fee_asset_amount":"3","expired_at":1654656781000,"nonce":1}'
       ),
-      '{"AccountIndex":0,"OfferId":1,"GasAccountIndex":1,"GasFeeAssetId":3,"GasFeeAssetAmount":3,"ExpiredAt":1654656781000,"Nonce":1,"Sig":"8ER2WjYaTFJq57In60vHvNpuGX3LdltsSjshcaWFYhgEYavSEGSP5umNh7bOUZOwDkhafuZ3XgiiC+QFsCktcg=="}'
+      '{"AccountIndex":0,"OfferId":1,"GasAccountIndex":1,"GasFeeAssetId":3,"GasFeeAssetAmount":3,"ExpiredAt":1654656781000,"Nonce":1,"Sig":"cfpCo47nFGFAny3Xe/jokfupWQBV8buD81v+as5sHg8Ayu84e/WtQIzDKuMxVlVf+Wrhrl1YgGRbuHMRL5WF8g=="}'
     );
   });
 });
@@ -162,7 +162,7 @@ describe('signCreateCollection', () => {
         'seed phrase',
         '{"account_index":0,"collection_id":1,"name":"crypto punk","introduction":"crypto punk is the king of jpeg nft","gas_account_index":1,"gas_fee_asset_id":3,"gas_fee_asset_amount":"3","expired_at":1654656781000,"nonce":1}'
       ),
-      '{"AccountIndex":0,"CollectionId":0,"Name":"crypto punk","Introduction":"crypto punk is the king of jpeg nft","GasAccountIndex":1,"GasFeeAssetId":3,"GasFeeAssetAmount":3,"ExpiredAt":1654656781000,"Nonce":1,"Sig":"L6YHpXHqTEVhSgHb6YlX4k+I/ww1mLAFrqUOXzt8axECpolm7qrD0pG5A84EVf62BGw2/9AeuRqo3EqEEf73Aw=="}'
+      '{"AccountIndex":0,"CollectionId":0,"Name":"crypto punk","Introduction":"crypto punk is the king of jpeg nft","GasAccountIndex":1,"GasFeeAssetId":3,"GasFeeAssetAmount":3,"ExpiredAt":1654656781000,"Nonce":1,"Sig":"ICAFakoEeRcTG4ZxYOu49gvK5nmw5ApQpmki83pNIKgDU2p0RAOwxyWqJMGta5MKuxQt5cvHHtH91v2IfjhoFQ=="}'
     );
   });
 });
@@ -174,7 +174,7 @@ describe('signMintNft', () => {
         'seed phrase',
         '{"creator_account_index":15,"to_account_index":1,"to_account_name_hash":"ddc6171f9fe33153d95c8394c9135c277eb645401b85eb499393a2aefe6422a6","nft_content_hash":"7eb645401b85eb499393a2aefe6422a6ddc6171f9fe33153d95c8394c9135c27","nft_collection_id":65,"creator_treasury_rate":30,"gas_account_index":1,"gas_fee_asset_id":3,"gas_fee_asset_amount":"3","expired_at":1654656781000,"nonce":1}'
       ),
-      '{"CreatorAccountIndex":15,"ToAccountIndex":1,"ToAccountNameHash":"ddc6171f9fe33153d95c8394c9135c277eb645401b85eb499393a2aefe6422a6","NftIndex":0,"NftContentHash":"7eb645401b85eb499393a2aefe6422a6ddc6171f9fe33153d95c8394c9135c27","NftCollectionId":65,"CreatorTreasuryRate":30,"GasAccountIndex":1,"GasFeeAssetId":3,"GasFeeAssetAmount":3,"ExpiredAt":1654656781000,"Nonce":1,"Sig":"gQVb6CGj3fsRpRRe8KM5o/pfcXRXQuZtmZkYxlqJ9ocEimnGBbC4zdLQd3KXRum9HQmUguVnX1Do54oaQbZyEg=="}'
+      '{"CreatorAccountIndex":15,"ToAccountIndex":1,"ToAccountNameHash":"ddc6171f9fe33153d95c8394c9135c277eb645401b85eb499393a2aefe6422a6","NftIndex":0,"NftContentHash":"7eb645401b85eb499393a2aefe6422a6ddc6171f9fe33153d95c8394c9135c27","NftCollectionId":65,"CreatorTreasuryRate":30,"GasAccountIndex":1,"GasFeeAssetId":3,"GasFeeAssetAmount":3,"ExpiredAt":1654656781000,"Nonce":1,"Sig":"KrxsiPBVjDvKZA1tgvXoJwuYwMmIsB9odin6zUmjvQsAiFPCA7cPS5/PMIJVBcXiSDTimoSiOIw5ahYHgqIn4A=="}'
     );
   });
 });
@@ -186,7 +186,7 @@ describe('signTransferNft', () => {
         'seed phrase',
         '{"from_account_index":0,"to_account_index":1,"to_account_name":"ddc6171f9fe33153d95c8394c9135c277eb645401b85eb499393a2aefe6422a6","nft_index":15,"gas_account_index":1,"gas_fee_asset_id":3,"gas_fee_asset_amount":"3","call_data":"","expired_at":1654656781000,"nonce":1}'
       ),
-      '{"CreatorAccountIndex":0,"ToAccountIndex":1,"ToAccountNameHash":"","NftIndex":0,"NftContentHash":"","NftCollectionId":0,"CreatorTreasuryRate":0,"GasAccountIndex":1,"GasFeeAssetId":3,"GasFeeAssetAmount":3,"ExpiredAt":1654656781000,"Nonce":1,"Sig":"50i4tsWki5JPyPz2Q7c1NX16FxAnd8hwK9dcJYwez4IFj7ZZaifADi+mtcubk6/YYAPBBAI+YqULqRLfqvVClg=="}'
+      '{"CreatorAccountIndex":0,"ToAccountIndex":1,"ToAccountNameHash":"","NftIndex":0,"NftContentHash":"","NftCollectionId":0,"CreatorTreasuryRate":0,"GasAccountIndex":1,"GasFeeAssetId":3,"GasFeeAssetAmount":3,"ExpiredAt":1654656781000,"Nonce":1,"Sig":"DGhlvZsqT9BU9Cb2aIr2kUT5ar6Z8amo2kl6pN3RB5cBwPLC7i+0e1C22nLSLlDUHE9uq14DXWgb2kzNdt7GkA=="}'
     );
   });
 });
@@ -198,7 +198,7 @@ describe('signWithdrawNft', () => {
         'seed phrase',
         '{"account_index":1,"nft_index":15,"to_address":"0x507Bd54B4232561BC0Ca106F7b029d064fD6bE4c","gas_account_index":1,"gas_fee_asset_id":3,"gas_fee_asset_amount":"3","expired_at":1654656781000,"nonce":1}'
       ),
-      '{"AccountIndex":1,"CreatorAccountIndex":0,"CreatorAccountNameHash":null,"CreatorTreasuryRate":0,"NftIndex":15,"NftContentHash":null,"NftL1Address":"","NftL1TokenId":null,"CollectionId":0,"ToAddress":"0x507Bd54B4232561BC0Ca106F7b029d064fD6bE4c","GasAccountIndex":1,"GasFeeAssetId":3,"GasFeeAssetAmount":3,"ExpiredAt":1654656781000,"Nonce":1,"Sig":"GDt/3bY11JOgjBS+RWlVidaLS1uH6dEs6tOFzvWfVoYFcmC99vslbaB6aP9gqgwIB4BZefdiWBR93dt3TRHGgQ=="}'
+      '{"AccountIndex":1,"CreatorAccountIndex":0,"CreatorAccountNameHash":null,"CreatorTreasuryRate":0,"NftIndex":15,"NftContentHash":null,"CollectionId":0,"ToAddress":"0x507Bd54B4232561BC0Ca106F7b029d064fD6bE4c","GasAccountIndex":1,"GasFeeAssetId":3,"GasFeeAssetAmount":3,"ExpiredAt":1654656781000,"Nonce":1,"Sig":"8fvfUo+sZEujV71cJOCmstFCEsnFyp5SLUsElvwKbS4BjDpJIl4Ymke9obAO6Z3zHp1/PfHUNixP3nMapI5cLg=="}'
     );
   });
 });

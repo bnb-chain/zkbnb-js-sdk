@@ -1,7 +1,7 @@
 {
-  "name": "@bnb-chain/zkbas-js-sdk",
-  "version": "3.0.0",
-  "description": "zkbas JavaScript SDK",
+  "name": "@bnb-chain/zkbnb-js-sdk",
+  "version": "3.0.1",
+  "description": "zkbnb JavaScript SDK",
   "type": "commonjs",
   "main": "./dist/node/index.js",
   "publishConfig": {
@@ -14,8 +14,8 @@
     "typing"
   ],
   "browser": {
-    "./dist/zkbas-crypto/cjs/node.index.js": "./dist/zkbas-crypto/cjs/web.index.js",
-    "./dist/zkbas-crypto/esm/node.index.js": "./dist/zkbas-crypto/esm/web.index.js"
+    "./dist/zkbnb-crypto/cjs/node.index.js": "./dist/zkbnb-crypto/cjs/web.index.js",
+    "./dist/zkbnb-crypto/esm/node.index.js": "./dist/zkbnb-crypto/esm/web.index.js"
   },
   "exports": {
     ".": {
@@ -29,19 +29,19 @@
       }
     },
     "./zkCrypto": {
-      "default": "./dist/zkbas-crypto/cjs/node.index.js"
+      "default": "./dist/zkbnb-crypto/cjs/node.index.js"
     },
     "./zkCrypto/web": {
-      "default": "./dist/zkbas-crypto/cjs/web.index.js"
+      "default": "./dist/zkbnb-crypto/cjs/web.index.js"
     }
   },
   "typesVersions": {
     "*": {
       "zkCrypto": [
-        "./typing/zkbasCrypto.d.ts"
+        "./typing/zkbnbCrypto.d.ts"
       ],
       "zkCrypto/web": [
-        "./typing/zkbasCrypto.web.d.ts"
+        "./typing/zkbnbCrypto.web.d.ts"
       ]
     }
   },
@@ -70,18 +70,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bnb-chain/zkbas-js-sdk.git"
+    "url": "git+https://github.com/bnb-chain/zkbnb-js-sdk.git"
   },
   "keywords": [
-    "zkbas",
+    "zkbnb",
     "crypto"
   ],
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/bnb-chain/zkbas-js-sdk/issues"
+    "url": "https://github.com/bnb-chain/zkbnb-js-sdk/issues"
   },
-  "homepage": "https://github.com/bnb-chain/zkbas-js-sdk#readme",
+  "homepage": "https://github.com/bnb-chain/zkbnb-js-sdk#readme",
   "dependencies": {
     "axios": "^0.27.2",
     "shelljs": "^0.8.5"

@@ -1,44 +1,44 @@
 <p align="center">
-  <a href="https://www.npmjs.com/package/@bnb-chain/zkbas-js-sdk"><img src="https://img.shields.io/npm/v/@bnb-chain/zkbas-js-sdk" alt="Version"></a>
-  <a href="https://www.npmjs.com/package/@bnb-chain/zkbas-js-sdk"><img src="https://img.shields.io/npm/l/@bnb-chain/zkbas-js-sdk" alt="License"></a>
+  <a href="https://www.npmjs.com/package/@bnb-chain/zkbnb-js-sdk"><img src="https://img.shields.io/npm/v/@bnb-chain/zkbnb-js-sdk" alt="Version"></a>
+  <a href="https://www.npmjs.com/package/@bnb-chain/zkbnb-js-sdk"><img src="https://img.shields.io/npm/l/@bnb-chain/zkbnb-js-sdk" alt="License"></a>
 </p>
 
-# ZkBAS JavaScript SDK 
+# ZkBNB JavaScript SDK 
 
-> [Go SDK](https://github.com/bnb-chain/zkbas-go-sdk)
+> [Go SDK](https://github.com/bnb-chain/zkbnb-go-sdk)
 
-The ZkBAS JavaScript SDK provides a thin wrapper around thin all the apis provided by ZkBAS, including a simple key manager for signing txs and sending signed txs to ZkBAS.
+The ZkBNB JavaScript SDK provides a thin wrapper around thin all the apis provided by ZkBNB, including a simple key manager for signing txs and sending signed txs to ZkBNB.
 
 ## Install
 
 Using npm:
 
 ```bash
-> npm install @bnb-chain/zkbas-js-sdk
+> npm install @bnb-chain/zkbnb-js-sdk
 ```
 
 Using yarn:
 
 ```bash
-> yarn add @bnb-chain/zkbas-js-sdk
+> yarn add @bnb-chain/zkbnb-js-sdk
 ```
 
 Using pnpm:
 
 ```bash
-> pnpm add @bnb-chain/zkbas-js-sdk
+> pnpm add @bnb-chain/zkbnb-js-sdk
 ```
 
 Using jsDelivr CDN:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@bnb-chain/zkbas-js-sdk/dist/web/zk.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@bnb-chain/zkbnb-js-sdk/dist/web/zk.js"></script>
 ```
 
 Using unpkg CDN:
 
 ```html
-<script src="https://unpkg.com/@bnb-chain/zkbas-js-sdk/dist/web/zk.js"></script>
+<script src="https://unpkg.com/@bnb-chain/zkbnb-js-sdk/dist/web/zk.js"></script>
 ```
 
 ## Usage
@@ -51,7 +51,7 @@ Use directly in the browser via script tag:
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script src="https://cdn.jsdelivr.net/npm/@bnb-chain/zkbas-js-sdk/dist/web/zk.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@bnb-chain/zkbnb-js-sdk/dist/web/zk.js"></script>
 </head>
 <body>
   <script>
@@ -71,7 +71,7 @@ Use directly in the browser via script tag:
 If you use module bundler such as [Webpack](https://webpack.js.org/), [Rollup](https://rollupjs.org/guide/en/), etc:
 
 ```typescript
-import { Client } from '@bnb-chain/zkbas-js-sdk';
+import { Client } from '@bnb-chain/zkbnb-js-sdk';
 
 const client = new Client('http://172.22.41.67:8888');
 
@@ -86,7 +86,7 @@ const client = new Client('http://172.22.41.67:8888');
 Using SDK in Nodejs:
 
 ```javascript
-const { Client } = require('@bnb-chain/zkbas-js-sdk');
+const { Client } = require('@bnb-chain/zkbnb-js-sdk');
 
 const client = new Client('http://172.22.41.67:8888');
 
@@ -96,13 +96,9 @@ const client = new Client('http://172.22.41.67:8888');
 })()
 ```
 
-## Zkbas Crypto API
+## ZkBNB Crypto API
 
-The wrapper for [Zkbas Crypto](https://github.com/bnb-chain/zkbas-crypto).
-
-## API List
-
-> https://github.com/bnb-chain/zkbas-crypto/blob/master/wasm/legend/main.go#L33-L59
+The wrapper for [zkbnb Crypto](https://github.com/bnb-chain/zkbnb-crypto).
 
 ## Usage
 
@@ -111,7 +107,7 @@ Because of [WASM](https://webassembly.org/) different usage scenarios, there are
 ### run on Node.js
 
 ```javascript
-const { ZkCrypto } = require('@bnb-chain/zkbas-js-sdk/zkCrypto');
+const { ZkCrypto } = require('@bnb-chain/zkbnb-js-sdk/zkCrypto');
 
 console.log('getEddsaPublicKey:', ZkCrypto.getEddsaPublicKey('12312123123'))
 ```
@@ -119,7 +115,7 @@ console.log('getEddsaPublicKey:', ZkCrypto.getEddsaPublicKey('12312123123'))
 ### run on browser
 
 ```javascript
-import { ZkCrypto } from '@bnb-chain/zkbas-js-sdk/zkCrypto/web';
+import { ZkCrypto } from '@bnb-chain/zkbnb-js-sdk/zkCrypto/web';
 
 ;(async () => {
   const { getEddsaPublicKey } = await ZkCrypto();
