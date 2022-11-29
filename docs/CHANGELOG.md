@@ -1,3 +1,17 @@
+# [4.0.0](https://github.com/bnb-chain/zkbnb-js-sdk/compare/v3.0.1...v4.0.0) (2022-11-29)
+
+
+### Features
+
+* **ci:** Use master branch as release branch ([#26](https://github.com/bnb-chain/zkbnb-js-sdk/issues/26)) ([635f264](https://github.com/bnb-chain/zkbnb-js-sdk/commit/635f264056e1077b842f3a0add7cb3277941c221))
+
+
+### BREAKING CHANGES
+
+* **ci:** poseido hash
+
+Co-authored-by: Toccata Yi <toccata.yy@binance.com>
+
 # [3.0.1](https://github.com/bnb-chain/zkbnb-js-sdk/pull/21/commits/ff50437f9f54b73c5fe396df756e2779591d1184)
 
 ### BREAKING CHANGES
