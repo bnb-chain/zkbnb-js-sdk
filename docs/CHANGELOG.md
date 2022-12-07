@@ -1,3 +1,10 @@
+# [4.1.0](https://github.com/bnb-chain/zkbnb-js-sdk/compare/v4.0.0...v4.1.0) (2022-12-07)
+
+
+### Features
+
+* Update main.wasm ([#27](https://github.com/bnb-chain/zkbnb-js-sdk/issues/27)) ([ac2256f](https://github.com/bnb-chain/zkbnb-js-sdk/commit/ac2256fc3888b6803f3eb12273d331bacc08f1ce))
+
 # [4.0.0](https://github.com/bnb-chain/zkbnb-js-sdk/compare/v3.0.1...v4.0.0) (2022-11-29)
 
 
