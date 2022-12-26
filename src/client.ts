@@ -340,13 +340,30 @@ export class Client {
   }
 
   /**
-   * sends signed raw transaction and returns tx id
+   * get tx message that needs to be signed
+   * @param txType
+   * @param txInfo
    */
-  async sendRawTx(txType: string, txInfo: string) {
-    return this.http.req(API.API_MAP.SendRawTx, {
+  async getSignatureMessage(txType: string, txInfo: string) {
+    const body = await this.http.req(API.API_MAP.GetSignatureMessage, {
       tx_info: txInfo,
       tx_type: txType,
     });
+    return body.sign_body;
+  }
+
+  /**
+   * sends signed raw transaction and returns tx id
+   */
+  async sendRawTx(txType: string, txInfo: string, signature: string) {
+    return this.http.req(
+      API.API_MAP.SendRawTx,
+      {
+        tx_info: txInfo,
+        tx_type: txType,
+      },
+      signature
+    );
   }
 
   /**
@@ -368,12 +385,20 @@ export class Client {
     });
   }
 
+  /**
+   * @deprecated
+   * @param txInfo
+   */
   async sendRawCreateCollectionTx(txInfo: string) {
     return this.http.req(API.API_MAP.SendRawCreateCollectionTx, {
       tx_info: txInfo,
     });
   }
 
+  /**
+   * @deprecated
+   * @param txInfo
+   */
   async sendRawMintNftTx(txInfo: string) {
     return this.http.req(API.API_MAP.SendRawMintNftTx, {
       tx_info: txInfo,

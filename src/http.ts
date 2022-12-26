@@ -1,4 +1,4 @@
-import axios, { AxiosInstance, AxiosResponse } from 'axios';
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 import * as API from './api';
 
 export class Http {
@@ -10,20 +10,33 @@ export class Http {
     });
   }
 
-  async req<T extends API.URL_INFO>(api: T, params: API.IReqParmsMap[T]): Promise<API.IResponseMap[T]> {
+  async req<T extends API.URL_INFO>(
+    api: T,
+    params: API.IReqParmsMap[T],
+    signature?: string
+  ): Promise<API.IResponseMap[T]> {
     const [method, url] = api.split(' ') as ['GET' | 'POST', string];
 
     let response = { data: null };
+    const axiosRequestConfig: AxiosRequestConfig = signature
+      ? {
+          headers: {
+            Signature: signature,
+          },
+        }
+      : {};
 
     if (method === 'GET') {
       response = await this.client.get(url, {
         params,
+        ...axiosRequestConfig,
       });
     }
 
     if (method === 'POST') {
       response = await this.client.post(url, null, {
         params,
+        ...axiosRequestConfig,
       });
     }
 
