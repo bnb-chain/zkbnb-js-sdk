@@ -1,6 +1,6 @@
 {
   "name": "@bnb-chain/zkbnb-js-sdk",
-  "version": "3.0.1",
+  "version": "4.1.0",
   "description": "zkbnb JavaScript SDK",
   "type": "commonjs",
   "main": "./dist/node/index.js",
