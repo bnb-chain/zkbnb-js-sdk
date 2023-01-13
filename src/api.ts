@@ -112,7 +112,7 @@ export interface IReqParmsMap {
   [API_MAP.GetMaxOfferId]: { account_index: Zk.AccountIndex };
   [API_MAP.GetBlocks]: IReqBaseParam;
   [API_MAP.GetSignatureMessage]: { tx_type: string; tx_info: string };
-  [API_MAP.SendRawTx]: { tx_type: string; tx_info: string };
+  [API_MAP.SendRawTx]: { tx_type: string; tx_info: string; tx_signature: string };
   [API_MAP.SendRawCreateCollectionTx]: { tx_info: string };
   [API_MAP.SendRawMintNftTx]: { tx_info: string };
   [API_MAP.GetGasAccount]: Record<string, never>;

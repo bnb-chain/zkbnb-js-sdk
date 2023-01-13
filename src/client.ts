@@ -356,14 +356,11 @@ export class Client {
    * sends signed raw transaction and returns tx id
    */
   async sendRawTx(txType: string, txInfo: string, signature: string) {
-    return this.http.req(
-      API.API_MAP.SendRawTx,
-      {
-        tx_info: txInfo,
-        tx_type: txType,
-      },
-      signature
-    );
+    return this.http.req(API.API_MAP.SendRawTx, {
+      tx_info: txInfo,
+      tx_type: txType,
+      tx_signature: signature,
+    });
   }
 
   /**
