@@ -121,5 +121,8 @@ dist
 # Vscode
 .vscode
 
+# idea
+.idea
+
 .DS_store
 */.DS_Store

@@ -34,6 +34,7 @@ export const enum API_MAP {
   Search = 'GET /api/v1/search',
   SendRawCreateCollectionTx = 'POST /api/v1/tx/sendCreateCollectionTx',
   SendRawMintNftTx = 'POST /api/v1/tx/sendMintNftTx',
+  GetSignatureMessage = 'POST /api/v1/l2Signature',
   SendRawTx = 'POST /api/v1/sendTx',
 }
 
@@ -41,7 +42,7 @@ export const enum API_MAP {
 export type API_NAME = keyof typeof API_MAP;
 
 // 'GET /api/v1/tx/getTxsByPubKey' | ... | 'POST /api/v1/tx/sendCreateCollectionTx'
-export type URL_INFO = typeof API_MAP[API_NAME];
+export type URL_INFO = (typeof API_MAP)[API_NAME];
 
 export interface IReqParmsMap {
   [API_MAP.GetTxsByAccount]: IReqBaseParam & {
@@ -110,7 +111,8 @@ export interface IReqParmsMap {
   };
   [API_MAP.GetMaxOfferId]: { account_index: Zk.AccountIndex };
   [API_MAP.GetBlocks]: IReqBaseParam;
-  [API_MAP.SendRawTx]: { tx_type: string; tx_info: string };
+  [API_MAP.GetSignatureMessage]: { tx_type: string; tx_info: string };
+  [API_MAP.SendRawTx]: { tx_type: string; tx_info: string; tx_signature: string };
   [API_MAP.SendRawCreateCollectionTx]: { tx_info: string };
   [API_MAP.SendRawMintNftTx]: { tx_info: string };
   [API_MAP.GetGasAccount]: Record<string, never>;
@@ -159,6 +161,7 @@ export interface IResponseMap {
   [API_MAP.GetNextNonce]: { nonce: Zk.Nonce };
   [API_MAP.GetTxsByBlockHeight]: { txs: Zk.Tx[]; total: number };
   [API_MAP.GetMaxOfferId]: { offer_id: number };
+  [API_MAP.GetSignatureMessage]: { sign_body: string };
   [API_MAP.SendRawTx]: { tx_hash: string };
   [API_MAP.SendRawCreateCollectionTx]: { collection_id: number };
   [API_MAP.SendRawMintNftTx]: { nft_index: number };
