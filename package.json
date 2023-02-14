@@ -45,6 +45,9 @@
       ]
     }
   },
+  "engines" : {
+    "node" : ">=16.0.0"
+  },
   "types": "./dist/web/index.d.ts",
   "scripts": {
     "semantic-release": "semantic-release",
@@ -100,7 +103,6 @@
     "@rollup/plugin-wasm": "^5.2.0",
     "@semantic-release/changelog": "^6.0.1",
     "@semantic-release/git": "^10.0.1",
-    "@types/axios": "^0.14.0",
     "@types/chai": "^4.3.1",
     "@types/mocha": "^9.1.1",
     "@typescript-eslint/eslint-plugin": "^5.32.0",

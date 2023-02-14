@@ -1,9 +1,22 @@
 import { resolve } from 'path';
-import { exec } from 'shelljs';
+const { spawnSync } = require('node:child_process');
 
 const getResultLine = (str) => {
   return str.replace(/ZkBNB Crypto Assembly\n/gi, '').trim();
 };
+
+const getCleanEnv = () => {
+  const envs = process.env;
+  return Object.entries(envs).reduce((acc, [k, v]) => {
+    if (k.startsWith('GITHUB') || k.startsWith('ANDROID') || k.startsWith('HOMEBREW') || k.startsWith('JAVA')) {
+      return acc;
+    }
+    acc[k] = v;
+    return acc;
+  }, {});
+};
+
+const allEnv = getCleanEnv();
 
 const wasmExec = (func, funcArgs) => {
   // ['seed phrase', 'hello world'] => '"seed phrase" "hee world"'
@@ -16,11 +29,9 @@ const wasmExec = (func, funcArgs) => {
   const wasmExecNodePath = resolve(__dirname, './wasm_exec_node.js');
   const wasmFilePath = resolve(__dirname, './main.wasm');
 
-  const result = exec(`node ${wasmExecNodePath} ${wasmFilePath} ${func} ${args}`, {
-    silent: true,
-  });
+  const proc = spawnSync('node', [wasmExecNodePath, wasmFilePath, func, ...funcArgs], { env: allEnv });
 
-  return getResultLine(result.stdout);
+  return getResultLine(proc.stdout.toString());
 };
 
 const cleanPackedAmount = (amount) => wasmExec('cleanPackedAmount', [amount]);
