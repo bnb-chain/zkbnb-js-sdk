@@ -1,3 +1,10 @@
+# [4.2.0](https://github.com/bnb-chain/zkbnb-js-sdk/compare/v4.1.0...v4.2.0) (2023-02-14)
+
+
+### Features
+
+* Double-sign L2 transactions  ([#29](https://github.com/bnb-chain/zkbnb-js-sdk/issues/29)) ([f08bf08](https://github.com/bnb-chain/zkbnb-js-sdk/commit/f08bf08c01ed31c29f9778959dbdf0447ac19db7)), closes [#22](https://github.com/bnb-chain/zkbnb-js-sdk/issues/22)
+
 # [4.1.0](https://github.com/bnb-chain/zkbnb-js-sdk/compare/v4.0.0...v4.1.0) (2022-12-07)
 
 
