@@ -83,6 +83,7 @@
   },
   "homepage": "https://github.com/bnb-chain/zkbnb-js-sdk#readme",
   "dependencies": {
+    "@types/node": "^18.13.0",
     "axios": "^0.27.2",
     "shelljs": "^0.8.5"
   },
