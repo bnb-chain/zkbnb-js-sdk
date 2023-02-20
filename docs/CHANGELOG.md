@@ -1,3 +1,10 @@
+# [4.3.0](https://github.com/bnb-chain/zkbnb-js-sdk/compare/v4.2.0...v4.3.0) (2023-02-20)
+
+
+### Features
+
+* update api path of GetTxsByAccount ([#31](https://github.com/bnb-chain/zkbnb-js-sdk/issues/31)) ([7b9e87b](https://github.com/bnb-chain/zkbnb-js-sdk/commit/7b9e87b2b48d1c94e0a6a8b22e993455520ed358))
+
 # [4.2.0](https://github.com/bnb-chain/zkbnb-js-sdk/compare/v4.1.0...v4.2.0) (2023-02-14)
 
 
