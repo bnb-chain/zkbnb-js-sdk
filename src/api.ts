@@ -28,7 +28,7 @@ export const enum API_MAP {
   GetSwapAmount = 'GET /api/v1/swapAmount',
   GetTx = 'GET /api/v1/tx',
   GetTxs = 'GET /api/v1/txs',
-  GetTxsByAccount = 'GET /api/v1/accountTxs',
+  GetTxsByAccount = 'GET /api/v1/mergedAccountTxs',
   GetTxsByBlockHeight = 'GET /api/v1/blockTxs',
   GetWithdrawGasFee = 'GET /api/v1/withdrawGasFee',
   Search = 'GET /api/v1/search',
@@ -42,7 +42,7 @@ export const enum API_MAP {
 export type API_NAME = keyof typeof API_MAP;
 
 // 'GET /api/v1/tx/getTxsByPubKey' | ... | 'POST /api/v1/tx/sendCreateCollectionTx'
-export type URL_INFO = (typeof API_MAP)[API_NAME];
+export type URL_INFO = typeof API_MAP[API_NAME];
 
 export interface IReqParmsMap {
   [API_MAP.GetTxsByAccount]: IReqBaseParam & {

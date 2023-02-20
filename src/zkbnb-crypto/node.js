@@ -20,12 +20,6 @@ const allEnv = getCleanEnv();
 
 const wasmExec = (func, funcArgs) => {
   // ['seed phrase', 'hello world'] => '"seed phrase" "hee world"'
-  const args = funcArgs
-    .map((arg) => {
-      return "'" + arg + "'";
-    })
-    .join(' ');
-
   const wasmExecNodePath = resolve(__dirname, './wasm_exec_node.js');
   const wasmFilePath = resolve(__dirname, './main.wasm');
 
