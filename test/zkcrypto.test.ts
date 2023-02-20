@@ -185,10 +185,10 @@ describe('signMintNft', () => {
   it('should return a valid signature', () => {
     assert.equal(
       signMintNft(
-        'bd7c6390dd20a2d06e5bc88fa4c6f84ffab19a684e4bcc4c3f9fc8255aa94d28',
-        '{"creator_account_index":15,"to_account_index":1,"to_account_name_hash":"ddc6171f9fe33153d95c8394c9135c277eb645401b85eb499393a2aefe6422a6","nft_content_hash":"7eb645401b85eb499393a2aefe6422a6ddc6171f9fe33153d95c8394c9135c27","nft_collection_id":65,"creator_treasury_rate":30,"gas_account_index":1,"gas_fee_asset_id":3,"gas_fee_asset_amount":"3","expired_at":1654656781000,"nonce":1}'
+        '5a8ceed126069ba42d8eb0965b9d982941ad3b7d3f118ab65b5a1322a2cc5c6b17c59fd44af43f9f3e2e80cdda58aa8fd76d3b8500024d013d131f7b30304b0e1b',
+        '{"creator_account_index":13,"to_account_index":13,"to_account_name_hash":"0ff61a3ef954cfe2bd985c4da93a93948a356aa861667c8454a6b00a302babfd","nft_content_hash":"2d0794241d3d73f2952d3fe24207e6a042d6056708a2a01ee868f237b0c495e4","nft_collection_id":0,"creator_treasury_rate":1200,"gas_account_index":1,"gas_fee_asset_id":0,"gas_fee_asset_amount":"10000000000000","expired_at":1676674294097,"nonce":3}'
       ),
-      '{"CreatorAccountIndex":15,"ToAccountIndex":1,"ToAccountNameHash":"ddc6171f9fe33153d95c8394c9135c277eb645401b85eb499393a2aefe6422a6","NftIndex":0,"NftContentHash":"7eb645401b85eb499393a2aefe6422a6ddc6171f9fe33153d95c8394c9135c27","NftCollectionId":65,"CreatorTreasuryRate":30,"GasAccountIndex":1,"GasFeeAssetId":3,"GasFeeAssetAmount":3,"ExpiredAt":1654656781000,"Nonce":1,"Sig":"abGPlYt5/dz+BEUm6WELvWl1RLoWzT5aoB+lo9RX+IIDI4fehtThMYXGQyBCyS32EeBEOiG2hr2d0G/GU1loFQ=="}'
+      '{"CreatorAccountIndex":13,"ToAccountIndex":13,"ToAccountNameHash":"0ff61a3ef954cfe2bd985c4da93a93948a356aa861667c8454a6b00a302babfd","NftIndex":0,"NftContentHash":"2d0794241d3d73f2952d3fe24207e6a042d6056708a2a01ee868f237b0c495e4","NftCollectionId":0,"CreatorTreasuryRate":1200,"GasAccountIndex":1,"GasFeeAssetId":0,"GasFeeAssetAmount":10000000000000,"ExpiredAt":1676674294097,"Nonce":3,"Sig":"uXCmUnSejOf5hwzpd6NR9MF82TkwSypEEb7G5Vk0wZMD0xi9VxoXtyAG8nHShtwHqpHuu8Oi1Rp8ExoMvW1Hyw==","MetaData":"","MutableAttributes":"","IpnsName":"","IpnsId":""}'
     );
   });
 });
@@ -200,7 +200,7 @@ describe('signTransferNft', () => {
         'bd7c6390dd20a2d06e5bc88fa4c6f84ffab19a684e4bcc4c3f9fc8255aa94d28',
         '{"from_account_index":0,"to_account_index":1,"to_account_name":"ddc6171f9fe33153d95c8394c9135c277eb645401b85eb499393a2aefe6422a6","nft_index":15,"gas_account_index":1,"gas_fee_asset_id":3,"gas_fee_asset_amount":"3","call_data":"","expired_at":1654656781000,"nonce":1}'
       ),
-      '{"CreatorAccountIndex":0,"ToAccountIndex":1,"ToAccountNameHash":"","NftIndex":0,"NftContentHash":"","NftCollectionId":0,"CreatorTreasuryRate":0,"GasAccountIndex":1,"GasFeeAssetId":3,"GasFeeAssetAmount":3,"ExpiredAt":1654656781000,"Nonce":1,"Sig":"+cfPnFB8dCDlZ3qO7EyEiGx5R+/X8N9HZIm/49kCWB4B7Tr6Zcwq85WXOhyE97RmbbtwdEo5sRU5GuuUHCSuig=="}'
+      '{"CreatorAccountIndex":0,"ToAccountIndex":1,"ToAccountNameHash":"","NftIndex":0,"NftContentHash":"","NftCollectionId":0,"CreatorTreasuryRate":0,"GasAccountIndex":1,"GasFeeAssetId":3,"GasFeeAssetAmount":3,"ExpiredAt":1654656781000,"Nonce":1,"Sig":"sr0JH6MnawTk3S0uLDsCD2a799f4RIomUXZtowsSEKgD/mbLoveQAcV2q07VNzprn/2pjI+kX4cXAjbOK6pHyA==","MetaData":"","MutableAttributes":"","IpnsName":"","IpnsId":""}'
     );
   });
 });
