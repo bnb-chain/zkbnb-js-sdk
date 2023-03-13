@@ -1,0 +1,8 @@
+node_modules
+dist
+*.md
+**/dist/**
+
+# $(go env GOROOT)/misc/wasm/
+src/zkbnb-crypto/wasm_exec.js
+src/zkbnb-crypto/wasm_exec_node.js

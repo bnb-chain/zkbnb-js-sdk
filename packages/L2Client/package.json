@@ -1,7 +1,7 @@
 {
-  "name": "@bnb-chain/zkbnb-js-sdk",
+  "name": "@bnb-chain/zkbnb-l2-sdk",
   "version": "4.2.0",
-  "description": "zkbnb JavaScript SDK",
+  "description": "zkbnb JavaScript SDK for L2",
   "type": "commonjs",
   "main": "./dist/node/index.js",
   "publishConfig": {
@@ -12,9 +12,6 @@
   "files": [
     "dist",
     "typing"
-  ],
-  "workspaces": [
-    "packages/*"
   ],
   "browser": {
     "./dist/zkbnb-crypto/cjs/node.index.js": "./dist/zkbnb-crypto/cjs/web.index.js",
@@ -58,10 +55,10 @@
     "lint": "pnpm run format && eslint . --ext .js,.ts --fix",
     "pre-commit": "pnpm run lint",
     "test": "TS_NODE_PROJECT=./tsconfig-test.json node --es-module-specifier-resolution=node --loader ts-node/esm --nolazy node_modules/mocha/lib/cli/cli.js --timeout 9999999 --color 'test/*.test.ts'",
-    "prepare": "husky install",
     "predev": "rimraf ./dist",
+    "dev": "rollup -cw",
     "prebuild": "rimraf ./dist",
-    "build": "turbo run build"
+    "build": "rollup -c"
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
@@ -88,6 +85,45 @@
   },
   "homepage": "https://github.com/bnb-chain/zkbnb-js-sdk#readme",
   "dependencies": {
-    "turbo": "^1.8.3"
+    "@types/node": "^18.13.0",
+    "axios": "^0.27.2",
+    "shelljs": "^0.8.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.13",
+    "@babel/preset-env": "^7.18.9",
+    "@commitlint/cli": "^17.0.3",
+    "@commitlint/config-conventional": "^17.0.3",
+    "@rollup/plugin-babel": "^5.3.1",
+    "@rollup/plugin-commonjs": "^22.0.1",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@rollup/plugin-typescript": "^8.3.3",
+    "@rollup/plugin-wasm": "^5.2.0",
+    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/git": "^10.0.1",
+    "@types/chai": "^4.3.1",
+    "@types/mocha": "^9.1.1",
+    "@typescript-eslint/eslint-plugin": "^5.32.0",
+    "@typescript-eslint/parser": "^5.32.0",
+    "chai": "^4.3.6",
+    "conventional-changelog-cmyr-config": "^2.0.4",
+    "eslint": "^8.21.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "mocha": "^10.0.0",
+    "prettier": "^2.7.1",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.77.1",
+    "rollup-plugin-auto-external": "^2.0.0",
+    "rollup-plugin-copy": "^3.4.0",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "rollup-plugin-polyfill-node": "^0.10.2",
+    "rollup-plugin-terser": "^7.0.2",
+    "semantic-release": "^19.0.3",
+    "ts-node": "^10.9.1",
+    "tslib": "^2.4.0",
+    "typescript": "^4.7.4"
   }
 }
