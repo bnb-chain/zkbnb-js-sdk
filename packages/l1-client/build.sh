@@ -1,9 +1,6 @@
 #!/bin/bash -e
-# Removing the old build
-rm -rf ./build
+# Removing the old dist
+rm -rf ./dist
 
 # Compiling typescript files
 yarn tsc
-
-# Copying typechain information
-#cp ./src/typechain/*.d.ts ./build/typechain
