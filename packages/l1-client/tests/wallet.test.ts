@@ -1,7 +1,7 @@
 import 'dotenv/config';
 import { expect } from 'chai';
 import { ethers } from 'ethers';
-import { Wallet } from '../src/wallet';
+import {ETHOperation, Wallet} from '../src/wallet';
 import { getZkBNBDefaultProvider } from '../src/provider';
 
 describe('Wallet with mock provider', function () {
@@ -38,7 +38,9 @@ describe('Wallet with mock provider', function () {
                 tokenAddress: 'ETH',
                 amount: ethers.utils.parseEther('0.001')
             });
-            console.log(result);
+
+            expect(result).not.null
+            expect(result instanceof ETHOperation).true
         });
 
         it('depositNFTToL2', async function () {
@@ -49,7 +51,9 @@ describe('Wallet with mock provider', function () {
                 tokenAddress: '0x587f2b09b12e81b1fcbe4fbf652c92fe4ca392f0',
                 tokenId: 247070
             });
-            console.log(result);
+
+            expect(result).not.null
+            expect(result instanceof ETHOperation).true
         });
 
         it('requestFullExit', async function() {
@@ -60,7 +64,8 @@ describe('Wallet with mock provider', function () {
                 accountIndex: 0,
             });
 
-            console.log(result);
+            expect(result).not.null
+            expect(result instanceof ETHOperation).true
         })
 
         it('requestFullExitNft', async function() {
@@ -71,7 +76,8 @@ describe('Wallet with mock provider', function () {
                 accountIndex: 0,
             });
 
-            console.log(result);
+            expect(result).not.null
+            expect(result instanceof ETHOperation).true
         })
 
         it('ethMessageSigner', async function() {
@@ -79,7 +85,7 @@ describe('Wallet with mock provider', function () {
 
             const result = await wallet.ethMessageSigner();
 
-            console.log(result);
+            expect(result).not.null
         })
 
         it('approveERC20TokenDeposits', async function() {
@@ -87,7 +93,7 @@ describe('Wallet with mock provider', function () {
 
             const result = await wallet.approveERC20TokenDeposits('0x587f2b09b12e81b1fcbe4fbf652c92fe4ca392f0');
 
-            console.log(result);
+            expect(result).not.null
         })
 
         it('isERC20DepositsApproved', async function() {
@@ -95,7 +101,7 @@ describe('Wallet with mock provider', function () {
 
             const result = await wallet.isERC20DepositsApproved('0x587f2b09b12e81b1fcbe4fbf652c92fe4ca392f0');
 
-            console.log(result);
+            expect(result).not.null
         })
 
         it('getZkBNBContract', async function() {
@@ -103,7 +109,9 @@ describe('Wallet with mock provider', function () {
 
             const result = await wallet.getZkBNBContract();
 
-
+            // In the following assertion, you can choose what is present
+            // in the contract to determine, here choose commitBlocks
+            expect(result).to.have.property('commitBlocks');
         })
     })
 });
