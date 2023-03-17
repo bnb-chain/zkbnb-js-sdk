@@ -1,66 +1,45 @@
-import Axios from 'axios';
+import Axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
+import { logger } from 'ethers';
 
-export abstract class AbstractJSONRPCTransport {
-    abstract request(method: string, params: any): Promise<any>;
-    subscriptionsSupported(): boolean {
-        return false;
-    }
-    async subscribe(
-        subMethod: string,
-        subParams: any,
-        unsubMethod: string,
-        cb: (data: any) => void
-    ): Promise<Subscription> {
-        throw new Error('subscription are not supported for this transport');
-    }
-    abstract disconnect(): any;
-}
+export class HTTPTransport {
+    public constructor(public baseEndpoint: string) {}
 
-// Has jrpcError field which is JRPC error object.
-// https://www.jsonrpc.org/specification#error_object
-export class JRPCError extends Error {
-    constructor(message: string, public jrpcError: JRPCErrorObject) {
-        super(message);
-    }
-}
-export interface JRPCErrorObject {
-    code: number;
-    message: string;
-    data: any;
-}
+    /**
+     * Get Request
+     * @param path request path
+     * @param config optional,additional custom parameters for http requests
+     */
+    async get(path: string, config?: AxiosRequestConfig): Promise<AxiosResponse> {
+        const url = this.baseEndpoint + path;
 
-class Subscription {
-    constructor(public unsubscribe: () => Promise<void>) {}
-}
+        logger.info(`GET url=${url}, config=${config ? JSON.stringify(config) : ''}`);
 
-export class HTTPTransport extends AbstractJSONRPCTransport {
-    public constructor(public address: string) {
-        super();
-    }
-
-    // JSON RPC request
-    async request(method: string, params = null, config?: any): Promise<any> {
-        const request = {
-            id: 1,
-            jsonrpc: '2.0',
-            method,
-            params
-        };
-
-        const response = await Axios.post(this.address, request, config).then((resp) => {
+        const response = await Axios.get(url, config).then((resp) => {
             return resp.data;
         });
 
-        if ('result' in response) {
-            return response.result;
-        } else if ('error' in response) {
-            throw new JRPCError(
-                `zkSync API response error: code ${response.error.code}; message: ${response.error.message}`,
-                response.error
-            );
-        } else {
-            throw new Error('Unknown JRPC Error');
-        }
+        return response;
+    }
+
+    /**
+     * Post Request
+     * @param path request path
+     * @param params request params(data)
+     * @param config optional, additional custom parameters for http requests
+     */
+    async post(path: string, params?: any, config?: AxiosRequestConfig): Promise<AxiosResponse> {
+        const url = this.baseEndpoint + path;
+
+        logger.info(
+            `POST url=${url}, params=${params ? JSON.stringify(params) : ''}, config=${
+                config ? JSON.stringify(config) : ''
+            }`
+        );
+        const response = await Axios.post(url, params, config).then((resp) => {
+            return resp.data;
+        });
+
+        return response;
     }
 
     async disconnect() {
