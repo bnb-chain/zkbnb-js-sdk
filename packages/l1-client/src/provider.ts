@@ -43,7 +43,7 @@ export class Provider extends ZkBNBProvider {
     }
 
     async getContractAddress(): Promise<ContractAddress> {
-        const response = await this.transport.get('/api/v1/layer2BasicInfo', null);
+        const response = await this.transport.request('/api/v1/layer2BasicInfo', null);
 
         logger.debug(`getContractAddress response: ${response ? JSON.stringify(response) : '{}'}`);
 
