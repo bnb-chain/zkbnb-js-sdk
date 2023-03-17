@@ -1,39 +1,20 @@
 module.exports = {
   root: true,
+  parser: '@typescript-eslint/parser',
+  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
   env: {
-    es6: true,
+    browser: true,
     node: true,
     mocha: true,
+    'shared-node-browser': true,
+    shelljs: true,
   },
-  parserOptions: { ecmaVersion: 8 },
-  extends: ['eslint:recommended', 'plugin:prettier/recommended'],
   rules: {
-    radix: ['error', 'always'],
-    'no-unused-vars': 'warn',
-    'object-shorthand': ['error', 'always'],
-    'prettier/prettier': [
-      'error',
-      { semi: true },
-      {
-        usePrettierrc: true,
-      },
-    ],
-    camelcase: ['error', { ignoreImports: true }],
-    'prefer-const': 'error',
-    'sort-imports': ['error', { ignoreDeclarationSort: true }],
+    'no-async-promise-executor': 0,
+    '@typescript-eslint/no-var-requires': 0,
   },
-  overrides: [
-    {
-      files: ['test/**/*.js'],
-      rules: {
-        'no-unused-expressions': 'off',
-      },
-    },
-    {
-      parser: '@typescript-eslint/parser',
-      plugins: ['@typescript-eslint'],
-      files: ['*.ts', '*.tsx'],
-      extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'plugin:prettier/recommended'],
-    },
-  ],
+  globals: {
+    Go: true,
+  },
+  plugins: ['prettier', '@typescript-eslint'],
 };

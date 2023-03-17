@@ -1,6 +1,6 @@
-import { utils, constants, ethers, BigNumber, BigNumberish, Contract } from 'ethers';
+import { BigNumber, BigNumberish, Contract, constants, ethers, utils } from 'ethers';
 import { ZkBNBProvider } from './provider-interface';
-import { TokenLike, Address, TokenRatio, WeiRatio, TokenAddress } from './types';
+import { Address, TokenAddress, TokenLike, TokenRatio, WeiRatio } from './types';
 import { IERC20_INTERFACE, ZkBNBInterface } from '../abi';
 
 // Max number of tokens for the current version, it is determined by the zkBNB circuit implementation.

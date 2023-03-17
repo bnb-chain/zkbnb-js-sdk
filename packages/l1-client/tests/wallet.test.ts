@@ -1,9 +1,8 @@
 import 'dotenv/config';
 import { expect } from 'chai';
-import { BigNumber, ethers } from 'ethers';
+import { ethers } from 'ethers';
 import { Wallet } from '../src/wallet';
 import { getZkBNBDefaultProvider } from '../src/provider';
-import { parseEther } from '@ethersproject/units/src.ts';
 
 describe('Wallet with mock provider', function () {
     async function getWallet(ethPrivateKey: any): Promise<Wallet> {
@@ -30,6 +29,19 @@ describe('Wallet with mock provider', function () {
             to: '0xa7F23Ad2b0473Bd05012753624eDD77B4CAcdfa3',
             tokenAddress: 'ETH',
             amount: ethers.utils.parseEther('0.001')
+        });
+        console.log(result);
+    });
+
+    it('depositNFTToL2', async function () {
+        console.log((process.env.BSC_TESTNET_PRIVATE_KEY || '').split(',')[0]);
+        const privateKey = (process.env.BSC_TESTNET_PRIVATE_KEY || '').split(',')[0];
+        const wallet = await getWallet(privateKey);
+
+        const result = await wallet.depositNFTToL2({
+            to: '0xa7F23Ad2b0473Bd05012753624eDD77B4CAcdfa3',
+            tokenAddress: '0x587f2b09b12e81b1fcbe4fbf652c92fe4ca392f0',
+            tokenId: 247070
         });
         console.log(result);
     });
