@@ -2,13 +2,13 @@ import { BigNumber, BigNumberish, Contract, ContractTransaction, ethers } from '
 import { ErrorCode as EthersErrorCode } from '@ethersproject/logger';
 import { EthMessageSigner } from './eth-message-signer';
 import { ZkBNBProvider } from './provider-interface';
-import { Address, l1ChainId, TokenAddress } from './types';
+import { Address, TokenAddress, l1ChainId } from './types';
 import {
     ERC20_APPROVE_TRESHOLD,
     ERC20_RECOMMENDED_DEPOSIT_GAS_LIMIT,
     ETH_RECOMMENDED_DEPOSIT_GAS_LIMIT,
-    isTokenETH,
-    MAX_ERC20_APPROVE_AMOUNT
+    MAX_ERC20_APPROVE_AMOUNT,
+    isTokenETH
 } from './utils';
 import { ETHOperation } from './operations';
 import { IERC20_INTERFACE, ZkBNBInterface } from '../abi';
@@ -56,7 +56,7 @@ export abstract class AbstractWallet {
 
     async approveERC20TokenDeposits(
         tokenAddress: TokenAddress,
-        max_erc20_approve_amount: BigNumber = MAX_ERC20_APPROVE_AMOUNT
+        maxErc20ApproveAmount: BigNumber = MAX_ERC20_APPROVE_AMOUNT
     ): Promise<ContractTransaction> {
         if (isTokenETH(tokenAddress)) {
             throw Error('ETH token does not need approval.');
@@ -64,7 +64,7 @@ export abstract class AbstractWallet {
         const erc20contract = new Contract(tokenAddress, IERC20_INTERFACE, this.ethSigner());
 
         try {
-            return erc20contract.approve(this.provider.contractAddress.zkBNBContract, max_erc20_approve_amount);
+            return erc20contract.approve(this.provider.contractAddress.zkBNBContract, maxErc20ApproveAmount);
         } catch (e) {
             this.modifyEthersError(e);
         }
@@ -153,8 +153,23 @@ export abstract class AbstractWallet {
         ethTxOptions?: ethers.providers.TransactionRequest;
         approveDepositNFT?: boolean;
     }): Promise<ETHOperation> {
-        // todo:
-        return null;
+        const gasPrice = await this.ethSigner().provider.getGasPrice();
+
+        const mainZkBNBContract = this.getZkBNBContract();
+
+        let ethTransaction;
+
+        try {
+            ethTransaction = await mainZkBNBContract.depositNft(deposit.to, deposit.tokenAddress, deposit.tokenId, {
+                gasLimit: BigNumber.from(ETH_RECOMMENDED_DEPOSIT_GAS_LIMIT),
+                gasPrice,
+                ...deposit.ethTxOptions
+            });
+        } catch (e) {
+            this.modifyEthersError(e);
+        }
+
+        return new ETHOperation(ethTransaction, this.provider);
     }
 
     async requestFullExit(fullExit: {
@@ -254,13 +269,13 @@ export abstract class AbstractWallet {
     protected modifyEthersError(error: any): never {
         if (this.ethSigner instanceof ethers.providers.JsonRpcSigner) {
             // List of errors that can be caused by user's actions, which have to be forwarded as-is.
-            const correct_errors = [
+            const correctErrors = [
                 EthersErrorCode.NONCE_EXPIRED,
                 EthersErrorCode.INSUFFICIENT_FUNDS,
                 EthersErrorCode.REPLACEMENT_UNDERPRICED,
                 EthersErrorCode.UNPREDICTABLE_GAS_LIMIT
             ];
-            if (!correct_errors.includes(error.code)) {
+            if (!correctErrors.includes(error.code)) {
                 // This is an error which we don't expect
                 error.message = `Ethereum smart wallet JSON RPC server returned the following error while executing an operation: "${error.message}". Please contact your smart wallet support for help.`;
             }
