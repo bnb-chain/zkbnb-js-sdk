@@ -1,5 +1,4 @@
 import Axios, {AxiosRequestConfig, AxiosResponse, Method} from 'axios';
-import { logger } from 'ethers';
 
 export class HTTPTransport {
     public constructor(public baseEndpoint: string) {}

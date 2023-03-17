@@ -207,7 +207,7 @@ export abstract class AbstractWallet {
         const mainZkBNBContract = this.getZkBNBContract();
 
         try {
-            const ethTransaction = await mainZkBNBContract.requestFullExitNFT(
+            const ethTransaction = await mainZkBNBContract.requestFullExitNft(
                 fullExitNFT.accountIndex,
                 fullExitNFT.tokenId,
                 {
