@@ -32,6 +32,7 @@ export const ZkCrypto = async () => {
     'signMintNft',
     'signTransferNft',
     'signWithdrawNft',
+    'signChangePubKey',
   ];
 
   let Z = {};

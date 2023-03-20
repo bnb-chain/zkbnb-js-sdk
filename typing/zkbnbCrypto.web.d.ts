@@ -21,5 +21,6 @@ declare module '@bnb-chain/zkbnb-js-sdk/zkCrypto/web' {
     signMintNft: (seed: string, segmentstr: string) => string;
     signTransferNft: (seed: string, segmentstr: string) => string;
     signWithdrawNft: (seed: string, segmentstr: string) => string;
+    signChangePubKey: (seed: string, segmentstr: string) => string;
   }
 }
