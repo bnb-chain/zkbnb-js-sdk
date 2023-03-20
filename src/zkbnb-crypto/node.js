@@ -62,8 +62,6 @@ const signWithdrawNft = (seed, segmentstr) => wasmExec('signWithdrawNft', [seed,
 
 const signChangePubKey = (seed, segmentstr) => wasmExec('signChangePubKey', [seed, segmentstr]);
 
-
-
 export const ZkCrypto = {
   cleanPackedAmount,
   cleanPackedFee,

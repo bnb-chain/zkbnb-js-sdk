@@ -35,7 +35,7 @@ export type Amount = string;
 
 export type AccountIndex = number;
 export type L1Address = string;
-export type AccountStatus = number;//0 - registered, no pk; 1 - changed pk
+export type AccountStatus = number; //0 - registered, no pk; 1 - changed pk
 export type PublicKey = string;
 export type AccountPk = PublicKey;
 
