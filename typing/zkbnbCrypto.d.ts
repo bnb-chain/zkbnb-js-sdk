@@ -2,7 +2,6 @@ declare module '@bnb-chain/zkbnb-js-sdk/zkCrypto' {
   interface ZK_CRYPTO_TPYE {
     cleanPackedAmount: (amount: string) => string;
     cleanPackedFee: (amount: string) => string;
-    getAccountNameHash: (accountName: string) => string;
     getEddsaPublicKey: (seed: string) => string;
     generateEddsaKey: (seed: string) => string;
     getEddsaCompressedPublicKey: (seed: string) => string;

@@ -20,7 +20,7 @@ export const enum API_MAP {
   GetLPValue = 'GET /api/v1/lpValue',
   GetMaxOfferId = 'GET /api/v1/maxOfferId',
   GetMempoolTxs = 'GET /api/v1/mempoolTxs',
-  GetMempoolTxsByAccountName = 'GET /api/v1/accountMempoolTxs',
+  GetMempoolTxsByL1Address = 'GET /api/v1/accountMempoolTxs',
   GetNextNonce = 'GET /api/v1/nextNonce',
   GetNftsByAccountIndex = 'GET /api/v1/accountNfts',
   GetPair = 'GET /api/v1/pair',
@@ -38,7 +38,7 @@ export const enum API_MAP {
   SendRawTx = 'POST /api/v1/sendTx',
 }
 
-// 'GetTxsByPubKey' | 'GetTxsByAccountName' | ... | 'CreateCollection'
+// 'GetTxsByPubKey' | 'GetTxsByL1Address' | ... | 'CreateCollection'
 export type API_NAME = keyof typeof API_MAP;
 
 // 'GET /api/v1/tx/getTxsByPubKey' | ... | 'POST /api/v1/tx/sendCreateCollectionTx'
@@ -53,8 +53,8 @@ export interface IReqParmsMap {
           by: 'account_pk';
         }
       | {
-          value: Zk.AccountName;
-          by: 'account_name';
+          value: Zk.L1Address;
+          by: 'l1_address';
         }
       | {
           value: Zk.AccountIndex;
@@ -87,7 +87,7 @@ export interface IReqParmsMap {
   [API_MAP.GetAccountByParam]:
     | { by: 'index'; value: Zk.AccountIndex }
     | { by: 'pk'; value: Zk.PublicKey }
-    | { by: 'name'; value: Zk.AccountName };
+    | { by: 'l1_address'; value: Zk.L1Address };
   [API_MAP.GetSwapAmount]: {
     pair_index: number;
     asset_id: Zk.Asset['id'];
@@ -102,7 +102,7 @@ export interface IReqParmsMap {
   [API_MAP.GetPair]: { index: Zk.Pair['index'] };
   [API_MAP.GetTx]: { hash: Zk.Hash };
   [API_MAP.GetMempoolTxs]: IReqBaseParam;
-  [API_MAP.GetMempoolTxsByAccountName]: { by: 'account_name'; value: Zk.AccountName };
+  [API_MAP.GetMempoolTxsByL1Address]: { by: 'l1_address'; value: Zk.L1Address };
 
   [API_MAP.GetNextNonce]: { account_index: Zk.AccountIndex };
   [API_MAP.GetTxsByBlockHeight]: {
@@ -153,7 +153,7 @@ export interface IResponseMap {
     asset_b_id: Zk.Asset['id'];
   };
   [API_MAP.GetMempoolTxs]: { total: number; txs: Zk.Tx[] };
-  [API_MAP.GetMempoolTxsByAccountName]: {
+  [API_MAP.GetMempoolTxsByL1Address]: {
     total: number;
     mempool_txs: Zk.Tx[];
   };

@@ -18,7 +18,6 @@ export const ZkCrypto = async () => {
   const methods = [
     'cleanPackedAmount',
     'cleanPackedFee',
-    'getAccountNameHash',
     'getEddsaPublicKey',
     'getEddsaCompressedPublicKey',
     'generateEddsaKey',

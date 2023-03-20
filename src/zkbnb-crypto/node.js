@@ -32,8 +32,6 @@ const cleanPackedAmount = (amount) => wasmExec('cleanPackedAmount', [amount]);
 
 const cleanPackedFee = (amount) => wasmExec('cleanPackedFee', [amount]);
 
-const getAccountNameHash = (accountName) => wasmExec('getAccountNameHash', [accountName]);
-
 const getEddsaPublicKey = (seed) => wasmExec('getEddsaPublicKey', [seed]);
 
 const generateEddsaKey = (seed) => wasmExec('generateEddsaKey', [seed]);
@@ -65,7 +63,6 @@ const signWithdrawNft = (seed, segmentstr) => wasmExec('signWithdrawNft', [seed,
 export const ZkCrypto = {
   cleanPackedAmount,
   cleanPackedFee,
-  getAccountNameHash,
   getEddsaPublicKey,
   getEddsaCompressedPublicKey,
   generateEddsaKey,

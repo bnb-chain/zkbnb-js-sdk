@@ -40,22 +40,22 @@ export class Client {
   }
 
   /**
-   * returns txs by account account name
+   * returns txs by l1 address
    */
-  async getTxsByAccountName({
-    accountName,
+  async getTxsByL1Address({
+    l1Address,
     types,
     offset,
     limit,
   }: {
-    accountName: string;
+    l1Address: string;
     types: Zk.TxType[];
     offset: number;
     limit: number;
   }) {
     return await this.http.req(API.API_MAP.GetTxsByAccount, {
-      value: accountName,
-      by: 'account_name',
+      value: l1Address,
+      by: 'l1_address',
       types: JSON.stringify(types),
       offset,
       limit,
@@ -217,12 +217,12 @@ export class Client {
   }
 
   /**
-   * returns account (mainly pubkey) by using account_name
+   * returns account (mainly pubkey) by using l1_address
    */
-  async getAccountByName(accountName: string) {
+  async getAccountByL1Address(l1Address: string) {
     return await this.http.req(API.API_MAP.GetAccountByParam, {
-      by: 'name',
-      value: accountName,
+      by: 'l1_address',
+      value: l1Address,
     });
   }
 
@@ -292,12 +292,12 @@ export class Client {
   }
 
   /**
-   * returns the mempool txs by account name
+   * returns the mempool txs by l1 address
    */
-  async getMempoolTxsByAccountName(accountName: string) {
-    return this.http.req(API.API_MAP.GetMempoolTxsByAccountName, {
-      by: 'account_name',
-      value: accountName,
+  async getMempoolTxsByL1Address(l1Address: string) {
+    return this.http.req(API.API_MAP.GetMempoolTxsByL1Address, {
+      by: 'l1_address',
+      value: l1Address,
     });
   }
 
