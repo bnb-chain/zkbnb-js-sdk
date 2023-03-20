@@ -64,7 +64,11 @@ export abstract class AbstractWallet {
         const erc20contract = new Contract(tokenAddress, IERC20_INTERFACE, this.ethSigner());
 
         try {
-            return erc20contract.approve(this.provider.contractAddress.zkBNBContract, maxErc20ApproveAmount);
+            const gasPrice = await this.ethSigner().provider.getGasPrice();
+            return erc20contract.approve(this.provider.contractAddress.zkBNBContract, maxErc20ApproveAmount, {
+                gasPrice,
+                gasLimit: BigNumber.from(ETH_RECOMMENDED_DEPOSIT_GAS_LIMIT)
+            });
         } catch (e) {
             this.modifyEthersError(e);
         }
