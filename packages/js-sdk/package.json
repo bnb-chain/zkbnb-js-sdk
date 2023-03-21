@@ -87,6 +87,8 @@
   },
   "homepage": "https://github.com/bnb-chain/zkbnb-js-sdk#readme",
   "dependencies": {
-    "turbo": "^1.8.3"
+    "turbo": "^1.8.3",
+    "@bnb-chain/zkbnb-l1-sdk": "*",
+    "@bnb-chain/zkbnb-l2-sdk": "*"
   }
 }

@@ -42,7 +42,7 @@ export const enum API_MAP {
 export type API_NAME = keyof typeof API_MAP;
 
 // 'GET /api/v1/tx/getTxsByPubKey' | ... | 'POST /api/v1/tx/sendCreateCollectionTx'
-export type URL_INFO = (typeof API_MAP)[API_NAME];
+export type URL_INFO = typeof API_MAP[API_NAME];
 
 export interface IReqParmsMap {
   [API_MAP.GetTxsByAccount]: IReqBaseParam & {

@@ -7,16 +7,20 @@ importers:
       '@bnb-chain/zkbnb-l1-sdk': '*'
       '@bnb-chain/zkbnb-l2-sdk': '*'
     dependencies:
-      '@bnb-chain/zkbnb-l1-sdk': link:packages/l1-client
-      '@bnb-chain/zkbnb-l2-sdk': link:packages/l2-client
+      '@bnb-chain/zkbnb-l1-sdk': link:packages/l1-sdk
+      '@bnb-chain/zkbnb-l2-sdk': link:packages/l2-sdk
 
   packages/js-sdk:
     specifiers:
+      '@bnb-chain/zkbnb-l1-sdk': '*'
+      '@bnb-chain/zkbnb-l2-sdk': '*'
       turbo: ^1.8.3
     dependencies:
+      '@bnb-chain/zkbnb-l1-sdk': link:../l1-sdk
+      '@bnb-chain/zkbnb-l2-sdk': link:../l2-sdk
       turbo: 1.8.3
 
-  packages/l1-client:
+  packages/l1-sdk:
     specifiers:
       '@ethersproject/logger': ^5.4.0
       '@rollup/plugin-commonjs': ^22.0.1
@@ -61,7 +65,7 @@ importers:
       tslint: 6.1.3_typescript@4.9.5
       typescript: 4.9.5
 
-  packages/l2-client:
+  packages/l2-sdk:
     specifiers:
       '@babel/core': ^7.18.13
       '@babel/preset-env': ^7.18.9
