@@ -1,7 +1,7 @@
 import { Contract, ethers, logger } from 'ethers';
 import { ContractAddress, Network, PriorityOperationReceipt, TokenAddress } from './types';
 import { isTokenETH } from './utils';
-import { GovernanceInterface, ZkBNBInterface, ZkBNBNFTFactoryInterface } from '../abi';
+import { GovernanceInterface, ZkBNBInterface, ZkBNBNFTFactoryInterface } from './abi';
 import { ZkBNBProvider } from './provider-interface';
 import { HTTPTransport } from './transport';
 

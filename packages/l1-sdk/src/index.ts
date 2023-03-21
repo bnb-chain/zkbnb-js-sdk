@@ -1,5 +1,5 @@
 export { Wallet, ETHOperation } from './wallet';
-export { L1Proxy } from './provider';
+export { Provider, getZkBNBDefaultProvider, L1Proxy } from './provider';
 export { ZkBNBProvider } from './provider-interface';
 export { closestPackableTransactionAmount, closestPackableTransactionFee } from './utils';
 export { EthMessageSigner } from './eth-message-signer';
