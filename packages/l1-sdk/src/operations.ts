@@ -1,7 +1,7 @@
 import { BigNumber, ContractTransaction } from 'ethers';
 import { ZkBNBProvider } from './provider-interface';
 import { PriorityOperationReceipt, TransactionReceipt } from './types';
-import { ZkBNBInterface } from '../abi';
+import { ZkBNBInterface } from './abi';
 
 export class ZkBNBTxError extends Error {
     constructor(message: string, public value: PriorityOperationReceipt | TransactionReceipt) {

@@ -11,7 +11,7 @@ import {
     MAX_ERC20_APPROVE_AMOUNT
 } from './utils';
 import { ETHOperation } from './operations';
-import { IERC20_INTERFACE, ZkBNBInterface } from '../abi';
+import { IERC20_INTERFACE, ZkBNBInterface } from './abi';
 
 export abstract class AbstractWallet {
     public provider: ZkBNBProvider;

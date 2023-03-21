@@ -1,5 +1,5 @@
 {
-  "name": "zkbnb-js-sdk",
+  "name": "@bnb-chain/zkbnb-js-sdk",
   "version": "4.2.0",
   "description": "zkbnb JavaScript SDK",
   "type": "commonjs",
@@ -58,7 +58,6 @@
     "lint": "pnpm run format && eslint . --ext .js,.ts --fix",
     "pre-commit": "pnpm run lint",
     "test": "TS_NODE_PROJECT=./tsconfig-test.json node --es-module-specifier-resolution=node --loader ts-node/esm --nolazy node_modules/mocha/lib/cli/cli.js --timeout 9999999 --color 'test/*.test.ts'",
-    "prepare": "husky install",
     "predev": "rimraf ./dist",
     "prebuild": "rimraf ./dist",
     "build": "turbo run build"
@@ -88,7 +87,8 @@
   },
   "homepage": "https://github.com/bnb-chain/zkbnb-js-sdk#readme",
   "dependencies": {
-    "@bnb-chain/zkbnb-l2-sdk": "*",
-    "@bnb-chain/zkbnb-l1-sdk": "*"
+    "turbo": "^1.8.3",
+    "@bnb-chain/zkbnb-l1-sdk": "*",
+    "@bnb-chain/zkbnb-l2-sdk": "*"
   }
 }
