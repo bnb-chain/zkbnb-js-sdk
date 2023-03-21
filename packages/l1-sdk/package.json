@@ -36,7 +36,7 @@
         "lint:ts": "node_modules/.bin/tslint -c tslint.json {examples,test,src}/**/*.ts",
         "lint:ts-fix": "node_modules/.bin/tslint -c tslint.json --fix {examples,test,src}/**/*.ts",
         "tests": "node_modules/.bin/mocha -r ts-node/register tests/**/*.test.ts",
-        "build": "rm -rf dist && tsc",
+        "build": "sh build.sh",
         "watch": "node_modules/.bin/tsc --watch",
         "prepublish": "pnpm build && rollup -c"
     }

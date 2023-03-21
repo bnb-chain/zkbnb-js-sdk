@@ -1,7 +1,7 @@
 import { utils, constants, ethers, BigNumber, BigNumberish, Contract } from 'ethers';
 import { ZkBNBProvider } from './provider-interface';
 import { TokenLike, Address, TokenRatio, WeiRatio, TokenAddress } from './types';
-import { IERC20_INTERFACE, ZkBNBInterface } from '../abi';
+import { IERC20_INTERFACE, ZkBNBInterface } from './abi';
 
 // Max number of tokens for the current version, it is determined by the zkBNB circuit implementation.
 const MAX_NUMBER_OF_TOKENS = Math.pow(2, 31);
