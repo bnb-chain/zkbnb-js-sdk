@@ -28,14 +28,16 @@
         "rollup-plugin-terser": "^7.0.2",
         "ts-node": "^10.9.1",
         "tslint": "^6.0.0-beta0",
-        "typescript": "^4.7.4"
+        "typescript": "^4.7.4",
+        "@ethersproject/logger": "^5.4.0",
+        "ethers": "^5.7.2"
     },
     "scripts": {
         "lint:ts": "node_modules/.bin/tslint -c tslint.json {examples,test,src}/**/*.ts",
         "lint:ts-fix": "node_modules/.bin/tslint -c tslint.json --fix {examples,test,src}/**/*.ts",
         "tests": "node_modules/.bin/mocha -r ts-node/register tests/**/*.test.ts",
-        "build": "sh build.sh",
+        "build": "rm -rf dist && tsc",
         "watch": "node_modules/.bin/tsc --watch",
-        "prepublish": "yarn build && rollup -c"
+        "prepublish": "pnpm build && rollup -c"
     }
 }
