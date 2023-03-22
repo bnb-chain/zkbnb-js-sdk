@@ -16,7 +16,7 @@ export const MAX_ERC20_APPROVE_AMOUNT = BigNumber.from(
     '115792089237316195423570985008687907853269984665640564039457584007913129639935'
 ); // 2^256 - 1
 
-export const ERC20_APPROVE_TRESHOLD = BigNumber.from(
+export const ERC20_APPROVE_THRESHOLD = BigNumber.from(
     '57896044618658097711785492504343953926634992332820282019728792003956564819968'
 ); // 2^255
 
@@ -230,8 +230,8 @@ export function sleep(ms: number) {
     return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-export function isTokenETH(token: TokenLike): boolean {
-    return token === 'ETH' || token === constants.AddressZero;
+export function isBNBToken(token: TokenLike): boolean {
+    return token === 'BNB' || token === constants.AddressZero;
 }
 
 export function getSignedBytesFromMessage(message: utils.BytesLike | string, addPrefix: boolean): Uint8Array {
@@ -271,7 +271,7 @@ export async function getEthereumBalance(
     tokenAddress: TokenAddress
 ): Promise<BigNumber> {
     let balance: BigNumber;
-    if (isTokenETH(tokenAddress)) {
+    if (isBNBToken(tokenAddress)) {
         balance = await ethProvider.getBalance(address);
     } else {
         const erc20contract = new Contract(tokenAddress, IERC20_INTERFACE, ethProvider);
