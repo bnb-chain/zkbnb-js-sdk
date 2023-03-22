@@ -5,18 +5,28 @@ import { HttpTransport } from './http-transport';
 
 export async function getZkBNBDefaultProvider(network: Network, pollIntervalMilliSecs?: number): Promise<Provider> {
     if (network === 'bsc') {
-        return await Provider.newHttpProvider('https://testapi.zkbnbchain.org', pollIntervalMilliSecs, network);
+        return await Provider.newHttpProvider('http://10.23.34.38:8888', pollIntervalMilliSecs, network);
     } else if (network === 'bscTestnet') {
-        return await Provider.newHttpProvider('https://testapi.zkbnbchain.org', pollIntervalMilliSecs, network);
+        return await Provider.newHttpProvider('http://10.23.34.38:8888', pollIntervalMilliSecs, network);
     } else {
         throw new Error(`BSC network ${network} is not supported`);
     }
 }
 
 export class Provider extends ZkBNBProvider {
-    notifyPriorityOp(hashOrSerialId: string | number, action: 'COMMIT' | 'VERIFY'): Promise<PriorityOperationReceipt> {
-        throw new Error('Method not implemented.');
+    async notifyPriorityOp(hashOrSerialId: number, action: 'COMMIT' | 'VERIFY'): Promise<PriorityOperationReceipt> {
+        // TODO No search method is available yet
+        const op = {
+            executed: true,
+            block: {
+              blockNumber: 1,
+              committed: true,
+              verified: action === 'VERIFY', // simulation status
+            }
+        } as PriorityOperationReceipt;
+        return op;
     }
+
     private pollIntervalMilliSecs: number;
     private constructor(public transport: HttpTransport) {
         super();
@@ -24,7 +34,7 @@ export class Provider extends ZkBNBProvider {
     }
 
     static async newHttpProvider(
-        address = 'https://testapi.zkbnbchain.org',
+        address = 'http://10.23.34.38:8888',
         pollIntervalMilliSecs?: number,
         network?: Network
     ): Promise<Provider> {
