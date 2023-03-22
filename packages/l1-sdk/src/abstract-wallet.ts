@@ -4,17 +4,27 @@ import { EthMessageSigner } from './eth-message-signer';
 import { ZkBNBProvider } from './provider-interface';
 import { Address, TokenAddress, l1ChainId } from './types';
 import {
-    ERC20_APPROVE_TRESHOLD,
+    ERC20_APPROVE_THRESHOLD,
     ERC20_RECOMMENDED_DEPOSIT_GAS_LIMIT,
     ETH_RECOMMENDED_DEPOSIT_GAS_LIMIT,
     MAX_ERC20_APPROVE_AMOUNT,
-    isTokenETH
+    isBNBToken
 } from './utils';
 import { ETHOperation } from './operations';
-import { IERC20_INTERFACE, ZkBNBInterface } from './abi';
+import {
+    AssetGovernanceInterface,
+    GovernanceInterface,
+    IERC20_INTERFACE,
+    ZkBNBInterface,
+    ZkBNBNFTFactoryInterface
+} from './abi';
 
 export abstract class AbstractWallet {
     public provider: ZkBNBProvider;
+    private governanceContract: Contract;
+    private assetGovernanceContract: Contract;
+    private zkBNBContract: Contract;
+    private defaultNFTFactoryContract: Contract;
 
     protected constructor(public cachedAddress: Address) {}
 
@@ -58,7 +68,7 @@ export abstract class AbstractWallet {
         tokenAddress: TokenAddress,
         maxErc20ApproveAmount: BigNumber = MAX_ERC20_APPROVE_AMOUNT
     ): Promise<ContractTransaction> {
-        if (isTokenETH(tokenAddress)) {
+        if (isBNBToken(tokenAddress)) {
             throw Error('ETH token does not need approval.');
         }
         const erc20contract = new Contract(tokenAddress, IERC20_INTERFACE, this.ethSigner());
@@ -74,20 +84,20 @@ export abstract class AbstractWallet {
         }
     }
 
-    async depositToL2(deposit: {
+    async deposit(deposit: {
         to: Address;
         tokenAddress: TokenAddress;
         amount: BigNumberish;
         ethTxOptions?: ethers.providers.TransactionRequest;
         approveDepositAmountForERC20?: boolean;
     }): Promise<ETHOperation> {
-        const gasPrice = await this.ethSigner().provider.getGasPrice();
+        const gasPrice = deposit.ethTxOptions?.gasPrice || (await this.ethSigner().provider.getGasPrice());
 
         const mainZkBNBContract = this.getZkBNBContract();
 
         let ethTransaction;
 
-        if (isTokenETH(deposit.tokenAddress)) {
+        if (isBNBToken(deposit.tokenAddress)) {
             try {
                 ethTransaction = await mainZkBNBContract.depositBNB(deposit.to, {
                     value: BigNumber.from(deposit.amount),
@@ -126,9 +136,9 @@ export abstract class AbstractWallet {
 
             // We set gas limit only if user does not set it using ethTxOptions.
             const txRequest = args[args.length - 1] as ethers.providers.TransactionRequest;
-            if (txRequest.gasLimit == null) {
+            if (!txRequest.gasLimit) {
                 try {
-                    const gasEstimate = await mainZkBNBContract.estimateGas.depositERC20(...args).then(
+                    const gasEstimate = await mainZkBNBContract.estimateGas.depositBEP20(...args).then(
                         (estimate) => estimate,
                         () => BigNumber.from('0')
                     );
@@ -150,14 +160,14 @@ export abstract class AbstractWallet {
         return new ETHOperation(ethTransaction, this.provider);
     }
 
-    async depositNFTToL2(deposit: {
+    async depositNFT(deposit: {
         to: Address;
         tokenAddress: TokenAddress;
         tokenId: BigNumberish;
         ethTxOptions?: ethers.providers.TransactionRequest;
         approveDepositNFT?: boolean;
     }): Promise<ETHOperation> {
-        const gasPrice = await this.ethSigner().provider.getGasPrice();
+        const gasPrice = deposit.ethTxOptions?.gasPrice || (await this.ethSigner().provider.getGasPrice());
 
         const mainZkBNBContract = this.getZkBNBContract();
 
@@ -181,7 +191,7 @@ export abstract class AbstractWallet {
         accountIndex: number;
         ethTxOptions?: ethers.providers.TransactionRequest;
     }): Promise<ETHOperation> {
-        const gasPrice = await this.ethSigner().provider.getGasPrice();
+        const gasPrice = fullExit.ethTxOptions?.gasPrice || (await this.ethSigner().provider.getGasPrice());
 
         const mainZkBNBContract = this.getZkBNBContract();
 
@@ -206,7 +216,7 @@ export abstract class AbstractWallet {
         accountIndex: number;
         ethTxOptions?: ethers.providers.TransactionRequest;
     }): Promise<ETHOperation> {
-        const gasPrice = await this.ethSigner().provider.getGasPrice();
+        const gasPrice = fullExitNFT.ethTxOptions?.gasPrice || (await this.ethSigner().provider.getGasPrice());
 
         const mainZkBNBContract = this.getZkBNBContract();
 
@@ -226,6 +236,53 @@ export abstract class AbstractWallet {
         }
     }
 
+    async withdrawPendingNFTBalance(withdrawalNFT: {
+        tokenId: number;
+        ethTxOptions?: ethers.providers.TransactionRequest;
+    }): Promise<ETHOperation> {
+        const gasPrice = withdrawalNFT.ethTxOptions?.gasPrice || (await this.ethSigner().provider.getGasPrice());
+
+        const mainZkBNBContract = this.getZkBNBContract();
+
+        try {
+            const ethTransaction = await mainZkBNBContract.withdrawPendingNFTBalance(withdrawalNFT.tokenId, {
+                gasLimit: BigNumber.from('500000'),
+                gasPrice,
+                ...withdrawalNFT.ethTxOptions
+            });
+            return new ETHOperation(ethTransaction, this.provider);
+        } catch (e) {
+            this.modifyEthersError(e);
+        }
+    }
+
+    async withdrawPendingBalance(withdrawal: {
+        owner: number;
+        tokenAddress: number;
+        amount: number;
+        ethTxOptions?: ethers.providers.TransactionRequest;
+    }): Promise<ETHOperation> {
+        const gasPrice = withdrawal.ethTxOptions?.gasPrice || (await this.ethSigner().provider.getGasPrice());
+
+        const mainZkBNBContract = this.getZkBNBContract();
+
+        try {
+            const ethTransaction = await mainZkBNBContract.withdrawPendingBalance(
+                withdrawal.owner,
+                withdrawal.tokenAddress,
+                withdrawal.amount,
+                {
+                    gasLimit: BigNumber.from('500000'),
+                    gasPrice,
+                    ...withdrawal.ethTxOptions
+                }
+            );
+            return new ETHOperation(ethTransaction, this.provider);
+        } catch (e) {
+            this.modifyEthersError(e);
+        }
+    }
+
     // **********
     // L1 getters
     //
@@ -234,10 +291,10 @@ export abstract class AbstractWallet {
 
     async isERC20DepositsApproved(
         tokenAddress: TokenAddress,
-        erc20ApproveThreshold: BigNumber = ERC20_APPROVE_TRESHOLD
+        erc20ApproveThreshold: BigNumber = ERC20_APPROVE_THRESHOLD
     ): Promise<boolean> {
-        if (isTokenETH(tokenAddress)) {
-            throw Error('ETH token does not need approval.');
+        if (isBNBToken(tokenAddress)) {
+            throw Error('BNB token does not need approval.');
         }
         const erc20contract = new Contract(tokenAddress, IERC20_INTERFACE, this.ethSigner());
         try {
@@ -252,7 +309,69 @@ export abstract class AbstractWallet {
     }
 
     getZkBNBContract() {
-        return new ethers.Contract(this.provider.contractAddress.zkBNBContract, ZkBNBInterface, this.ethSigner());
+        if (this.zkBNBContract) {
+            return this.zkBNBContract;
+        }
+        this.zkBNBContract = new ethers.Contract(
+            this.provider.contractAddress.zkBNBContract,
+            ZkBNBInterface,
+            this.ethSigner()
+        );
+        return this.zkBNBContract;
+    }
+
+    getGovernanceContract() {
+        if (this.governanceContract) {
+            return this.governanceContract;
+        }
+        this.governanceContract = new ethers.Contract(
+            this.provider.contractAddress.governanceContract,
+            GovernanceInterface,
+            this.ethSigner()
+        );
+        return this.governanceContract;
+    }
+
+    getAssetGovernanceContract() {
+        if (this.assetGovernanceContract) {
+            return this.assetGovernanceContract;
+        }
+        this.assetGovernanceContract = new ethers.Contract(
+            this.provider.contractAddress.assetGovernanceContract,
+            AssetGovernanceInterface,
+            this.ethSigner()
+        );
+        return this.assetGovernanceContract;
+    }
+
+    getDefaultNFTFactoryContract() {
+        if (this.defaultNFTFactoryContract) {
+            return this.defaultNFTFactoryContract;
+        }
+
+        this.defaultNFTFactoryContract = new ethers.Contract(
+            this.provider.contractAddress.defaultNftFactoryContract,
+            ZkBNBNFTFactoryInterface,
+            this.ethSigner()
+        );
+
+        return this.defaultNFTFactoryContract;
+    }
+
+    async getPendingBalance(address: Address, tokenAddress: TokenAddress): Promise<BigNumber> {
+        return this.getZkBNBContract().getPendingBalance(address, tokenAddress);
+    }
+
+    async resolveTokenId(token: TokenAddress): Promise<number> {
+        if (isBNBToken(token)) {
+            return 0;
+        } else {
+            const tokenId = await this.getGovernanceContract().assetsList(token);
+            if (tokenId == 0) {
+                throw new Error(`BEP20 token ${token} is not supported`);
+            }
+            return tokenId;
+        }
     }
 
     // ****************

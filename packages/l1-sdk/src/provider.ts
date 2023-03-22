@@ -1,9 +1,7 @@
-import { Contract, ethers, logger } from 'ethers';
-import { ContractAddress, Network, PriorityOperationReceipt, TokenAddress } from './types';
-import { isTokenETH } from './utils';
-import { GovernanceInterface, ZkBNBInterface, ZkBNBNFTFactoryInterface } from './abi';
+import { logger } from 'ethers';
+import { ContractAddress, Network, PriorityOperationReceipt } from './types';
 import { ZkBNBProvider } from './provider-interface';
-import { HTTPTransport } from './transport';
+import { HttpTransport } from './http-transport';
 
 export async function getZkBNBDefaultProvider(network: Network, pollIntervalMilliSecs?: number): Promise<Provider> {
     if (network === 'bsc') {
@@ -20,7 +18,7 @@ export class Provider extends ZkBNBProvider {
         throw new Error('Method not implemented.');
     }
     private pollIntervalMilliSecs: number;
-    private constructor(public transport: HTTPTransport) {
+    private constructor(public transport: HttpTransport) {
         super();
         this.providerType = 'RPC';
     }
@@ -30,7 +28,7 @@ export class Provider extends ZkBNBProvider {
         pollIntervalMilliSecs?: number,
         network?: Network
     ): Promise<Provider> {
-        const transport = new HTTPTransport(address);
+        const transport = new HttpTransport(address);
         const provider = new Provider(transport);
         if (pollIntervalMilliSecs) {
             provider.pollIntervalMilliSecs = pollIntervalMilliSecs;
@@ -53,7 +51,7 @@ export class Provider extends ZkBNBProvider {
             const contractAddress: ContractAddress = {
                 zkBNBContract: '',
                 governanceContract: '',
-                defaultNftFactory: '',
+                defaultNftFactoryContract: '',
                 assetGovernanceContract: ''
             };
 
@@ -66,7 +64,7 @@ export class Provider extends ZkBNBProvider {
                         contractAddress.governanceContract = item['address'];
                         break;
                     case 'DefaultNftFactory':
-                        contractAddress.defaultNftFactory = item['address'];
+                        contractAddress.defaultNftFactoryContract = item['address'];
                         break;
                     case 'AssetGovernanceContract':
                         contractAddress.assetGovernanceContract = item['address'];
@@ -84,62 +82,5 @@ export class Provider extends ZkBNBProvider {
 
     override async disconnect() {
         return await this.transport.disconnect();
-    }
-}
-
-export class L1Proxy {
-    private governanceContract: Contract;
-    private assetGovernanceContract: Contract;
-    private zkBNBContract: Contract;
-    private zkBNBNFTFactoryContract: Contract;
-    // Needed for typechain to work
-    private dummySigner: ethers.VoidSigner;
-
-    constructor(private ethersProvider: ethers.providers.Provider, public contractAddress: ContractAddress) {
-        this.dummySigner = new ethers.VoidSigner(ethers.constants.AddressZero, this.ethersProvider);
-
-        this.governanceContract = new ethers.Contract(
-            contractAddress.governanceContract,
-            GovernanceInterface,
-            this.dummySigner
-        );
-
-        this.zkBNBContract = new ethers.Contract(contractAddress.zkBNBContract, ZkBNBInterface, this.dummySigner);
-    }
-
-    getGovernanceContract(): Contract {
-        return this.governanceContract;
-    }
-
-    getZkBNBContract(): Contract {
-        return this.zkBNBContract;
-    }
-
-    async getDefaultNFTFactory(): Promise<Contract> {
-        if (this.zkBNBNFTFactoryContract) {
-            return this.zkBNBNFTFactoryContract;
-        }
-
-        const nftFactoryAddress = await this.governanceContract.defaultNFTFactory();
-
-        this.zkBNBNFTFactoryContract = new ethers.Contract(
-            nftFactoryAddress,
-            ZkBNBNFTFactoryInterface,
-            this.dummySigner
-        );
-
-        return this.zkBNBNFTFactoryContract;
-    }
-
-    async resolveTokenId(token: TokenAddress): Promise<number> {
-        if (isTokenETH(token)) {
-            return 0;
-        } else {
-            const tokenId = await this.governanceContract.assetsList(token);
-            if (tokenId == 0) {
-                throw new Error(`ERC20 token ${token} is not supported`);
-            }
-            return tokenId;
-        }
     }
 }
