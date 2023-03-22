@@ -1,10 +1,12 @@
 import Axios, { AxiosRequestConfig, AxiosResponse, Method } from 'axios';
 
-export class HTTPTransport {
-    public constructor(public baseEndpoint: string) {}
+export class HttpTransport {
+    public constructor(public baseEndpoint: string) {
+        this.baseEndpoint = baseEndpoint;
+    }
 
     async request(
-        path,
+        path: string,
         method: Method = 'GET',
         params?: any,
         customConfig?: AxiosRequestConfig

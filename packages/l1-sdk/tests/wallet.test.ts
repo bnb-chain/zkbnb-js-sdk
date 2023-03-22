@@ -48,10 +48,10 @@ describe('Wallet with mock provider', function () {
             expect(result).not.null;
         });
 
-        it('depositToL2', async function () {
+        it('deposit', async function () {
             this.timeout(10000);
 
-            const result = await wallet.depositToL2({
+            const result = await wallet.deposit({
                 to: '0xa7F23Ad2b0473Bd05012753624eDD77B4CAcdfa3',
                 tokenAddress: 'ETH',
                 amount: ethers.utils.parseEther('0.001')
@@ -61,13 +61,13 @@ describe('Wallet with mock provider', function () {
             expect(result instanceof ETHOperation).true;
         });
 
-        it('depositNFTToL2', async function () {
+        it('depositNFT', async function () {
             this.timeout(60 * 1000);
 
-            // TODO 现在是这里有问题，前面的 depositToL2 暂时没有管他，先测的充值 nft 的
+            // TODO 现在是这里有问题，前面的 deposit 暂时没有管他，先测的充值 nft 的
             await wallet.approveERC20TokenDeposits('0x1ecb4fa9ff17835a10485350a05f53668783383a');
 
-            const result = await wallet.depositNFTToL2({
+            const result = await wallet.depositNFT({
                 to: '0x8fC70c416ccd3344229192120c62EB117444C411',
                 tokenAddress: '0x1ecb4fa9ff17835a10485350a05f53668783383a',
                 tokenId: 45
