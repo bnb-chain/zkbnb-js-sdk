@@ -1,9 +1,9 @@
-import { Contract, ethers } from 'ethers';
+import { Contract, ethers, logger } from 'ethers';
 import { ContractAddress, Network, PriorityOperationReceipt, TokenAddress } from './types';
 import { isTokenETH } from './utils';
 import { GovernanceInterface, ZkBNBInterface, ZkBNBNFTFactoryInterface } from './abi';
 import { ZkBNBProvider } from './provider-interface';
-import { AbstractJSONRPCTransport, HTTPTransport } from './transport';
+import { HTTPTransport } from './transport';
 
 export async function getZkBNBDefaultProvider(network: Network, pollIntervalMilliSecs?: number): Promise<Provider> {
     if (network === 'bsc') {
@@ -20,7 +20,7 @@ export class Provider extends ZkBNBProvider {
         throw new Error('Method not implemented.');
     }
     private pollIntervalMilliSecs: number;
-    private constructor(public transport: AbstractJSONRPCTransport) {
+    private constructor(public transport: HTTPTransport) {
         super();
         this.providerType = 'RPC';
     }
@@ -43,14 +43,43 @@ export class Provider extends ZkBNBProvider {
     }
 
     async getContractAddress(): Promise<ContractAddress> {
-        // todo
-        return {
-            zkBNBContract: '0x1ecB4fA9Ff17835a10485350a05f53668783383a',
-            governanceContract: '0x2E964A58edCA5586157b6CcaC1cCe849316E1643',
-            defaultNftFactory: '0x6AAeE5FCB563661A4c457F3add1c1b46f5b07A5D',
-            assetGovernanceContract: '0x796C239e99A79C6552446297e63b596296eC743b'
-        };
-        // return await this.transport.request('contract_address', null);
+        const response = await this.transport.request('/api/v1/layer2BasicInfo', null);
+
+        logger.debug(`getContractAddress response: ${response ? JSON.stringify(response) : '{}'}`);
+
+        if (response && 'contract_addresses' in response) {
+            const contractAddressArr = response['contract_addresses'];
+
+            const contractAddress: ContractAddress = {
+                zkBNBContract: '',
+                governanceContract: '',
+                defaultNftFactory: '',
+                assetGovernanceContract: ''
+            };
+
+            contractAddressArr.forEach((item) => {
+                switch (item['name']) {
+                    case 'ZkBNBContract':
+                        contractAddress.zkBNBContract = item['address'];
+                        break;
+                    case 'GovernanceContract':
+                        contractAddress.governanceContract = item['address'];
+                        break;
+                    case 'DefaultNftFactory':
+                        contractAddress.defaultNftFactory = item['address'];
+                        break;
+                    case 'AssetGovernanceContract':
+                        contractAddress.assetGovernanceContract = item['address'];
+                        break;
+                    default:
+                        logger.warn(`Unsupported types: ${item['name']}`);
+                }
+            });
+
+            return contractAddress;
+        }
+
+        throw new Error('Failed to get contract address');
     }
 
     override async disconnect() {
