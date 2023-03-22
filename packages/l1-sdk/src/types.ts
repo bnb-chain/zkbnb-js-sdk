@@ -100,7 +100,7 @@ export interface PriorityOperationReceipt {
 export interface ContractAddress {
     zkBNBContract: string;
     governanceContract: string;
-    defaultNftFactory: string;
+    defaultNftFactoryContract: string;
     assetGovernanceContract: string;
 }
 
