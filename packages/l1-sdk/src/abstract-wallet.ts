@@ -387,20 +387,20 @@ export abstract class AbstractWallet {
     }
 
     async validateAssetAddress(address: string): Promise<number> {
-        return await this.getGovernanceContract().validateAssetAddress(address);
+        return this.getGovernanceContract().validateAssetAddress(address);
     }
 
     async getNFTFactory(creatorAddress: string, collectionId: number): Promise<string> {
-        return await this.getGovernanceContract().getNFTFactory(creatorAddress, collectionId);
+        return this.getGovernanceContract().getNFTFactory(creatorAddress, collectionId);
     }
 
     async getNftTokenURI(nftContentType: number, nftContentHash: string): Promise<string> {
-        return await this.getGovernanceContract().getNftTokenURI(nftContentType, nftContentHash);
+        return this.getGovernanceContract().getNftTokenURI(nftContentType, nftContentHash);
     }
 
     // defaultNFTFactory part
     async resolveCreator(tokenId: number) : Promise<string>{
-        return await this.getDefaultNFTFactoryContract().getCreator(tokenId);
+        return this.getDefaultNFTFactoryContract().getCreator(tokenId);
     }
 
     // ****************
