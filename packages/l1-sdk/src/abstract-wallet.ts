@@ -371,7 +371,7 @@ export abstract class AbstractWallet {
                 throw new Error(`BEP20 token ${token} is not supported`);
             }
             return tokenId;
-        }
+       }
     }
 
     async resolveTokenAddress(tokenId: number): Promise<Address> {
