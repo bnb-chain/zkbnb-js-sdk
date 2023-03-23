@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import { expect } from 'chai';
-import { ethers } from 'ethers';
+import {BigNumber, ethers} from 'ethers';
 import { ETHOperation, Wallet } from '../src/wallet';
 import { getZkBNBDefaultProvider } from '../src/provider';
 
@@ -42,30 +42,42 @@ describe('Wallet with mock provider', function () {
                     // in the contract to determine, here choose commitBlocks
                     expect(result).to.have.property('commitBlocks');
                 });
+
+                it('getPendingBalance', async function() {
+                    this.timeout(10000);
+                    const address = '0x2fE6e6b5A084fEcd0A5cC109F7d5B5bbE9f0fE54';
+                    const assetAddress = '0x6E08fbE52Fe5374083E9F7Fab41737DF630946f0';
+
+                    const result = await wallet.getPendingBalance(address, assetAddress);
+                    expect(result).not.null;
+                    // At the time of writing this unit test, the following result is 0,
+                    // which can be changed according to your actual situation
+                    expect(result.eq(BigNumber.from(0))).eq(true);
+                })
             })
 
             describe('trading related methods', function () {
                 it('approveERC20TokenDeposits', async function () {
                     this.timeout(10000);
 
-                    const result = await wallet.approveERC20TokenDeposits('0x1ecb4fa9ff17835a10485350a05f53668783383a');
-
+                    // The parameter here should be a contract address that conforms to the erc20 specification
+                    const result = await wallet.approveERC20TokenDeposits('0x6E08fbE52Fe5374083E9F7Fab41737DF630946f0');
                     expect(result).not.null;
                 });
 
                 it('isERC20DepositsApproved', async function () {
                     this.timeout(10000);
 
-                    const result = await wallet.isERC20DepositsApproved('0x587f2b09b12e81b1fcbe4fbf652c92fe4ca392f0');
-
+                    const result = await wallet.isERC20DepositsApproved('0x6E08fbE52Fe5374083E9F7Fab41737DF630946f0');
                     expect(result).not.null;
+                    expect(result).eq(true);
                 });
 
                 it('deposit', async function () {
                     this.timeout(10000);
 
                     const result = await wallet.deposit({
-                        to: '0xa7F23Ad2b0473Bd05012753624eDD77B4CAcdfa3',
+                        to: '0x2fe6e6b5a084fecd0a5cc109f7d5b5bbe9f0fe54',
                         tokenAddress: 'ETH',
                         amount: ethers.utils.parseEther('0.001')
                     });
@@ -101,7 +113,7 @@ describe('Wallet with mock provider', function () {
                     this.timeout(10000);
 
                     const result = await wallet.requestFullExit({
-                        tokenAddress: '0x587f2b09b12e81b1fcbe4fbf652c92fe4ca392f0',
+                        tokenAddress: '0x6E08fbE52Fe5374083E9F7Fab41737DF630946f0',
                         accountIndex: 0
                     });
 
@@ -113,7 +125,7 @@ describe('Wallet with mock provider', function () {
                     this.timeout(10000);
 
                     const result = await wallet.requestFullExitNft({
-                        tokenId: 247070,
+                        tokenId: 45,
                         accountIndex: 0
                     });
 
