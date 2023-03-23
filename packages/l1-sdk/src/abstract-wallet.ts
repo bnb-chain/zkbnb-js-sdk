@@ -374,6 +374,17 @@ export abstract class AbstractWallet {
         }
     }
 
+    async resolveTokenAddress(tokenId: number): Promise<Address> {
+        if (tokenId === 0) {
+            return ethers.constants.AddressZero;
+        }
+        const tokenAddress = await this.getGovernanceContract().assetAddresses(tokenId);
+        if (tokenAddress === ethers.constants.AddressZero) {
+            throw new Error(`BEP20 token ${tokenId} is not supported`);
+        }
+        return tokenAddress;
+    }
+
     // ****************
     // Internal methods
     //
