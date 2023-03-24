@@ -372,21 +372,10 @@ export abstract class AbstractWallet {
                 throw new Error(`BEP20 token ${token} is not supported`);
             }
             return tokenId;
-       }
+        }
     }
 
     async resolveTokenAddress(tokenId: number): Promise<Address> {
-        if (tokenId === 0) {
-            return ethers.constants.AddressZero;
-        }
-        const tokenAddress = await this.getGovernanceContract().assetAddresses(tokenId);
-        if (tokenAddress === ethers.constants.AddressZero) {
-            throw new Error(`BEP20 token ${tokenId} is not supported`);
-        }
-        return tokenAddress;
-    }
-
-    async resolveTokenAddress(tokenId: number): Promise<string> {
         if (tokenId === 0) {
             return ethers.constants.AddressZero;
         }
@@ -410,7 +399,7 @@ export abstract class AbstractWallet {
     }
 
     // defaultNFTFactory part
-    async resolveCreator(tokenId: number) : Promise<string>{
+    async resolveCreator(tokenId: number): Promise<string> {
         return this.getDefaultNFTFactoryContract().getCreator(tokenId);
     }
 

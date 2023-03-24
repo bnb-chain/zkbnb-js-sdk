@@ -1,13 +1,11 @@
 {
-    "name": "@bnb-chain/zkbnb-l1-sdk",
-    "version": "0.0.1",
+    "name": "@qingyang-id/zkbnb-l1-sdk",
+    "version": "0.0.11",
     "license": "MIT",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "dependencies": {
-        "axios": "^0.21.2",
-        "websocket": "^1.0.30",
-        "websocket-as-promised": "^1.1.0"
+        "axios": "^0.21.2"
     },
     "peerDependencies": {
         "@ethersproject/logger": "^5.4.0",
