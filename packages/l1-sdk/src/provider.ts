@@ -5,9 +5,9 @@ import { HttpTransport } from './http-transport';
 
 export async function getZkBNBDefaultProvider(network: Network, pollIntervalMilliSecs?: number): Promise<Provider> {
     if (network === 'bsc') {
-        return await Provider.newHttpProvider('http://10.23.34.38:8888', pollIntervalMilliSecs, network);
+        return await Provider.newHttpProvider('https://testapi.zkbnbchain.org', pollIntervalMilliSecs, network);
     } else if (network === 'bscTestnet') {
-        return await Provider.newHttpProvider('http://10.23.34.38:8888', pollIntervalMilliSecs, network);
+        return await Provider.newHttpProvider('https://testapi.zkbnbchain.org', pollIntervalMilliSecs, network);
     } else {
         throw new Error(`BSC network ${network} is not supported`);
     }
@@ -19,9 +19,9 @@ export class Provider extends ZkBNBProvider {
         const op = {
             executed: true,
             block: {
-              blockNumber: 1,
-              committed: true,
-              verified: action === 'VERIFY', // simulation status
+                blockNumber: 1,
+                committed: true,
+                verified: action === 'VERIFY' // simulation status
             }
         } as PriorityOperationReceipt;
         return op;
@@ -34,7 +34,7 @@ export class Provider extends ZkBNBProvider {
     }
 
     static async newHttpProvider(
-        address = 'http://10.23.34.38:8888',
+        address = 'https://testapi.zkbnbchain.org',
         pollIntervalMilliSecs?: number,
         network?: Network
     ): Promise<Provider> {
