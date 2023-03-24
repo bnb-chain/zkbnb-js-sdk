@@ -6,6 +6,7 @@ import { getZkBNBDefaultProvider } from '../src/provider';
 
 describe('Wallet with mock provider', function () {
     const ZERO_ADDRESS = ethers.constants.AddressZero;
+
     async function getWallet(ethPrivateKey: any): Promise<Wallet> {
         const ethWallet = new ethers.Wallet(
             ethPrivateKey,
@@ -32,12 +33,12 @@ describe('Wallet with mock provider', function () {
 
         describe('wallet methods', function () {
             describe('query basic information methods', function () {
-
                 it('getZkBNBContract', async function () {
                     this.timeout(10000);
 
                     const result = await wallet.getZkBNBContract();
- // In the following assertion, you can choose what is present
+
+                    // In the following assertion, you can choose what is present
                     // in the contract to determine, here choose commitBlocks
                     expect(result).to.have.property('commitBlocks');
                 });
@@ -100,7 +101,7 @@ describe('Wallet with mock provider', function () {
                         to: '0xbD283e6Db5E817eAaC8fd7C2847199ebb2951f4a', // zkbnb contract address
                         tokenAddress: '0xba4e41cA7C970b1F463e836dEF0E4259344bAAA1',
                         tokenId: 4,
-                        approveDepositNFT: true,
+                        approveDepositNFT: true
                     });
 
                     expect(result).not.null;
@@ -214,23 +215,23 @@ describe('Wallet with mock provider', function () {
             });
         });
 
-        describe('modify', function() {
+        describe('modify', function () {
             it('deployAndRegisterNFTFactory', async function () {
                 const collectionId = 1;
                 const name = 'testFactory';
                 const symbol = 'tf';
                 await wallet.deployAndRegisterNFTFactory(collectionId, name, symbol);
-            })
+            });
 
-            it('registerNFTFactory', async function() {
+            it('registerNFTFactory', async function () {
                 // Just select a collectionId that does not exist
                 const collectionId = 2;
                 // factoryAddress get method: deployAndRegisterNFTFactory after execution,
                 // by 'query nftFactory' unit test code to get
                 const factoryAddress = '0x4f7821Fda15854760952E778e56A79f797B0573F';
                 await wallet.registerNFTFactory(collectionId, factoryAddress);
-            })
-        })
+            });
+        });
     });
 
     describe('defaultNFTFactory', function () {
@@ -240,9 +241,8 @@ describe('Wallet with mock provider', function () {
             const privateKey = (process.env.BSC_TESTNET_PRIVATE_KEY || '').split(',')[0];
             wallet = await getWallet(privateKey);
         });
-    })
 
-    describe('query', function () {
+        describe('query', function () {
             it('resolve creator', async function () {
                 this.timeout(10000);
                 const creator = await wallet.resolveCreator(1);
@@ -253,17 +253,16 @@ describe('Wallet with mock provider', function () {
                 expect(creator).eq(ZERO_ADDRESS);
             });
 
-            it('resolve tokenURI', async function() {
+            it('resolve tokenURI', async function () {
                 this.timeout(10000);
 
                 const tokenURI = await wallet.resolveTokenURI(1);
                 expect(tokenURI).not.null;
-            })
+            });
         });
     });
 
-    describe('assetGovernance', function() {
-
+    describe('assetGovernance', function () {
         let wallet: Wallet;
 
         beforeEach(async function () {
@@ -272,10 +271,10 @@ describe('Wallet with mock provider', function () {
         });
 
         describe('modify', function () {
-            it('addAsset', async function() {
+            it('addAsset', async function () {
                 const assetAddress = '0xba4e41cA7C970b1F463e836dEF0E4259344bAAA1';
                 await wallet.addAsset(assetAddress);
-            })
-        })
-    })
+            });
+        });
+    });
 });
