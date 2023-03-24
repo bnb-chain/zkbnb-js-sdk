@@ -14,9 +14,19 @@ export async function getZkBNBDefaultProvider(network: Network, pollIntervalMill
 }
 
 export class Provider extends ZkBNBProvider {
-    notifyPriorityOp(hashOrSerialId: string | number, action: 'COMMIT' | 'VERIFY'): Promise<PriorityOperationReceipt> {
-        throw new Error('Method not implemented.');
+    async notifyPriorityOp(hashOrSerialId: number, action: 'COMMIT' | 'VERIFY'): Promise<PriorityOperationReceipt> {
+        // TODO No search method is available yet
+        const op = {
+            executed: true,
+            block: {
+                blockNumber: 1,
+                committed: true,
+                verified: action === 'VERIFY' // simulation status
+            }
+        } as PriorityOperationReceipt;
+        return op;
     }
+
     private pollIntervalMilliSecs: number;
     private constructor(public transport: HttpTransport) {
         super();
