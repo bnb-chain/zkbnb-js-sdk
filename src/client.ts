@@ -17,29 +17,6 @@ export class Client {
   }
 
   /**
-   * returns txs by account public key
-   */
-  async getTxsByAccountPk({
-    accountPk,
-    types,
-    offset,
-    limit,
-  }: {
-    accountPk: Zk.AccountPk;
-    types: Zk.TxType[];
-    offset: number;
-    limit: number;
-  }) {
-    return await this.http.req(API.API_MAP.GetTxsByAccount, {
-      value: accountPk,
-      by: 'account_pk',
-      types: JSON.stringify(types),
-      offset,
-      limit,
-    });
-  }
-
-  /**
    * returns txs by l1 address
    */
   async getTxsByL1Address({
@@ -207,16 +184,6 @@ export class Client {
   }
 
   /**
-   * returns account info by public key
-   */
-  async getAccountByPubKey(pubKey: string) {
-    return await this.http.req(API.API_MAP.GetAccountByParam, {
-      by: 'pk',
-      value: pubKey,
-    });
-  }
-
-  /**
    * returns account (mainly pubkey) by using l1_address
    */
   async getAccountByL1Address(l1Address: string) {
@@ -355,11 +322,10 @@ export class Client {
   /**
    * sends signed raw transaction and returns tx id
    */
-  async sendRawTx(txType: string, txInfo: string, signature: string) {
+  async sendRawTx(txType: string, txInfo: string) {
     return this.http.req(API.API_MAP.SendRawTx, {
       tx_info: txInfo,
       tx_type: txType,
-      tx_signature: signature,
     });
   }
 

@@ -49,10 +49,6 @@ export interface IReqParmsMap {
     types: string;
   } & (
       | {
-          value: Zk.PublicKey;
-          by: 'account_pk';
-        }
-      | {
           value: Zk.L1Address;
           by: 'l1_address';
         }
@@ -84,10 +80,7 @@ export interface IReqParmsMap {
   [API_MAP.GetLayer2BasicInfo]: Record<string, never>;
   [API_MAP.GetBlockByParam]: { by: 'commitment'; value: string } | { by: 'height'; value: number };
   [API_MAP.GetCurrentHeight]: Record<string, never>;
-  [API_MAP.GetAccountByParam]:
-    | { by: 'index'; value: Zk.AccountIndex }
-    | { by: 'pk'; value: Zk.PublicKey }
-    | { by: 'l1_address'; value: Zk.L1Address };
+  [API_MAP.GetAccountByParam]: { by: 'index'; value: Zk.AccountIndex } | { by: 'l1_address'; value: Zk.L1Address };
   [API_MAP.GetSwapAmount]: {
     pair_index: number;
     asset_id: Zk.Asset['id'];
@@ -112,7 +105,7 @@ export interface IReqParmsMap {
   [API_MAP.GetMaxOfferId]: { account_index: Zk.AccountIndex };
   [API_MAP.GetBlocks]: IReqBaseParam;
   [API_MAP.GetSignatureMessage]: { tx_type: string; tx_info: string };
-  [API_MAP.SendRawTx]: { tx_type: string; tx_info: string; tx_signature: string };
+  [API_MAP.SendRawTx]: { tx_type: string; tx_info: string };
   [API_MAP.SendRawCreateCollectionTx]: { tx_info: string };
   [API_MAP.SendRawMintNftTx]: { tx_info: string };
   [API_MAP.GetGasAccount]: Record<string, never>;
