@@ -398,8 +398,16 @@ export abstract class AbstractWallet {
         return this.getGovernanceContract().getNftTokenURI(nftContentType, nftContentHash);
     }
 
+    async deployAndRegisterNFTFactory(collectionId: number, name: string, symbol: string): Promise<void> {
+        return this.getGovernanceContract().deployAndRegisterNFTFactory(collectionId, name, symbol);
+    }
+
+    async registerNFTFactory(collectionId: number, factoryAddress: string): Promise<void> {
+        return this.getGovernanceContract().registerNFTFactory(collectionId, factoryAddress);
+    }
+
     // defaultNFTFactory part
-    async resolveCreator(tokenId: number) : Promise<string>{
+    async resolveCreator(tokenId: number): Promise<string> {
         return this.getDefaultNFTFactoryContract().getCreator(tokenId);
     }
 
