@@ -174,7 +174,6 @@ export abstract class AbstractWallet {
         let ethTransaction;
 
         const bnbNFTFactoryContract = new Contract(deposit.tokenAddress, ZkBNBNFTFactoryInterface, this.ethSigner());
-        const owner = await bnbNFTFactoryContract.ownerOf(deposit.tokenId)
         let nonce: number;
         if (deposit.approveDepositNFT) {
             try {
