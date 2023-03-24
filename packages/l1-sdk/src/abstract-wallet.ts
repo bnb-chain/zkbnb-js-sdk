@@ -407,8 +407,21 @@ export abstract class AbstractWallet {
     }
 
     // defaultNFTFactory part
+    // TODO Factory Future Features: Can specify the factoryAddress, currently only the default address can be used
     async resolveCreator(tokenId: number): Promise<string> {
         return this.getDefaultNFTFactoryContract().getCreator(tokenId);
+    }
+
+    async resolveTokenURI(tokenId: number): Promise<string> {
+        return this.getDefaultNFTFactoryContract().tokenURI(tokenId);
+    }
+
+    // AssetGovernance part
+    async addAsset(assetAddress: string): Promise<void> {
+        if (!assetAddress || assetAddress === ethers.constants.AddressZero) {
+            throw new Error('Please check the parameter assetAddress');
+        }
+        return this.getAssetGovernanceContract().addAsset(assetAddress);
     }
 
     // ****************
