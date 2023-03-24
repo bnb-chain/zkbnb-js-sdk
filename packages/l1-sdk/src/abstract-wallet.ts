@@ -173,12 +173,38 @@ export abstract class AbstractWallet {
 
         let ethTransaction;
 
-        try {
-            ethTransaction = await mainZkBNBContract.depositNft(deposit.to, deposit.tokenAddress, deposit.tokenId, {
+        const bnbNFTFactoryContract = new Contract(deposit.tokenAddress, ZkBNBNFTFactoryInterface, this.ethSigner());
+        let nonce: number;
+        if (deposit.approveDepositNFT) {
+            try {
+                const approveTx = await bnbNFTFactoryContract.approve(
+                  deposit.to,
+                  deposit.tokenId,
+                  {
+                      gasPrice,
+                      gasLimit: BigNumber.from(ETH_RECOMMENDED_DEPOSIT_GAS_LIMIT)
+                  }
+                );
+                nonce = approveTx.nonce + 1;
+            } catch (e) {
+                this.modifyEthersError(e);
+            }
+        }
+
+        const args = [
+            deposit.to,
+            deposit.tokenAddress,
+            deposit.tokenId,
+            {
                 gasLimit: BigNumber.from(ETH_RECOMMENDED_DEPOSIT_GAS_LIMIT),
+                nonce,
                 gasPrice,
                 ...deposit.ethTxOptions
-            });
+            }
+        ]
+
+        try {
+            ethTransaction = await mainZkBNBContract.depositNft(...args);
         } catch (e) {
             this.modifyEthersError(e);
         }
@@ -412,6 +438,60 @@ export abstract class AbstractWallet {
     // defaultNFTFactory part
     async resolveCreator(tokenId: number) : Promise<string>{
         return this.getDefaultNFTFactoryContract().getCreator(tokenId);
+    }
+
+    async resolveTokenAddress(tokenId: number): Promise<string> {
+        if (tokenId === 0) {
+            return ethers.constants.AddressZero;
+        }
+        const tokenAddress = await this.getGovernanceContract().assetAddresses(tokenId);
+        if (tokenAddress === ethers.constants.AddressZero) {
+            throw new Error(`BEP20 token ${tokenId} is not supported`);
+        }
+        return tokenAddress;
+    }
+
+    async validateAssetAddress(address: string): Promise<number> {
+        return this.getGovernanceContract().validateAssetAddress(address);
+    }
+
+    async getNFTFactory(creatorAddress: string, collectionId: number): Promise<string> {
+        return this.getGovernanceContract().getNFTFactory(creatorAddress, collectionId);
+    }
+
+    async getNftTokenURI(nftContentType: number, nftContentHash: string): Promise<string> {
+        return this.getGovernanceContract().getNftTokenURI(nftContentType, nftContentHash);
+    }
+
+    async deployAndRegisterNFTFactory(collectionId: number, name: string, symbol: string): Promise<void> {
+        return this.getGovernanceContract().deployAndRegisterNFTFactory(collectionId, name, symbol);
+    }
+
+    async registerNFTFactory(collectionId: number, factoryAddress: string): Promise<void> {
+        return this.getGovernanceContract().registerNFTFactory(collectionId, factoryAddress);
+    }
+
+    // defaultNFTFactory part
+    // TODO Factory Future Features: Can specify the factoryAddress, currently only the default address can be used
+    async resolveCreator(tokenId: number): Promise<string> {
+        return this.getDefaultNFTFactoryContract().getCreator(tokenId);
+    }
+
+    async resolveTokenURI(tokenId: number): Promise<string> {
+        return this.getDefaultNFTFactoryContract().tokenURI(tokenId);
+    }
+
+    // AssetGovernance part
+    async addAsset(assetAddress: string): Promise<void> {
+        if (!assetAddress || assetAddress === ethers.constants.AddressZero) {
+            throw new Error('Please check the parameter assetAddress');
+        }
+
+        const gasPrice = await this.ethSigner().provider.getGasPrice();
+        return this.getAssetGovernanceContract().addAsset(assetAddress, {
+            gasPrice,
+            gasLimit: BigNumber.from(ETH_RECOMMENDED_DEPOSIT_GAS_LIMIT)
+        });
     }
 
     // ****************
