@@ -1,6 +1,6 @@
 {
-    "name": "@qingyang-id/zkbnb-l1-sdk",
-    "version": "0.0.11",
+    "name": "@bnb-chain/zkbnb-l1-sdk",
+    "version": "0.0.1",
     "license": "MIT",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",

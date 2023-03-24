@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import { expect } from 'chai';
-import {BigNumber, ethers} from 'ethers';
+import { BigNumber, ethers } from 'ethers';
 import { ETHOperation, Wallet } from '../src/wallet';
 import { getZkBNBDefaultProvider } from '../src/provider';
 
@@ -23,7 +23,7 @@ describe('Wallet with mock provider', function () {
     });
 
     // TODO ZKBNB to be tested
-    describe('ZkBNB', function() {
+    describe('ZkBNB', function () {
         let wallet: Wallet;
 
         beforeEach(async function () {
@@ -32,7 +32,7 @@ describe('Wallet with mock provider', function () {
         });
 
         describe('wallet methods', function () {
-            describe('query basic information methods', function() {
+            describe('query basic information methods', function () {
                 it('getZkBNBContract', async function () {
                     this.timeout(10000);
 
@@ -43,7 +43,7 @@ describe('Wallet with mock provider', function () {
                     expect(result).to.have.property('commitBlocks');
                 });
 
-                it('getPendingBalance', async function() {
+                it('getPendingBalance', async function () {
                     this.timeout(10000);
                     const address = '0x2fE6e6b5A084fEcd0A5cC109F7d5B5bbE9f0fE54';
                     const assetAddress = '0x6E08fbE52Fe5374083E9F7Fab41737DF630946f0';
@@ -53,8 +53,8 @@ describe('Wallet with mock provider', function () {
                     // At the time of writing this unit test, the following result is 0,
                     // which can be changed according to your actual situation
                     expect(result.eq(BigNumber.from(0))).eq(true);
-                })
-            })
+                });
+            });
 
             describe('trading related methods', function () {
                 it('approveERC20TokenDeposits', async function () {
@@ -143,63 +143,11 @@ describe('Wallet with mock provider', function () {
 
                     expect(result).not.null;
                 });
-            })
+            });
         });
-    })
+    });
 
-    describe('Governance', function() {
-        let wallet: Wallet;
-
-        beforeEach(async function () {
-            const privateKey = (process.env.BSC_TESTNET_PRIVATE_KEY || '').split(',')[0];
-            wallet = await getWallet(privateKey);
-        });
-
-        describe('query', function() {
-            it('query assetAddresses by assetId', async function() {
-                this.timeout(10000);
-                const assetAddress = await wallet.resolveTokenAddress(1);
-                expect(assetAddress).not.null;
-                expect(assetAddress).not.eq(ZERO_ADDRESS);
-            })
-
-            it('query assetId by assetAddress', async function() {
-                this.timeout(10000);
-                // The following token address can be retrieved from getAssetAddressByAssetId
-                const token = '0x6E08fbE52Fe5374083E9F7Fab41737DF630946f0';
-                const assetId = await wallet.resolveTokenId(token);
-                expect(assetId).not.null;
-                expect(assetId > 0).eq(true);
-            })
-
-            it('query nftFactory', async function() {
-                this.timeout(10000);
-                // Since the following address must not exist, the default factory address will be returned
-                const nftFactory = await wallet.getNFTFactory(ZERO_ADDRESS, 1);
-                expect(nftFactory).not.null;
-                expect(nftFactory).not.eq(ZERO_ADDRESS);
-            })
-
-            it('query nft token uri', async function() {
-                this.timeout(10000);
-                // Since getNftTokenURI gets its result by calculation, the return result remains the same if the parameters remain the same here
-                const tokenUri = await wallet.getNftTokenURI(1, ethers.utils.formatBytes32String('mock hash'));
-                expect(tokenUri).eq('6d6f636b20686173680000000000000000000000000000000000000000000000');
-            })
-
-            it('validateAssetAddress', async function() {
-                this.timeout(10000);
-                // The following address can be retrieved from getAssetAddressByAssetId
-                const address = '0x6E08fbE52Fe5374083E9F7Fab41737DF630946f0';
-                const assetId = await wallet.validateAssetAddress(address);
-
-                expect(assetId).not.null;
-                expect(assetId > 0).eq(true);
-            })
-        })
-    })
-
-    describe('defaultNFTFactory', function() {
+    describe('Governance', function () {
         let wallet: Wallet;
 
         beforeEach(async function () {
@@ -208,7 +156,59 @@ describe('Wallet with mock provider', function () {
         });
 
         describe('query', function () {
-            it('resolve creator', async function() {
+            it('query assetAddresses by assetId', async function () {
+                this.timeout(10000);
+                const assetAddress = await wallet.resolveTokenAddress(1);
+                expect(assetAddress).not.null;
+                expect(assetAddress).not.eq(ZERO_ADDRESS);
+            });
+
+            it('query assetId by assetAddress', async function () {
+                this.timeout(10000);
+                // The following token address can be retrieved from getAssetAddressByAssetId
+                const token = '0x6E08fbE52Fe5374083E9F7Fab41737DF630946f0';
+                const assetId = await wallet.resolveTokenId(token);
+                expect(assetId).not.null;
+                expect(assetId > 0).eq(true);
+            });
+
+            it('query nftFactory', async function () {
+                this.timeout(10000);
+                // Since the following address must not exist, the default factory address will be returned
+                const nftFactory = await wallet.getNFTFactory(ZERO_ADDRESS, 1);
+                expect(nftFactory).not.null;
+                expect(nftFactory).not.eq(ZERO_ADDRESS);
+            });
+
+            it('query nft token uri', async function () {
+                this.timeout(10000);
+                // Since getNftTokenURI gets its result by calculation, the return result remains the same if the parameters remain the same here
+                const tokenUri = await wallet.getNftTokenURI(1, ethers.utils.formatBytes32String('mock hash'));
+                expect(tokenUri).eq('6d6f636b20686173680000000000000000000000000000000000000000000000');
+            });
+
+            it('validateAssetAddress', async function () {
+                this.timeout(10000);
+                // The following address can be retrieved from getAssetAddressByAssetId
+                const address = '0x6E08fbE52Fe5374083E9F7Fab41737DF630946f0';
+                const assetId = await wallet.validateAssetAddress(address);
+
+                expect(assetId).not.null;
+                expect(assetId > 0).eq(true);
+            });
+        });
+    });
+
+    describe('defaultNFTFactory', function () {
+        let wallet: Wallet;
+
+        beforeEach(async function () {
+            const privateKey = (process.env.BSC_TESTNET_PRIVATE_KEY || '').split(',')[0];
+            wallet = await getWallet(privateKey);
+        });
+
+        describe('query', function () {
+            it('resolve creator', async function () {
                 this.timeout(10000);
                 const creator = await wallet.resolveCreator(1);
 
@@ -216,7 +216,7 @@ describe('Wallet with mock provider', function () {
                 // the information corresponding to the tokenId, this case is written
                 // without filling the information, so it returns 0 address
                 expect(creator).eq(ZERO_ADDRESS);
-            })
-        })
-    })
+            });
+        });
+    });
 });
