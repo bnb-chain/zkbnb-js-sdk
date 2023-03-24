@@ -32,12 +32,12 @@ describe('Wallet with mock provider', function () {
 
         describe('wallet methods', function () {
             describe('query basic information methods', function () {
+
                 it('getZkBNBContract', async function () {
                     this.timeout(10000);
 
                     const result = await wallet.getZkBNBContract();
-
-                    // In the following assertion, you can choose what is present
+ // In the following assertion, you can choose what is present
                     // in the contract to determine, here choose commitBlocks
                     expect(result).to.have.property('commitBlocks');
                 });
@@ -240,8 +240,9 @@ describe('Wallet with mock provider', function () {
             const privateKey = (process.env.BSC_TESTNET_PRIVATE_KEY || '').split(',')[0];
             wallet = await getWallet(privateKey);
         });
+    })
 
-        describe('query', function () {
+    describe('query', function () {
             it('resolve creator', async function () {
                 this.timeout(10000);
                 const creator = await wallet.resolveCreator(1);
