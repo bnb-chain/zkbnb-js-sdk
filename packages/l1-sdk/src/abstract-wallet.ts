@@ -257,9 +257,9 @@ export abstract class AbstractWallet {
     }
 
     async withdrawPendingBalance(withdrawal: {
-        owner: number;
-        tokenAddress: number;
-        amount: number;
+        owner: string;
+        tokenAddress: string;
+        amount: BigNumberish;
         ethTxOptions?: ethers.providers.TransactionRequest;
     }): Promise<ETHOperation> {
         const gasPrice = withdrawal.ethTxOptions?.gasPrice || (await this.ethSigner().provider.getGasPrice());
@@ -362,6 +362,7 @@ export abstract class AbstractWallet {
         return this.getZkBNBContract().getPendingBalance(address, tokenAddress);
     }
 
+    // governance part
     async resolveTokenId(token: TokenAddress): Promise<number> {
         if (isBNBToken(token)) {
             return 0;
@@ -371,7 +372,46 @@ export abstract class AbstractWallet {
                 throw new Error(`BEP20 token ${token} is not supported`);
             }
             return tokenId;
+       }
+    }
+
+    async resolveTokenAddress(tokenId: number): Promise<Address> {
+        if (tokenId === 0) {
+            return ethers.constants.AddressZero;
         }
+        const tokenAddress = await this.getGovernanceContract().assetAddresses(tokenId);
+        if (tokenAddress === ethers.constants.AddressZero) {
+            throw new Error(`BEP20 token ${tokenId} is not supported`);
+        }
+        return tokenAddress;
+    }
+
+    async resolveTokenAddress(tokenId: number): Promise<string> {
+        if (tokenId === 0) {
+            return ethers.constants.AddressZero;
+        }
+        const tokenAddress = await this.getGovernanceContract().assetAddresses(tokenId);
+        if (tokenAddress === ethers.constants.AddressZero) {
+            throw new Error(`BEP20 token ${tokenId} is not supported`);
+        }
+        return tokenAddress;
+    }
+
+    async validateAssetAddress(address: string): Promise<number> {
+        return this.getGovernanceContract().validateAssetAddress(address);
+    }
+
+    async getNFTFactory(creatorAddress: string, collectionId: number): Promise<string> {
+        return this.getGovernanceContract().getNFTFactory(creatorAddress, collectionId);
+    }
+
+    async getNftTokenURI(nftContentType: number, nftContentHash: string): Promise<string> {
+        return this.getGovernanceContract().getNftTokenURI(nftContentType, nftContentHash);
+    }
+
+    // defaultNFTFactory part
+    async resolveCreator(tokenId: number) : Promise<string>{
+        return this.getDefaultNFTFactoryContract().getCreator(tokenId);
     }
 
     // ****************
