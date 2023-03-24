@@ -173,12 +173,39 @@ export abstract class AbstractWallet {
 
         let ethTransaction;
 
-        try {
-            ethTransaction = await mainZkBNBContract.depositNft(deposit.to, deposit.tokenAddress, deposit.tokenId, {
+        const bnbNFTFactoryContract = new Contract(deposit.tokenAddress, ZkBNBNFTFactoryInterface, this.ethSigner());
+        const owner = await bnbNFTFactoryContract.ownerOf(deposit.tokenId)
+        let nonce: number;
+        if (deposit.approveDepositNFT) {
+            try {
+                const approveTx = await bnbNFTFactoryContract.approve(
+                  deposit.to,
+                  deposit.tokenId,
+                  {
+                      gasPrice,
+                      gasLimit: BigNumber.from(ETH_RECOMMENDED_DEPOSIT_GAS_LIMIT)
+                  }
+                );
+                nonce = approveTx.nonce + 1;
+            } catch (e) {
+                this.modifyEthersError(e);
+            }
+        }
+
+        const args = [
+            deposit.to,
+            deposit.tokenAddress,
+            deposit.tokenId,
+            {
                 gasLimit: BigNumber.from(ETH_RECOMMENDED_DEPOSIT_GAS_LIMIT),
+                nonce,
                 gasPrice,
                 ...deposit.ethTxOptions
-            });
+            }
+        ]
+
+        try {
+            ethTransaction = await mainZkBNBContract.depositNft(...args);
         } catch (e) {
             this.modifyEthersError(e);
         }
