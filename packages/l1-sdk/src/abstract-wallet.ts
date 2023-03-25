@@ -444,7 +444,6 @@ export abstract class AbstractWallet {
     if (!assetAddress || assetAddress === ethers.constants.AddressZero) {
       throw new Error('Please check the parameter assetAddress');
     }
-
     const gasPrice = await this.ethSigner().provider.getGasPrice();
     return this.getAssetGovernanceContract().addAsset(assetAddress, {
       gasPrice,
