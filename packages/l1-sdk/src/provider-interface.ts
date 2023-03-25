@@ -2,7 +2,7 @@ import { ContractAddress, PriorityOperationReceipt, Network } from './types';
 
 export abstract class ZkBNBProvider {
     contractAddress: ContractAddress;
-    public providerType: 'RPC';
+    public providerType: 'RPC' | 'HTTP';
     // For HTTP provider
     public network?: Network;
 

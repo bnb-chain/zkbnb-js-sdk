@@ -35,7 +35,7 @@ describe('Provide test', () => {
             const contractAddress = await provider.getContractAddress();
             expect(contractAddress).to.have.property('zkBNBContract');
             expect(contractAddress).to.have.property('governanceContract');
-            expect(contractAddress).to.have.property('defaultNftFactory');
+            expect(contractAddress).to.have.property('defaultNftFactoryContract');
             expect(contractAddress).to.have.property('assetGovernanceContract');
         });
     });

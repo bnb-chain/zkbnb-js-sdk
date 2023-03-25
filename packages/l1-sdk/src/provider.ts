@@ -5,7 +5,7 @@ import { HttpTransport } from './http-transport';
 
 export async function getZkBNBDefaultProvider(network: Network, pollIntervalMilliSecs?: number): Promise<Provider> {
     if (network === 'bsc') {
-        return await Provider.newHttpProvider('https://testapi.zkbnbchain.org', pollIntervalMilliSecs, network);
+        return await Provider.newHttpProvider('https://api.zkbnbchain.org', pollIntervalMilliSecs, network);
     } else if (network === 'bscTestnet') {
         return await Provider.newHttpProvider('https://testapi.zkbnbchain.org', pollIntervalMilliSecs, network);
     } else {
@@ -30,15 +30,15 @@ export class Provider extends ZkBNBProvider {
     private pollIntervalMilliSecs: number;
     private constructor(public transport: HttpTransport) {
         super();
-        this.providerType = 'RPC';
+        this.providerType = 'HTTP';
     }
 
     static async newHttpProvider(
-        address = 'https://testapi.zkbnbchain.org',
+        endpoint = 'https://testapi.zkbnbchain.org',
         pollIntervalMilliSecs?: number,
         network?: Network
     ): Promise<Provider> {
-        const transport = new HttpTransport(address);
+        const transport = new HttpTransport(endpoint);
         const provider = new Provider(transport);
         if (pollIntervalMilliSecs) {
             provider.pollIntervalMilliSecs = pollIntervalMilliSecs;

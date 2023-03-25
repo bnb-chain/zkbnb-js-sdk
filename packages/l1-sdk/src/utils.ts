@@ -1,7 +1,7 @@
 import { BigNumber, BigNumberish, Contract, constants, ethers, utils } from 'ethers';
 import { ZkBNBProvider } from './provider-interface';
 import { Address, TokenAddress, TokenLike, TokenRatio, WeiRatio } from './types';
-import { IERC20_INTERFACE, ZkBNBInterface } from './abi';
+import { BEP20Interface, ZkBNBInterface } from './abi';
 
 // Max number of tokens for the current version, it is determined by the zkBNB circuit implementation.
 const MAX_NUMBER_OF_TOKENS = Math.pow(2, 31);
@@ -12,20 +12,28 @@ export const MAX_TIMESTAMP = 4294967295;
 export const MIN_NFT_TOKEN_ID = 65536;
 export const CURRENT_TX_VERSION = 1;
 
-export const MAX_ERC20_APPROVE_AMOUNT = BigNumber.from(
+export const MAX_BEP20_APPROVE_AMOUNT = BigNumber.from(
     '115792089237316195423570985008687907853269984665640564039457584007913129639935'
 ); // 2^256 - 1
 
-export const ERC20_APPROVE_THRESHOLD = BigNumber.from(
+export const BEP20_APPROVE_THRESHOLD = BigNumber.from(
     '57896044618658097711785492504343953926634992332820282019728792003956564819968'
 ); // 2^255
 
 // Gas limit that is set for eth deposit by default. For default EOA accounts 60k should be enough, but we reserve
 // more gas for smart-contract wallets
-export const ETH_RECOMMENDED_DEPOSIT_GAS_LIMIT = BigNumber.from('90000'); // 90k
+export const BNB_RECOMMENDED_DEPOSIT_GAS_LIMIT = BigNumber.from('90000'); // 90k
 // For normal wallet/erc20 token 90k gas for deposit should be enough, but for some tokens this can go as high as ~200k
 // we try to be safe by default
-export const ERC20_RECOMMENDED_DEPOSIT_GAS_LIMIT = BigNumber.from('300000'); // 300k
+export const BEP20_RECOMMENDED_DEPOSIT_GAS_LIMIT = BigNumber.from('300000'); // 300k
+export const ERC721_RECOMMENDED_DEPOSIT_GAS_LIMIT = BigNumber.from('300000'); // 300k
+export const BEP20_RECOMMENDED_FULL_EXIT_GAS_LIMIT = BigNumber.from('500000'); // 500k
+export const ERC721_RECOMMENDED_FULL_EXIT_GAS_LIMIT = BigNumber.from('500000'); // 500k
+export const BEP20_RECOMMENDED_WITHDRAW_PENDING_BALANCE_GAS_LIMIT = BigNumber.from('500000'); // 500k
+export const ERC721_RECOMMENDED_WITHDRAW_PENDING_BALANCE_GAS_LIMIT = BigNumber.from('500000'); // 500k
+export const BEP20_RECOMMENDED_ADD_ASSET_GAS_LIMIT = BigNumber.from('500000'); // 500k
+export const ERC721_RECOMMENDED_REGISTER_NFT_FACTORY_GAS_LIMIT = BigNumber.from('500000'); // 500k
+export const ERC721_RECOMMENDED_DEPLOY_AND_REGISTER_NFT_FACTORY_GAS_LIMIT = BigNumber.from('5000000'); // 500k
 
 const AMOUNT_EXPONENT_BIT_WIDTH = 5;
 const AMOUNT_MANTISSA_BIT_WIDTH = 35;
@@ -274,7 +282,7 @@ export async function getEthereumBalance(
     if (isBNBToken(tokenAddress)) {
         balance = await ethProvider.getBalance(address);
     } else {
-        const erc20contract = new Contract(tokenAddress, IERC20_INTERFACE, ethProvider);
+        const erc20contract = new Contract(tokenAddress, BEP20Interface, ethProvider);
 
         balance = await erc20contract.balanceOf(address);
     }

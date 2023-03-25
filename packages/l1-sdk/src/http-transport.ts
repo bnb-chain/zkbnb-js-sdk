@@ -1,8 +1,8 @@
 import Axios, { AxiosRequestConfig, AxiosResponse, Method } from 'axios';
 
 export class HttpTransport {
-    public constructor(public baseEndpoint: string) {
-        this.baseEndpoint = baseEndpoint;
+    public constructor(public endpoint: string) {
+        this.endpoint = endpoint;
     }
 
     async request(
@@ -12,7 +12,7 @@ export class HttpTransport {
         customConfig?: AxiosRequestConfig
     ): Promise<AxiosResponse> {
         const config: AxiosRequestConfig = {
-            baseURL: this.baseEndpoint,
+            baseURL: this.endpoint,
             url: path,
             method,
             data: params,
