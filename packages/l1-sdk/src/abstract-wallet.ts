@@ -34,7 +34,7 @@ export abstract class AbstractWallet {
     private zkBNBContract: Contract;
 
     protected constructor(public cachedAddress: Address) {
-        // this.cachedAddress = cachedAddress;
+        this.cachedAddress = cachedAddress;
     }
 
     connect(provider: ZkBNBProvider) {
@@ -447,6 +447,7 @@ export abstract class AbstractWallet {
         return this.assetGovernanceContract;
     }
 
+    // zkBNB part
     async getPendingBalance(address: Address, tokenAddress: TokenAddress): Promise<BigNumber> {
         return this.getZkBNBContract().getPendingBalance(address, tokenAddress);
     }
@@ -490,20 +491,6 @@ export abstract class AbstractWallet {
     // AssetGovernance part
     async isTokenLister(address: Address) {
         return this.getAssetGovernanceContract().tokenLister(address);
-    }
-
-  // ****************
-  // Internal methods
-  //
-
-  protected async verifyNetworks() {
-    if (this.provider.network != undefined && this.ethSigner().provider != undefined) {
-      const ethNetwork = await this.ethSigner().provider.getNetwork();
-      if (l1ChainId(this.provider.network) !== ethNetwork.chainId) {
-        throw new Error(
-          `ETH network ${ethNetwork.name} and ZkBNB network ${this.provider.network} don't match`
-        );
-      }
     }
 
     // ****************
