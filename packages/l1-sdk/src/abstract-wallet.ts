@@ -492,6 +492,20 @@ export abstract class AbstractWallet {
         return this.getAssetGovernanceContract().tokenLister(address);
     }
 
+  // ****************
+  // Internal methods
+  //
+
+  protected async verifyNetworks() {
+    if (this.provider.network != undefined && this.ethSigner().provider != undefined) {
+      const ethNetwork = await this.ethSigner().provider.getNetwork();
+      if (l1ChainId(this.provider.network) !== ethNetwork.chainId) {
+        throw new Error(
+          `ETH network ${ethNetwork.name} and ZkBNB network ${this.provider.network} don't match`
+        );
+      }
+    }
+
     // ****************
     // Internal methods
     //
