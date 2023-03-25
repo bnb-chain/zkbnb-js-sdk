@@ -1,32 +1,32 @@
 import Axios, { AxiosRequestConfig, AxiosResponse, Method } from 'axios';
 
 export class HttpTransport {
-    public constructor(public endpoint: string) {
-        this.endpoint = endpoint;
-    }
+  public constructor(public endpoint: string) {
+    this.endpoint = endpoint;
+  }
 
-    async request(
-        path: string,
-        method: Method = 'GET',
-        params?: any,
-        customConfig?: AxiosRequestConfig
-    ): Promise<AxiosResponse> {
-        const config: AxiosRequestConfig = {
-            baseURL: this.endpoint,
-            url: path,
-            method,
-            data: params,
-            ...customConfig
-        };
+  async request(
+    path: string,
+    method: Method = 'GET',
+    params?: any,
+    customConfig?: AxiosRequestConfig
+  ): Promise<AxiosResponse> {
+    const config: AxiosRequestConfig = {
+      baseURL: this.endpoint,
+      url: path,
+      method,
+      data: params,
+      ...customConfig,
+    };
 
-        const response = await Axios.request(config).then((resp) => {
-            return resp.data;
-        });
+    const response = await Axios.request(config).then((resp) => {
+      return resp.data;
+    });
 
-        return response;
-    }
+    return response;
+  }
 
-    async disconnect() {
-        return null;
-    }
+  async disconnect() {
+    return null;
+  }
 }

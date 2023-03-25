@@ -4,88 +4,88 @@ import { PriorityOperationReceipt, TransactionReceipt } from './types';
 import { ZkBNBInterface } from './abi';
 
 export class ZkBNBTxError extends Error {
-    constructor(message: string, public value: PriorityOperationReceipt | TransactionReceipt) {
-        super(message);
-    }
+  constructor(message: string, public value: PriorityOperationReceipt | TransactionReceipt) {
+    super(message);
+  }
 }
 
 export class ETHOperation {
-    state: 'Sent' | 'Mined' | 'Committed' | 'Verified' | 'Failed';
-    error?: ZkBNBTxError;
-    priorityOpId?: BigNumber;
+  state: 'Sent' | 'Mined' | 'Committed' | 'Verified' | 'Failed';
+  error?: ZkBNBTxError;
+  priorityOpId?: BigNumber;
 
-    constructor(public ethTx: ContractTransaction, public zkZkBNBProvider: ZkBNBProvider) {
-        this.state = 'Sent';
-    }
+  constructor(public ethTx: ContractTransaction, public zkZkBNBProvider: ZkBNBProvider) {
+    this.state = 'Sent';
+  }
 
-    async awaitEthereumTxCommit() {
-        if (this.state !== 'Sent') return;
+  async awaitEthereumTxCommit() {
+    if (this.state !== 'Sent') return;
 
-        const txReceipt = await this.ethTx.wait();
-        for (const log of txReceipt.logs) {
-            try {
-                const priorityQueueLog = ZkBNBInterface.parseLog(log);
-                if (priorityQueueLog && priorityQueueLog.args.serialId != null) {
-                    this.priorityOpId = priorityQueueLog.args.serialId;
-                }
-            } catch {
-                /* empty */
-            }
+    const txReceipt = await this.ethTx.wait();
+    for (const log of txReceipt.logs) {
+      try {
+        const priorityQueueLog = ZkBNBInterface.parseLog(log);
+        if (priorityQueueLog && priorityQueueLog.args.serialId != null) {
+          this.priorityOpId = priorityQueueLog.args.serialId;
         }
-        if (!this.priorityOpId) {
-            throw new Error('Failed to parse tx logs');
-        }
-
-        this.state = 'Mined';
-        return txReceipt;
+      } catch {
+        /* empty */
+      }
+    }
+    if (!this.priorityOpId) {
+      throw new Error('Failed to parse tx logs');
     }
 
-    async awaitReceipt(): Promise<PriorityOperationReceipt> {
-        this.throwErrorIfFailedState();
+    this.state = 'Mined';
+    return txReceipt;
+  }
 
-        await this.awaitEthereumTxCommit();
-        if (this.state !== 'Mined') return;
+  async awaitReceipt(): Promise<PriorityOperationReceipt> {
+    this.throwErrorIfFailedState();
 
-        let query: number | string;
-        if (this.zkZkBNBProvider.providerType === 'RPC') {
-            query = this.priorityOpId.toNumber();
-        } else {
-            query = this.ethTx.hash;
-        }
-        const receipt = await this.zkZkBNBProvider.notifyPriorityOp(query, 'COMMIT');
+    await this.awaitEthereumTxCommit();
+    if (this.state !== 'Mined') return;
 
-        if (!receipt.executed) {
-            this.setErrorState(new ZkBNBTxError('Priority operation failed', receipt));
-            this.throwErrorIfFailedState();
-        }
+    let query: number | string;
+    if (this.zkZkBNBProvider.providerType === 'RPC') {
+      query = this.priorityOpId.toNumber();
+    } else {
+      query = this.ethTx.hash;
+    }
+    const receipt = await this.zkZkBNBProvider.notifyPriorityOp(query, 'COMMIT');
 
-        this.state = 'Committed';
-        return receipt;
+    if (!receipt.executed) {
+      this.setErrorState(new ZkBNBTxError('Priority operation failed', receipt));
+      this.throwErrorIfFailedState();
     }
 
-    async awaitVerifyReceipt(): Promise<PriorityOperationReceipt> {
-        await this.awaitReceipt();
-        if (this.state !== 'Committed') return;
+    this.state = 'Committed';
+    return receipt;
+  }
 
-        let query: number | string;
-        if (this.zkZkBNBProvider.providerType === 'RPC') {
-            query = this.priorityOpId.toNumber();
-        } else {
-            query = this.ethTx.hash;
-        }
-        const receipt = await this.zkZkBNBProvider.notifyPriorityOp(query, 'VERIFY');
+  async awaitVerifyReceipt(): Promise<PriorityOperationReceipt> {
+    await this.awaitReceipt();
+    if (this.state !== 'Committed') return;
 
-        this.state = 'Verified';
-
-        return receipt;
+    let query: number | string;
+    if (this.zkZkBNBProvider.providerType === 'RPC') {
+      query = this.priorityOpId.toNumber();
+    } else {
+      query = this.ethTx.hash;
     }
+    const receipt = await this.zkZkBNBProvider.notifyPriorityOp(query, 'VERIFY');
 
-    private setErrorState(error: ZkBNBTxError) {
-        this.state = 'Failed';
-        this.error = error;
-    }
+    this.state = 'Verified';
 
-    private throwErrorIfFailedState() {
-        if (this.state === 'Failed') throw this.error;
-    }
+    return receipt;
+  }
+
+  private setErrorState(error: ZkBNBTxError) {
+    this.state = 'Failed';
+    this.error = error;
+  }
+
+  private throwErrorIfFailedState() {
+    if (this.state === 'Failed') throw this.error;
+  }
 }

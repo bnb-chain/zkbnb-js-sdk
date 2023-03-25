@@ -22,94 +22,94 @@ const BSC_NETWORK_CHAIN_ID = 56;
 const BSC_TESTNET_NETWORK_CHAIN_ID = 97;
 
 export function l1ChainId(network?: Network): number {
-    if (network === 'bsc') {
-        return BSC_NETWORK_CHAIN_ID;
-    }
-    if (network === 'bscTestnet') {
-        return BSC_TESTNET_NETWORK_CHAIN_ID;
-    }
-    throw new Error('Unsupported network');
+  if (network === 'bsc') {
+    return BSC_NETWORK_CHAIN_ID;
+  }
+  if (network === 'bscTestnet') {
+    return BSC_TESTNET_NETWORK_CHAIN_ID;
+  }
+  throw new Error('Unsupported network');
 }
 
 export type EthAccountType = 'Owned' | 'CREATE2' | 'No2FA';
 
 export interface Depositing {
-    balances: {
-        // Token are indexed by their symbol (e.g. "ETH")
-        [token: string]: {
-            // Sum of pending deposits for the token.
-            amount: BigNumberish;
-            // Value denoting the block number when the funds are expected
-            // to be received by zkBNB network.
-            expectedAcceptBlock: number;
-        };
+  balances: {
+    // Token are indexed by their symbol (e.g. "ETH")
+    [token: string]: {
+      // Sum of pending deposits for the token.
+      amount: BigNumberish;
+      // Value denoting the block number when the funds are expected
+      // to be received by zkBNB network.
+      expectedAcceptBlock: number;
     };
+  };
 }
 
 export type EthSignerType = {
-    verificationMethod: 'ECDSA' | 'ERC-1271';
-    // Indicates if signer adds `\x19Ethereum Signed Message\n${msg.length}` prefix before signing message.
-    // i.e. if false, we should add this prefix manually before asking to sign message
-    isSignedMsgPrefixed: boolean;
+  verificationMethod: 'ECDSA' | 'ERC-1271';
+  // Indicates if signer adds `\x19Ethereum Signed Message\n${msg.length}` prefix before signing message.
+  // i.e. if false, we should add this prefix manually before asking to sign message
+  isSignedMsgPrefixed: boolean;
 };
 
 export interface TxEthSignature {
-    type: 'EthereumSignature' | 'EIP1271Signature';
-    signature: string;
+  type: 'EthereumSignature' | 'EIP1271Signature';
+  signature: string;
 }
 
 export interface Signature {
-    pubKey: string;
-    signature: string;
+  pubKey: string;
+  signature: string;
 }
 
 export type Ratio = [BigNumberish, BigNumberish];
 
 /// represents ratio between tokens themself
 export type TokenRatio = {
-    type: 'Token';
-    [token: string]: string | number;
-    [token: number]: string | number;
+  type: 'Token';
+  [token: string]: string | number;
+  [token: number]: string | number;
 };
 
 /// represents ratio between lowest token denominations (wei, satoshi, etc.)
 export type WeiRatio = {
-    type: 'Wei';
-    [token: string]: BigNumberish;
-    [token: number]: BigNumberish;
+  type: 'Wei';
+  [token: string]: BigNumberish;
+  [token: number]: BigNumberish;
 };
 
 export interface BlockInfo {
-    blockNumber: number;
-    committed: boolean;
-    verified: boolean;
+  blockNumber: number;
+  committed: boolean;
+  verified: boolean;
 }
 
 export interface TransactionReceipt {
-    executed: boolean;
-    success?: boolean;
-    failReason?: string;
-    block?: BlockInfo;
+  executed: boolean;
+  success?: boolean;
+  failReason?: string;
+  block?: BlockInfo;
 }
 
 export interface PriorityOperationReceipt {
-    executed: boolean;
-    block?: BlockInfo;
+  executed: boolean;
+  block?: BlockInfo;
 }
 
 export interface ContractAddress {
-    zkBNBContract: string;
-    governanceContract: string;
-    defaultNftFactoryContract: string;
-    assetGovernanceContract: string;
+  zkBNBContract: string;
+  governanceContract: string;
+  defaultNftFactoryContract: string;
+  assetGovernanceContract: string;
 }
 
 export interface Tokens {
-    // Tokens are indexed by their symbol (e.g. "ETH")
-    [token: string]: {
-        address: string;
-        id: number;
-        symbol: string;
-        decimals: number;
-    };
+  // Tokens are indexed by their symbol (e.g. "ETH")
+  [token: string]: {
+    address: string;
+    id: number;
+    symbol: string;
+    decimals: number;
+  };
 }
