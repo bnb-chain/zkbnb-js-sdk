@@ -178,7 +178,7 @@ describe('signMintNft', () => {
         '5a8ceed126069ba42d8eb0965b9d982941ad3b7d3f118ab65b5a1322a2cc5c6b17c59fd44af43f9f3e2e80cdda58aa8fd76d3b8500024d013d131f7b30304b0e1b',
         '{"creator_account_index":13,"to_account_index":13,"to_l1_address":"0xd757C6bDb5837d721B04DE87c155DBa72c9B076C","nft_content_hash":"2d0794241d3d73f2952d3fe24207e6a042d6056708a2a01ee868f237b0c495e4","nft_collection_id":0,"creator_treasury_rate":1200,"gas_account_index":1,"gas_fee_asset_id":0,"gas_fee_asset_amount":"10000000000000","expired_at":1676674294097,"nonce":3}'
       ),
-      '{"CreatorAccountIndex":13,"ToAccountIndex":13,"ToL1Address":"0xd757C6bDb5837d721B04DE87c155DBa72c9B076C","NftIndex":0,"NftContentHash":"2d0794241d3d73f2952d3fe24207e6a042d6056708a2a01ee868f237b0c495e4","NftContentType":0,"NftCollectionId":0,"CreatorTreasuryRate":1200,"GasAccountIndex":1,"GasFeeAssetId":0,"GasFeeAssetAmount":10000000000000,"ExpiredAt":1676674294097,"Nonce":3,"Sig":"Ng/dvWKsHNsUf85DLGzh8eaYcKeUi40Cpdm70uQPbpUFefo1aQ2PAcM/p0pT1Vq7jWiHlr7tbtbEzwOVEt5AZg==","MetaData":"","MutableAttributes":"","IpnsName":"","IpnsId":"","L1Sig":""}'
+      '{"CreatorAccountIndex":13,"ToAccountIndex":13,"ToL1Address":"0xd757C6bDb5837d721B04DE87c155DBa72c9B076C","NftIndex":0,"NftContentHash":"2d0794241d3d73f2952d3fe24207e6a042d6056708a2a01ee868f237b0c495e4","NftContentType":0,"NftCollectionId":0,"RoyaltyRate":1200,"GasAccountIndex":1,"GasFeeAssetId":0,"GasFeeAssetAmount":10000000000000,"ExpiredAt":1676674294097,"Nonce":3,"Sig":"Ng/dvWKsHNsUf85DLGzh8eaYcKeUi40Cpdm70uQPbpUFefo1aQ2PAcM/p0pT1Vq7jWiHlr7tbtbEzwOVEt5AZg==","MetaData":"","MutableAttributes":"","IpnsName":"","IpnsId":"","L1Sig":""}'
     );
   });
 });
@@ -190,7 +190,7 @@ describe('signTransferNft', () => {
         'bd7c6390dd20a2d06e5bc88fa4c6f84ffab19a684e4bcc4c3f9fc8255aa94d28',
         '{"from_account_index":0,"to_l1_address":"0xd757C6bDb5837d721B04DE87c155DBa72c9B076C","nft_index":15,"gas_account_index":1,"gas_fee_asset_id":3,"gas_fee_asset_amount":"3","call_data":"","expired_at":1654656781000,"nonce":1}'
       ),
-      '{"CreatorAccountIndex":0,"ToAccountIndex":0,"ToL1Address":"0xd757C6bDb5837d721B04DE87c155DBa72c9B076C","NftIndex":0,"NftContentHash":"","NftContentType":0,"NftCollectionId":0,"CreatorTreasuryRate":0,"GasAccountIndex":1,"GasFeeAssetId":3,"GasFeeAssetAmount":3,"ExpiredAt":1654656781000,"Nonce":1,"Sig":"EyCcCreddIKPuVz2T3v0paLuEJVAyTPW60QuIVlAc6AFn8jpus8ri2IzipKVoLZFzYmgptSeCZPoedOGr23KQw==","MetaData":"","MutableAttributes":"","IpnsName":"","IpnsId":"","L1Sig":""}'
+      '{"CreatorAccountIndex":0,"ToAccountIndex":0,"ToL1Address":"0xd757C6bDb5837d721B04DE87c155DBa72c9B076C","NftIndex":0,"NftContentHash":"","NftContentType":0,"NftCollectionId":0,"RoyaltyRate":0,"GasAccountIndex":1,"GasFeeAssetId":3,"GasFeeAssetAmount":3,"ExpiredAt":1654656781000,"Nonce":1,"Sig":"EyCcCreddIKPuVz2T3v0paLuEJVAyTPW60QuIVlAc6AFn8jpus8ri2IzipKVoLZFzYmgptSeCZPoedOGr23KQw==","MetaData":"","MutableAttributes":"","IpnsName":"","IpnsId":"","L1Sig":""}'
     );
   });
 });
@@ -202,7 +202,7 @@ describe('signWithdrawNft', () => {
         'bd7c6390dd20a2d06e5bc88fa4c6f84ffab19a684e4bcc4c3f9fc8255aa94d28',
         '{"account_index":1,"nft_index":15,"to_address":"0x507Bd54B4232561BC0Ca106F7b029d064fD6bE4c","gas_account_index":1,"gas_fee_asset_id":3,"gas_fee_asset_amount":"3","expired_at":1654656781000,"nonce":1}'
       ),
-      '{"AccountIndex":1,"CreatorAccountIndex":0,"CreatorL1Address":"","CreatorTreasuryRate":0,"NftIndex":15,"NftContentHash":null,"NftContentType":0,"CollectionId":0,"ToAddress":"0x507Bd54B4232561BC0Ca106F7b029d064fD6bE4c","GasAccountIndex":1,"GasFeeAssetId":3,"GasFeeAssetAmount":3,"ExpiredAt":1654656781000,"Nonce":1,"Sig":"fXIiWN1k3sGaTgpWZfUXEOQpMlIsTI7P1D+7q5a8pJsEtpp5hWVK3oJ/AKgEiZi1nrjJZFs/0P3AdrRY/tcFnw==","L1Sig":""}'
+      '{"AccountIndex":1,"CreatorAccountIndex":0,"CreatorL1Address":"","RoyaltyRate":0,"NftIndex":15,"NftContentHash":null,"NftContentType":0,"CollectionId":0,"ToAddress":"0x507Bd54B4232561BC0Ca106F7b029d064fD6bE4c","GasAccountIndex":1,"GasFeeAssetId":3,"GasFeeAssetAmount":3,"ExpiredAt":1654656781000,"Nonce":1,"Sig":"fXIiWN1k3sGaTgpWZfUXEOQpMlIsTI7P1D+7q5a8pJsEtpp5hWVK3oJ/AKgEiZi1nrjJZFs/0P3AdrRY/tcFnw==","L1Sig":""}'
     );
   });
 });
