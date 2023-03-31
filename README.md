@@ -123,7 +123,6 @@ import { ZkCrypto } from '@bnb-chain/zkbnb-js-sdk/zkCrypto/web';
 })();
 ```
 
-
 ## CHANGELOG
 
 [CHANGELOG](./docs/CHANGELOG.md)
