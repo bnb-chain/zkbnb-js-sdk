@@ -1,3 +1,10 @@
+# [4.4.0](https://github.com/bnb-chain/zkbnb-js-sdk/compare/v4.3.0...v4.4.0) (2023-03-31)
+
+
+### Features
+
+* remove zns ([#42](https://github.com/bnb-chain/zkbnb-js-sdk/issues/42)) ([0116e5a](https://github.com/bnb-chain/zkbnb-js-sdk/commit/0116e5a656fc33aa8b0f1a7c251d1cdb189762bd))
+
 # [4.3.0](https://github.com/bnb-chain/zkbnb-js-sdk/compare/v4.2.0...v4.3.0) (2023-02-20)
 
 
