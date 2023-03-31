@@ -4,7 +4,6 @@ declare module '@bnb-chain/zkbnb-js-sdk/zkCrypto/web' {
   export interface Z {
     cleanPackedAmount: (amount: string) => string;
     cleanPackedFee: (amount: string) => string;
-    getAccountNameHash: (accountName: string) => string;
     getEddsaPublicKey: (seed: string) => string;
     generateEddsaKey: (seed: string) => string;
     getEddsaCompressedPublicKey: (seed: string) => string;
@@ -22,5 +21,6 @@ declare module '@bnb-chain/zkbnb-js-sdk/zkCrypto/web' {
     signMintNft: (seed: string, segmentstr: string) => string;
     signTransferNft: (seed: string, segmentstr: string) => string;
     signWithdrawNft: (seed: string, segmentstr: string) => string;
+    signChangePubKey: (seed: string, segmentstr: string) => string;
   }
 }

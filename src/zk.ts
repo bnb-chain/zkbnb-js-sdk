@@ -34,8 +34,8 @@ export type Price = string;
 export type Amount = string;
 
 export type AccountIndex = number;
-export type AccountName = string;
-export type AccountStatus = number;
+export type L1Address = string;
+export type AccountStatus = number; //0 - registered, no pk; 1 - changed pk
 export type PublicKey = string;
 export type AccountPk = PublicKey;
 
@@ -49,13 +49,13 @@ export type AccountAsset = {
 export type GasAccount = {
   staus: number;
   index: number;
-  name: string;
+  l1Address: string;
 };
 
 export type Account = {
   status: number;
   index: number;
-  name: string;
+  l1Address: string;
   pk: string;
   nonce: number;
   assets: AccountAsset[];
@@ -70,7 +70,7 @@ export type AccountLp = {
 
 export type SimpleAccount = {
   index: AccountIndex;
-  name: AccountName;
+  l1Address: L1Address;
   pk: AccountPk;
 };
 
@@ -121,7 +121,7 @@ export type TxDetail = {
   asset_id: Asset['id'];
   asset_type: number;
   account_index: AccountIndex;
-  account_name: AccountName;
+  l1_address: L1Address;
   balance: string;
   balance_delta: string;
   order: number;
@@ -148,7 +148,7 @@ export type Tx = {
   extra_info: string;
   memo: string;
   account_index: AccountIndex;
-  account_name: string;
+  l1_address: string;
   nonce: Nonce;
   expired_at: TimeStamp;
   block_height: number;
@@ -156,16 +156,16 @@ export type Tx = {
   created_at: TimeStamp;
   verify_at: TimeStamp;
   state_root: string;
-  to_account_name: string;
+  to_l1_address: string;
   to_account_index: string;
 };
 
 export type Nft = {
   index: number;
   creator_account_index: number;
-  creator_account_name: string;
+  creator_l1_address: string;
   owner_account_index: number;
-  owner_account_name: string;
+  owner_l1_address: string;
   content_hash: Hash;
   l1_address: string;
   l1_token_id: string;
@@ -175,7 +175,7 @@ export type Nft = {
 
 export enum TxType {
   TxTypeEmpty = 0,
-  TxTypeRegisterZns,
+  TxTypeChangePubKey,
   TxTypeDeposit,
   TxTypeDepositNft,
   TxTypeTransfer,

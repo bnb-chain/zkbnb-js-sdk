@@ -2,7 +2,6 @@ declare module '@bnb-chain/zkbnb-js-sdk/zkCrypto' {
   interface ZK_CRYPTO_TPYE {
     cleanPackedAmount: (amount: string) => string;
     cleanPackedFee: (amount: string) => string;
-    getAccountNameHash: (accountName: string) => string;
     getEddsaPublicKey: (seed: string) => string;
     generateEddsaKey: (seed: string) => string;
     getEddsaCompressedPublicKey: (seed: string) => string;
@@ -20,6 +19,7 @@ declare module '@bnb-chain/zkbnb-js-sdk/zkCrypto' {
     signMintNft: (seed: string, segmentstr: string) => string;
     signTransferNft: (seed: string, segmentstr: string) => string;
     signWithdrawNft: (seed: string, segmentstr: string) => string;
+    signChangePubKey: (seed: string, segmentstr: string) => string;
   }
 
   export const ZkCrypto: ZK_CRYPTO_TPYE;
