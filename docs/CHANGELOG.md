@@ -1,3 +1,10 @@
+## [4.4.1](https://github.com/bnb-chain/zkbnb-js-sdk/compare/v4.4.0...v4.4.1) (2023-04-04)
+
+
+### Bug Fixes
+
+* missing lodash-es, replace lodash-es to lodash ([#43](https://github.com/bnb-chain/zkbnb-js-sdk/issues/43)) ([b13c5ad](https://github.com/bnb-chain/zkbnb-js-sdk/commit/b13c5ada0408f3dd285295d44ebd51949f35bde9))
+
 # [4.4.0](https://github.com/bnb-chain/zkbnb-js-sdk/compare/v4.3.0...v4.4.0) (2023-03-31)
 
 
