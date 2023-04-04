@@ -1,6 +1,5 @@
-import { merge } from 'lodash-es';
-import { ResponseData, ResponseHook } from './response';
-import { ResponseError, TimeoutError } from './errors';
+import merge from 'lodash/merge';
+import { ResponseData, ResponseHook, ResponseError, TimeoutError, ErrorHook } from './response';
 import { HttpMethod, QueryConfig, QueryData, RequestHook } from './type';
 
 export class QueryClient {
@@ -8,7 +7,7 @@ export class QueryClient {
 
   protected requestHooks: RequestHook[] = [];
 
-  protected responseHooks: [ResponseHook?, ResponseHook?][] = [];
+  protected responseHooks: [ResponseHook?, ErrorHook?][] = [];
 
   constructor(config: QueryConfig) {
     this.defaultConfig = config;
@@ -84,7 +83,7 @@ export class QueryClient {
     this.requestHooks.push(requestHook);
   }
 
-  addResponseHook(successHook: ResponseHook, errorHook?: ResponseHook) {
+  addResponseHook(successHook: ResponseHook, errorHook?: ErrorHook) {
     this.responseHooks.push([successHook, errorHook]);
   }
 
