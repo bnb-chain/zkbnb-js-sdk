@@ -188,6 +188,8 @@ export enum TxType {
   TxTypeWithdrawNft,
   TxTypeFullExit,
   TxTypeFullExitNft,
+  TxTypeOffer,
+  TxTypeUpdateNFT,
 }
 
 export {};

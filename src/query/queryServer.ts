@@ -1,5 +1,6 @@
 import { QueryClient } from './query';
-import { HttpMethod } from './type';
+import { ResponseData } from './response';
+import { HttpMethod, QueryConfig } from './type';
 
 type QueryData<T> = ReadableStream | Blob | ArrayBuffer | URLSearchParams | T;
 
@@ -9,13 +10,13 @@ function isPureObject(input: unknown) {
 }
 
 export class QueryServer extends QueryClient {
-  protected fetchWithData<ReqData, ResData>(
+  protected fetchWithData<RequestData, ResponseType>(
     method: HttpMethod,
     url: string,
-    data?: QueryData<ReqData>,
-    config?: RequestInit
-  ) {
-    let body: BodyInit | null = null;
+    data?: QueryData<RequestData>,
+    config?: QueryConfig
+  ): Promise<ResponseData<ResponseType>> {
+    let body: BodyInit;
     if (isPureObject(data)) {
       body = JSON.stringify(data);
     } else if (
@@ -25,10 +26,10 @@ export class QueryServer extends QueryClient {
       data instanceof Blob
     ) {
       body = data;
-    } else if (data != null) {
-      body = data.toString();
+    } else {
+      body = JSON.stringify(data);
     }
 
-    return this.fetchWithTimeout(url, { ...config, method, body }) as Promise<ResData>;
+    return this.fetchWithTimeout<ResponseType>(url, { ...config, method, body });
   }
 }
