@@ -70,7 +70,7 @@ export class Client {
     },
     config?: QueryConfig
   ) {
-    return await this.req(
+    return this.req(
       API_MAP.GetTxsByAccount,
       {
         value: l1Address,
@@ -117,28 +117,28 @@ export class Client {
    * returns tx by tx hash
    */
   async getTxs({ offset, limit }: { offset: number; limit: number }, config?: QueryConfig) {
-    return await this.req(API_MAP.GetTxs, { offset, limit }, config);
+    return this.req(API_MAP.GetTxs, { offset, limit }, config);
   }
 
   /**
    * returns data type by queried info
    */
   async search(info: string, config?: QueryConfig) {
-    return await this.req(API_MAP.Search, { keyword: info }, config);
+    return this.req(API_MAP.Search, { keyword: info }, config);
   }
 
   /**
    * returns accounts by query conditions
    */
   async getAccounts({ offset, limit }: { offset: number; limit: number }, config?: QueryConfig) {
-    return await this.req(API_MAP.GetAccounts, { offset, limit }, config);
+    return this.req(API_MAP.GetAccounts, { offset, limit }, config);
   }
 
   /**
    * returns gas fee asset list
    */
   async getGasFeeAssets(config?: QueryConfig) {
-    return await this.req(API_MAP.GetGasFeeAssets, {}, config);
+    return this.req(API_MAP.GetGasFeeAssets, {}, config);
   }
 
   /**
@@ -156,7 +156,7 @@ export class Client {
     },
     config?: QueryConfig
   ) {
-    return await this.req(
+    return this.req(
       API_MAP.GetWithdrawGasFee,
       {
         asset_id: assetId,
@@ -171,7 +171,7 @@ export class Client {
    * returns gas fee for asset
    */
   async getGasFee({ assetId, txType }: { assetId: number; txType: number }, config?: QueryConfig) {
-    return await this.req(
+    return this.req(
       API_MAP.GetGasFee,
       {
         asset_id: assetId,
@@ -182,10 +182,17 @@ export class Client {
   }
 
   /**
+   * returns gas fee asset list
+   */
+  async getProtocolRateFee(config?: QueryConfig) {
+    return this.req(API_MAP.GetProtocolRate, {}, config);
+  }
+
+  /**
    * returns asset by asset id
    */
   async getAssetById(assetId: number, config?: QueryConfig) {
-    return await this.req(
+    return this.req(
       API_MAP.GetAsset,
       {
         by: 'id',
@@ -196,7 +203,7 @@ export class Client {
   }
 
   async getAssetBySymbol(symbol: string, config?: QueryConfig) {
-    return await this.req(
+    return this.req(
       API_MAP.GetAsset,
       {
         by: 'symbol',
@@ -210,7 +217,7 @@ export class Client {
    * returns asset list
    */
   async getAssets({ offset, limit }: { offset: number; limit: number }, config?: QueryConfig) {
-    return await this.req(
+    return this.req(
       API_MAP.GetAssets,
       {
         offset,
@@ -224,14 +231,14 @@ export class Client {
    * returns layer 2 basic info
    */
   async getLayer2BasicInfo(config?: QueryConfig) {
-    return await this.req(API_MAP.GetLayer2BasicInfo, {}, config);
+    return this.req(API_MAP.GetLayer2BasicInfo, {}, config);
   }
 
   /**
    * returns block by commitment
    */
   async getBlockByCommitment(blockCommitment: string, config?: QueryConfig) {
-    return await this.req(
+    return this.req(
       API_MAP.GetBlockByParam,
       {
         by: 'commitment',
@@ -245,7 +252,7 @@ export class Client {
    * returns block by height
    */
   async getBlockByHeight(blockHeight: number, config?: QueryConfig) {
-    return await this.req(
+    return this.req(
       API_MAP.GetBlockByParam,
       {
         by: 'height',
@@ -259,7 +266,7 @@ export class Client {
    * returns account info by account index
    */
   async getAccountByIndex(accountIndex: number, config?: QueryConfig) {
-    return await this.req(
+    return this.req(
       API_MAP.GetAccountByParam,
       {
         by: 'index',
@@ -273,7 +280,7 @@ export class Client {
    * returns account (mainly pubkey) by using l1_address
    */
   async getAccountByL1Address(l1Address: string, config?: QueryConfig) {
-    return await this.req(
+    return this.req(
       API_MAP.GetAccountByParam,
       {
         by: 'l1_address',
@@ -287,14 +294,14 @@ export class Client {
    * returns current block height
    */
   async getCurrentHeight(config?: QueryConfig) {
-    return await this.req(API_MAP.GetCurrentHeight, {}, config);
+    return this.req(API_MAP.GetCurrentHeight, {}, config);
   }
 
   /**
    * returns available pairs
    */
   async getPairs({ offset, limit }: { offset: number; limit: number }, config?: QueryConfig) {
-    return await this.req(
+    return this.req(
       API_MAP.GetPairs,
       {
         offset,
@@ -311,7 +318,7 @@ export class Client {
     params: { pairIndex: number; assetId: number; assetAmount: string; isFrom: boolean },
     config?: QueryConfig
   ) {
-    return await this.req(
+    return this.req(
       API_MAP.GetSwapAmount,
       {
         pair_index: params.pairIndex,
@@ -327,7 +334,7 @@ export class Client {
    * returns lp value
    */
   async getLPValue(params: { pairIndex: number; lpAmount: string }, config?: QueryConfig) {
-    return await this.req(
+    return this.req(
       API_MAP.GetLPValue,
       {
         pair_index: params.pairIndex,

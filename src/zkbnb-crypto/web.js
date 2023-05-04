@@ -12,7 +12,7 @@ if (!WebAssembly.instantiateStreaming) {
 const go = new Go();
 
 export const ZkCrypto = async () => {
-  const { module, instance } = await wasm({ ...go.importObject });
+  const { instance } = await wasm({ ...go.importObject });
   go.run(instance);
 
   const methods = [
@@ -41,7 +41,7 @@ export const ZkCrypto = async () => {
     Z[method] = window[method];
   });
 
-  WebAssembly.instantiate(module, go.importObject);
+  // WebAssembly.instantiate(module, go.importObject);
 
   return Z;
 };

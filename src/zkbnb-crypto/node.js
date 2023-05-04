@@ -8,7 +8,13 @@ const getResultLine = (str) => {
 const getCleanEnv = () => {
   const envs = process.env;
   return Object.entries(envs).reduce((acc, [k, v]) => {
-    if (k.startsWith('GITHUB') || k.startsWith('ANDROID') || k.startsWith('HOMEBREW') || k.startsWith('JAVA')) {
+    if (
+      k.startsWith('GITHUB') ||
+      k.startsWith('ANDROID') ||
+      k.startsWith('HOMEBREW') ||
+      k.startsWith('JAVA') ||
+      k.startsWith('VSCODE')
+    ) {
       return acc;
     }
     acc[k] = v;

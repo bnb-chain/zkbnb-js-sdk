@@ -156,8 +156,10 @@ export type Tx = {
   created_at: TimeStamp;
   verify_at: TimeStamp;
   state_root: string;
+  from_account_index: number;
+  from_l1_address: string;
   to_l1_address: string;
-  to_account_index: string;
+  to_account_index: number;
 };
 
 export type Nft = {
