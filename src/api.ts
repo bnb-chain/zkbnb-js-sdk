@@ -36,13 +36,14 @@ export const enum API_MAP {
   SendRawMintNftTx = 'POST /api/v1/tx/sendMintNftTx',
   GetSignatureMessage = 'POST /api/v1/l2Signature',
   SendRawTx = 'POST /api/v1/sendTx',
+  GetProtocolRate = 'GET /api/v1/getProtocolRate',
 }
 
 // 'GetTxsByPubKey' | 'GetTxsByL1Address' | ... | 'CreateCollection'
 export type API_NAME = keyof typeof API_MAP;
 
 // 'GET /api/v1/tx/getTxsByPubKey' | ... | 'POST /api/v1/tx/sendCreateCollectionTx'
-export type URL_INFO = typeof API_MAP[API_NAME];
+export type URL_INFO = (typeof API_MAP)[API_NAME];
 
 export interface IReqParmsMap {
   [API_MAP.GetTxsByAccount]: IReqBaseParam & {
@@ -114,6 +115,7 @@ export interface IReqParmsMap {
   [API_MAP.SendRawMintNftTx]: { tx_info: string };
   [API_MAP.GetGasAccount]: Record<string, never>;
   [API_MAP.GetNftsByAccountIndex]: IReqBaseParam & { by: 'account_index'; value: Zk.AccountIndex };
+  [API_MAP.GetProtocolRate]: Record<string, never>;
 }
 
 export interface IResponseMap {
@@ -167,4 +169,5 @@ export interface IResponseMap {
     total: number;
     nfts: Zk.Nft[];
   };
+  [API_MAP.GetProtocolRate]: { protocol_rate: string };
 }
