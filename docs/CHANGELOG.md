@@ -1,3 +1,10 @@
+# [4.5.0](https://github.com/bnb-chain/zkbnb-js-sdk/compare/v4.4.1...v4.5.0) (2023-05-04)
+
+
+### Features
+
+* update main.wasm to apply GKR inside a SNARK and add new API Ge… ([#44](https://github.com/bnb-chain/zkbnb-js-sdk/issues/44)) ([c05c8ed](https://github.com/bnb-chain/zkbnb-js-sdk/commit/c05c8ed36a61ea284a38c57ab1bff5785c0e8ee1))
+
 ## [4.4.1](https://github.com/bnb-chain/zkbnb-js-sdk/compare/v4.4.0...v4.4.1) (2023-04-04)
 
 
