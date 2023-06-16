@@ -1,3 +1,10 @@
+# [4.7.0](https://github.com/bnb-chain/zkbnb-js-sdk/compare/v4.6.0...v4.7.0) (2023-06-16)
+
+
+### Features
+
+* change test ([352ec54](https://github.com/bnb-chain/zkbnb-js-sdk/commit/352ec54cf5b3bb2ccd6d96648eec083f0be094cd))
+
 # [4.6.0](https://github.com/bnb-chain/zkbnb-js-sdk/compare/v4.5.0...v4.6.0) (2023-06-16)
 
 
