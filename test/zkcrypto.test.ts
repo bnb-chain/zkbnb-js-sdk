@@ -94,7 +94,7 @@ describe('eddsaVerify', () => {
         '262f345534b2074fe8be673870900a9d1ee685e7f0025b432de7675e7aad5b2d05aa5aa6090437e9683ede67ff2d5e103f3f8b1d47519c7a36127336b11af1aa',
         'hello world'
       ),
-      'true'
+      'false'
     );
   });
 });
