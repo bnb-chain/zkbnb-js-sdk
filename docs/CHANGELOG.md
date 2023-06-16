@@ -1,3 +1,10 @@
+# [4.6.0](https://github.com/bnb-chain/zkbnb-js-sdk/compare/v4.5.0...v4.6.0) (2023-06-16)
+
+
+### Features
+
+* change wasm file ([2776a34](https://github.com/bnb-chain/zkbnb-js-sdk/commit/2776a345e1acadcac86155cabc85c2a89b92ad22))
+
 # [4.5.0](https://github.com/bnb-chain/zkbnb-js-sdk/compare/v4.4.1...v4.5.0) (2023-05-04)
 
 
